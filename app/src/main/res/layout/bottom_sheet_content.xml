@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_300sdp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="@dimen/_50sdp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/backgroundColor"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btSpecialOffers"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_32sdp"
+            android:background="@drawable/rounded_edit_text"
+            android:drawablePadding="16dp"
+            android:drawableStart="@mipmap/special_offers"
+            android:gravity="center"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingStart="@dimen/_16sdp"
+            android:text="@string/special_offers"
+            android:textColor="@color/backgroundColor"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:id="@+id/vpSpecialOffers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp" />
+
+    <com.rd.PageIndicatorView
+        android:id="@+id/pageIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:piv_animationType="scale"
+        app:piv_dynamicCount="true"
+        app:piv_interactiveAnimation="true"
+        app:piv_selectedColor="@color/backgroundColor"
+        app:piv_unselectedColor="@android:color/darker_gray"
+        app:piv_viewPager="@id/vpSpecialOffers" />
+
+
+    <Button
+        android:id="@+id/btViewAllSpecialOffers"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/rounded_button_back"
+        android:drawablePadding="16dp"
+        android:gravity="center"
+        android:paddingEnd="@dimen/_16sdp"
+        android:paddingStart="@dimen/_16sdp"
+        android:text="@string/see_all"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+</LinearLayout>

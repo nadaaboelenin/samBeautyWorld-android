@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/tvBackMain"-->
+        <!--android:layout_width="@dimen/_20sdp"-->
+        <!--android:layout_height="@dimen/_20sdp"-->
+        <!--android:layout_margin="@dimen/_8sdp"-->
+        <!--android:layout_marginStart="180dp"-->
+        <!--android:src="@mipmap/back"-->
+        <!--android:tint="@android:color/white"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <!--<me.relex.circleindicator.CircleIndicator-->
+        <!--android:id="@+id/ciIndicator"-->
+        <!--android:layout_width="@dimen/_50sdp"-->
+        <!--android:layout_height="@dimen/_20sdp"-->
+        <!--android:layout_marginStart="116dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/tvBackMain"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/tvBackMain"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/tvBackMain"-->
+        <!--app:layout_constraintVertical_bias="1.0" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:text="Step #1"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/ciIndicator"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="1.0"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/ciIndicator"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/ciIndicator"-->
+        <!--app:layout_constraintVertical_bias="0.666" />-->
+
+
+    <FrameLayout
+        android:id="@+id/container_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

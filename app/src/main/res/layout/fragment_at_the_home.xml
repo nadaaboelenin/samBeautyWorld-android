@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grayBackround"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/etSearchPlaces"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_search_edittext"
+        android:drawableEnd="@mipmap/search"
+        android:drawablePadding="16dp"
+        android:hint="@string/select_area"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:drawablePadding="@dimen/_8sdp"
+        android:drawableStart="@mipmap/gps_icon"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background_search_edittext"
+        android:textColor="@android:color/darker_gray"
+        android:id="@+id/tvSelectMyLocation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/use_my_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etSearchPlaces" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvLocations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectMyLocation" />
+
+
+</android.support.constraint.ConstraintLayout>

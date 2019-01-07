@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundColor"
+    android:layout_width="match_parent"
+    android:paddingBottom="@dimen/_16sdp"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/ivLocationIcon"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/location" />
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_14ssp"
+        android:id="@+id/tvNowShowingIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/now_showing_in"
+        app:layout_constraintEnd_toEndOf="@+id/ivLocationIcon"
+        app:layout_constraintStart_toStartOf="@+id/ivLocationIcon"
+        app:layout_constraintTop_toBottomOf="@+id/ivLocationIcon" />
+
+    <TextView
+        android:textSize="@dimen/_12ssp"
+        android:id="@+id/tvYouCanChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/you_can_change"
+        app:layout_constraintEnd_toEndOf="@+id/tvNowShowingIn"
+        app:layout_constraintStart_toStartOf="@+id/tvNowShowingIn"
+        app:layout_constraintTop_toBottomOf="@+id/tvNowShowingIn" />
+
+    <Button
+        android:background="@drawable/rounded_button_back"
+        android:id="@+id/btGotIt"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_34sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/got_it"
+        app:layout_constraintEnd_toEndOf="@+id/tvYouCanChange"
+        app:layout_constraintStart_toStartOf="@+id/tvYouCanChange"
+        app:layout_constraintTop_toBottomOf="@+id/tvYouCanChange" />
+
+</android.support.constraint.ConstraintLayout>

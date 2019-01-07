@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <TextView
+        android:id="@+id/tvEnterFourDigit"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/_48sdp"
+        android:gravity="center"
+        android:text="@string/enter_four_digit"
+        android:textSize="@dimen/_28ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent=".5" />
+
+    <TextView
+        android:textSize="@dimen/_18ssp"
+        android:id="@+id/tvIfDidntReceive"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/if_didnt_receive"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="@+id/tvEnterFourDigit"
+        app:layout_constraintStart_toStartOf="@+id/tvEnterFourDigit"
+        app:layout_constraintTop_toBottomOf="@+id/tvEnterFourDigit" />
+
+    <include
+        layout="@layout/opt_included"
+        android:id="@+id/included_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ImageView
+        android:id="@+id/ivResendIcon"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvResend"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/included_otp"
+        app:srcCompat="@mipmap/resend_icon" />
+
+    <TextView
+        android:textSize="@dimen/_16ssp"
+        android:id="@+id/tvResend"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/resend_in_minutes"
+        app:layout_constraintBottom_toBottomOf="@+id/ivResendIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivResendIcon"
+        app:layout_constraintTop_toTopOf="@+id/ivResendIcon"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+
+        android:id="@+id/btCallMeInstead"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/drawable_button_background"
+        android:drawableStart="@mipmap/phone_call"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/call_me_instead"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResend" />
+
+    <Button
+        android:id="@+id/btReportAProblem"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_width="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/drawable_button_background"
+        android:drawableStart="@mipmap/headphones"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/report_a_problem"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/btCallMeInstead"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/btCallMeInstead"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.support.constraint.Guideline
+        app:layout_constraintGuide_percent=".5"
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</android.support.constraint.ConstraintLayout>

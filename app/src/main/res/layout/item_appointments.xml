@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewYourAppointments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/grayBackround"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivSalonImage"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@mipmap/sola" />
+
+            <TextView
+                android:id="@+id/tvSalonNameItem"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivSalonImage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="As You Wish"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvDateOfAppointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSalonNameItem"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Sat 10 November 2018"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvAppointmentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDateOfAppointment"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="5:15 PM - 5:45 PM"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvTypeOfService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAppointmentTime"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="@string/back_massage"
+                android:textColor="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/ivGuideButton"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_below="@id/tvTypeOfService"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/guide_icon" />
+
+            <View
+                android:id="@+id/view_more"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/ivGuideButton"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvServicesBooked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_more"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="@string/services_booked"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvServicesBookedPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/view_more"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="160 AED"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvDepositPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvServicesBooked"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="@string/deposit_paid"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvDepositPaidPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tvServicesBooked"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="0 AED"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvAmountDue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDepositPaid"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="@string/amount_due"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvAmountDuePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tvDepositPaid"
+                android:layout_margin="@dimen/_8sdp"
+                android:text="160 AED"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                android:id="@+id/tvTradeCentres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAmountDue"
+                android:layout_centerHorizontal="true"
+                android:text="@string/trade_centre"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tvReschedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTradeCentres"
+                android:layout_margin="8dp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:drawableStart="@mipmap/reschedule"
+                android:gravity="center"
+                android:text="@string/reschedule"
+                android:textColor="@color/green_text"
+                android:textSize="@dimen/_16ssp" />
+
+
+            <TextView
+                android:id="@+id/tvClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/tvTradeCentres"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:drawablePadding="@dimen/_8sdp"
+                android:drawableStart="@mipmap/close"
+                android:text="@string/close"
+                android:textColor="@color/red_text"
+                android:textSize="@dimen/_16ssp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvReschedule"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCallSalon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/backgroundColor"
+                    android:drawablePadding="@dimen/_16sdp"
+                    android:drawableStart="@mipmap/phone"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_32sdp"
+                    android:text="@string/call"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvViewOnMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginStart="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/backgroundColor"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawableStart="@mipmap/maps"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:text="@string/maps"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

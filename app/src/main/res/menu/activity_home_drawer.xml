@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_gender"
+            android:icon="@mipmap/ic_gender"
+            android:title="@string/man" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_my_wallet"
+            android:icon="@mipmap/wallet"
+            android:title="@string/my_wallet" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@mipmap/search"
+            android:title="@string/search" />
+
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@mipmap/favourites"
+            android:title="@string/favourites" />
+        <item
+            android:id="@+id/nav_send_feedback"
+            android:icon="@mipmap/feedback"
+            android:title="@string/send_feedback" />
+
+        <item
+            android:id="@+id/nav_my_account"
+            android:icon="@mipmap/my_account"
+            android:title="@string/send_feedback" />
+
+        <item
+            android:id="@+id/nav_change_language"
+            android:icon="@mipmap/change_language"
+            android:title="@string/change_language" />
+    </group>
+
+</menu>

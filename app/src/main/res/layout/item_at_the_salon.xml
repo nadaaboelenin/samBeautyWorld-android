@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/grayBackround"
+    app:cardCornerRadius="@dimen/_4sdp"
+    app:cardElevation="@dimen/_2sdp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grayBackround">
+
+
+        <ImageView
+            android:id="@+id/ivBigImageSalonAvailable"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/aluna" />
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp"
+            app:layout_constraintGuide_percent=".5" />
+
+        <ImageView
+            android:id="@+id/ivSalonLogo"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintTop_toTopOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@mipmap/salon" />
+
+        <TextView
+            android:id="@+id/tvDiscountPriceAtTheSalon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_marginEnd="8dp"
+            android:alpha=".7"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:text="All For 150.0 AED 120.0 AED"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintEnd_toEndOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/ivBigImageSalonAvailable" />
+
+        <TextView
+            android:id="@+id/tvTypeOfServiceOffers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="Dermatol-ogy"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBigImageSalonAvailable" />
+
+        <TextView
+            android:id="@+id/tvSalonNameOffers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="The Salon"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfServiceOffers" />
+
+        <ImageView
+            android:id="@+id/ivHomeAvailable"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/circular_cyan_background"
+            android:padding="@dimen/_4sdp"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBigImageSalonAvailable"
+            app:layout_constraintVertical_bias="0.652"
+            app:srcCompat="@mipmap/home_icon" />
+
+
+        <ImageView
+            android:id="@+id/ivSalonAvailable"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/circular_cyan_background"
+            android:padding="@dimen/_4sdp"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeAvailable"
+            app:layout_constraintEnd_toStartOf="@+id/ivHomeAvailable"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeAvailable"
+            app:layout_constraintVertical_bias="0.125"
+            app:srcCompat="@mipmap/salon_chair" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

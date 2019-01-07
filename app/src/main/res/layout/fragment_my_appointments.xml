@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewYourAppointments"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:backgroundTint="@android:color/white"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_4sdp">
+
+            <ImageView
+                android:id="@+id/tvGoBackYourAppointments"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:src="@mipmap/back"
+                android:tint="@android:color/black" />
+
+            <TextView
+                android:id="@+id/etSearchSalon"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="8dp"
+                android:drawablePadding="16dp"
+                android:gravity="center"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
+                android:text="@string/your_appointments"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent=".5" />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/tvUpcomingAppointment"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/upcoming"
+        android:textColor="@color/backgroundColor"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewYourAppointments" />
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:id="@+id/tvPastAppointments"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/past"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewYourAppointments" />
+
+    <View
+        android:id="@+id/view_upcoming"
+        android:layout_width="0dp"
+        android:layout_height="2.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/backgroundColor"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpcomingAppointment" />
+
+    <View
+        android:id="@+id/view_past"
+        android:layout_width="0dp"
+        android:layout_height="2.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view_upcoming"
+        app:layout_constraintTop_toBottomOf="@+id/tvPastAppointments" />
+
+    <android.support.v7.widget.RecyclerView
+        android:scrollbars="none"
+        android:id="@+id/rvAppointMentHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_upcoming" />
+
+
+</android.support.constraint.ConstraintLayout>

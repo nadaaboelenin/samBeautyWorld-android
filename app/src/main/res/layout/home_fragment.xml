@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/include_showing_locations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include
+        android:id="@+id/include_bookmarks"
+        layout="@layout/include_bookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvFeaturedeServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/featured_services"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.039"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/_50sdp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:background="@color/backgroundColor"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/rvFeaturedServices"-->
+        <!--app:layout_constraintVertical_bias="1.0">-->
+
+
+        <!--<Button-->
+            <!--android:id="@+id/btSpecialOffers"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/_32sdp"-->
+            <!--android:background="@drawable/rounded_edit_text"-->
+            <!--android:drawablePadding="16dp"-->
+            <!--android:drawableStart="@mipmap/special_offers"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingEnd="@dimen/_16sdp"-->
+            <!--android:paddingStart="@dimen/_16sdp"-->
+            <!--android:text="@string/special_offers"-->
+            <!--android:textColor="@color/backgroundColor"-->
+            <!--android:textSize="12sp" />-->
+
+    <!--</LinearLayout>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvFeaturedServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFeaturedeServices" />
+
+
+</android.support.constraint.ConstraintLayout>
