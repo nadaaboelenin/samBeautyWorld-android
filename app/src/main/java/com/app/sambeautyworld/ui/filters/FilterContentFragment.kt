@@ -1,4 +1,4 @@
-package com.app.sambeautyworld.ui.sideMenuOpions.sendFeedback
+package com.app.sambeautyworld.ui.filters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
 
 /**
- * Created by ${Shubham} on 12/31/2018.
+ * Created by ${Shubham} on 1/7/2019.
  */
-class SendFeedbackFragment : BaseFragment() {
+class FilterContentFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,7 +26,8 @@ class SendFeedbackFragment : BaseFragment() {
 
     }
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_send_feedback, container, false)
+        return inflater.inflate(R.layout.fragment_filters, container, false)
     }
 }

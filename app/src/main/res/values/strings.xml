@@ -509,6 +509,12 @@
     <string name="you_can_change_later">You can change your mind later</string>
     <string name="use_my_current">Use my current location</string>
     <string name="select_area">Select Area</string>
+    <string name="reset">Reset</string>
+    <string name="price_range">Price Range</string>
+    <string name="salon">Salon</string>
+    <string name="makeUpArtist">Make Up Artist</string>
+    <string name="area">All Areas</string>
+    <string name="search_locally">Set Nearest location</string>
 
 
 </resources>

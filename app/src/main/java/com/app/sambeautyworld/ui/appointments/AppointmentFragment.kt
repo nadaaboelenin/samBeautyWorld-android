@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.R.id.*
 import com.app.sambeautyworld.adapter.MyAppointments
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.dummyData.DummyAppointmentsPojo
@@ -29,7 +30,6 @@ class AppointmentFragment : BaseFragment() {
         tvGoBackYourAppointments.setOnClickListener {
             goBack()
         }
-
 
         tvUpcomingAppointment.setOnClickListener {
             changeColor(tvUpcomingAppointment,view_upcoming)

@@ -10,6 +10,7 @@ import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
 import com.app.sambeautyworld.ui.homeFragment.HomeFragment
+import com.app.sambeautyworld.ui.sideMenuOpions.favourites.FavouritesFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.listYourBusiness.ListYourBusinessFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.myAccount.MyAccountFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.searchSalon.SearchSalonFragment
@@ -35,6 +36,14 @@ class HomeActivity : BaseActivity(){
     }
 
     private fun clickListeners() {
+        llHome.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility= View.VISIBLE
+            addFragment(HomeFragment(),true,R.id.container_home)
+        }
+
+
+
         btListYourBusiness.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
             toolbar.visibility= View.GONE
@@ -51,6 +60,18 @@ class HomeActivity : BaseActivity(){
             drawer_layout.closeDrawer(GravityCompat.START)
             toolbar.visibility= View.GONE
             addFragment(MyAccountFragment(),true,R.id.container_home)
+        }
+
+        llFavourite.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility= View.GONE
+            addFragment(FavouritesFragment(),true,R.id.container_home)
+        }
+
+        llSearch.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility= View.GONE
+            addFragment(SearchSalonFragment(),true,R.id.container_home)
         }
     }
 
@@ -69,7 +90,6 @@ class HomeActivity : BaseActivity(){
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.home, menu)
         return true
     }
@@ -87,8 +107,3 @@ class HomeActivity : BaseActivity(){
     }
 
 }
-/**
- * https://github.com/localzagency
-docs.mine34a@gmail.com
-qwe123!@#
-        **/
