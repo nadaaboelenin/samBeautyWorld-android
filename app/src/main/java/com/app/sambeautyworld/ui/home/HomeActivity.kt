@@ -15,6 +15,7 @@ import com.app.sambeautyworld.ui.sideMenuOpions.listYourBusiness.ListYourBusines
 import com.app.sambeautyworld.ui.sideMenuOpions.myAccount.MyAccountFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.searchSalon.SearchSalonFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.sendFeedback.SendFeedbackFragment
+import com.app.sambeautyworld.ui.sideMenuOpions.wallet.WalletFragment
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.drawer_items.*
@@ -41,8 +42,6 @@ class HomeActivity : BaseActivity(){
             toolbar.visibility= View.VISIBLE
             addFragment(HomeFragment(),true,R.id.container_home)
         }
-
-
 
         btListYourBusiness.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -73,6 +72,13 @@ class HomeActivity : BaseActivity(){
             toolbar.visibility= View.GONE
             addFragment(SearchSalonFragment(),true,R.id.container_home)
         }
+
+        llWallet.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility = View.GONE
+            addFragment(WalletFragment(), true, R.id.container_home)
+        }
+
     }
 
 

@@ -515,6 +515,12 @@
     <string name="makeUpArtist">Make Up Artist</string>
     <string name="area">All Areas</string>
     <string name="search_locally">Set Nearest location</string>
+    <string name="salonName">Salon name</string>
+    <string name="salon_location">Location</string>
+    <string name="salon_number">Salon number</string>
+    <string name="dialog_text">Opening Hours</string>
+    <string name="top_up_using">Top up using</string>
+    <string name="transaction_history">Transaction history</string>
 
 
 </resources>

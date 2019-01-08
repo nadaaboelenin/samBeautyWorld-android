@@ -11,7 +11,7 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_32sdp"
         android:layout_marginStart="@dimen/_32sdp"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:background="@drawable/tab_background"
         android:gravity="center"
         android:orientation="horizontal"

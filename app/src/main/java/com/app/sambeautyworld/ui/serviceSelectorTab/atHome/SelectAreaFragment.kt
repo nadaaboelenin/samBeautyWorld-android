@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.MyAdapter
+import com.app.sambeautyworld.adapter.SelectAreaAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import kotlinx.android.synthetic.main.fragment_at_the_home.*
@@ -46,7 +46,7 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
         dummySpecialOffers?.add("1")
         dummySpecialOffers?.add("1")
 
-        rvLocations.adapter = MyAdapter(dummySpecialOffers, context!!, this)
+        rvLocations.adapter = SelectAreaAdapter(dummySpecialOffers, context!!, this)
         rvLocations.layoutManager = LinearLayoutManager(context!!, 1, false)
     }
 

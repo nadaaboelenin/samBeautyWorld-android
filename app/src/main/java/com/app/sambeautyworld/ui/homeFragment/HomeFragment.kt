@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.BookmarksAdapter
-import com.app.sambeautyworld.adapter.CustomPagerAdapter
 import com.app.sambeautyworld.adapter.FeaturedServicesAdapter
+import com.app.sambeautyworld.adapter.SpecialOffersAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.dummyData.DummyBookmarks
@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         vpSpecialOffers.pageMargin = 20
 
 
-        vpSpecialOffers.adapter = CustomPagerAdapter(context!!, dummySpecialOffers!!)
+        vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
     }
 
     private fun clickListeners() {
