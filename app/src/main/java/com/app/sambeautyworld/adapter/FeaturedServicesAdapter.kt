@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.OnItemClicked
-import com.app.sambeautyworld.dummyData.DummyFeaturedServices
+import com.app.sambeautyworld.pojo.listServices.FeaturedServicesList
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_featured_services.view.*
 
 /**
  * Created by ${Shubham} on 12/28/2018.
  */
-class FeaturedServicesAdapter(private val myDataset: ArrayList<DummyFeaturedServices>? , private var onItemClicked: OnItemClicked? ) :
+class FeaturedServicesAdapter(private val myDataset: ArrayList<FeaturedServicesList>?, private var onItemClicked: OnItemClicked?) :
         RecyclerView.Adapter<FeaturedServicesAdapter.MyViewHolder>()
 {
 
@@ -35,8 +35,8 @@ class FeaturedServicesAdapter(private val myDataset: ArrayList<DummyFeaturedServ
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.layout.tvFeaturedServiceName.text = myDataset!![position].text
-        Picasso.get().load(myDataset[position].image!!).into(holder.layout.ivServiceImage)
+        holder.layout.tvFeaturedServiceName.text = myDataset!![position].service_name
+        Picasso.get().load(myDataset[position].service_logo!!).into(holder.layout.ivServiceImage)
 
         holder.layout.setOnClickListener {
             onItemClicked?.onItemClick(position)

@@ -1,6 +1,7 @@
 package com.app.sambeautyworld.ui.mobileAuth.login
 
 import Preferences
+import android.app.DatePickerDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -23,6 +24,8 @@ import kotlinx.android.synthetic.main.include_login.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -30,6 +33,8 @@ import org.greenrobot.eventbus.ThreadMode
  */
 class LoginFragment : BaseFragment() {
     private var mViewModel: SignUpModel? = null
+    var dateSelected = Calendar.getInstance()
+    private var datePickerDialog: DatePickerDialog? = null
     private var mListeners: SocialLoginManager.SocialLoginListener? = null
     private var newToken: String? = null
 
@@ -49,13 +54,10 @@ class LoginFragment : BaseFragment() {
 
         mViewModel?.response?.observe(this, Observer { it ->
             it?.let {
-                val message = "${it.message}"
-                showSnackBar(message)
                 if (it.status == 1) {
                     Preferences.prefs!!.saveValue(Constants.IS_LOGGED_IN, true)
                     Preferences.prefs!!.saveValue(Constants.ID, it.user_info!!.user_id)
                     replaceFragment(EnableLocationServices(), true, R.id.container_main)
-
                 } else {
 
                 }
@@ -103,6 +105,26 @@ class LoginFragment : BaseFragment() {
         btGoogle.setOnClickListener {
             mListeners?.onGoogleLogin()
         }
+        etBirthDay.isFocusable = false
+        etBirthDay.setOnClickListener {
+            DatePickerDialog(activity!!, date, dateSelected
+                    .get(Calendar.YEAR), dateSelected.get(Calendar.MONTH),
+                    dateSelected.get(Calendar.DAY_OF_MONTH)).show()
+        }
+    }
+
+    var date: DatePickerDialog.OnDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        // TODO Auto-generated method stub
+        dateSelected.set(Calendar.YEAR, year)
+        dateSelected.set(Calendar.MONTH, monthOfYear)
+        dateSelected.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        updateLabel()
+    }
+
+    private fun updateLabel() {
+        val myFormat = "MM/dd/yy" //In which you need put here
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        etBirthDay.setText(sdf.format(dateSelected.time))
     }
 
     private fun validateData() {
@@ -124,7 +146,7 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun hitRegisterApi(model: FacebookModel) {
-        mViewModel?.registerUser(Preferences?.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
+        mViewModel?.registerUser(Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
                 model.firstName, "", model.email, "", "1", model.type, model.accessToken.toString(), newToken
         )
     }

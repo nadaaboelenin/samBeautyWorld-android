@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1057758767897",
+    "firebase_url": "https://sambeautyworld-android.firebaseio.com",
+    "project_id": "sambeautyworld-android",
+    "storage_bucket": "sambeautyworld-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057758767897:android:ec409b8b8136f10a",
+        "android_client_info": {
+          "package_name": "com.app.sambeautyworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057758767897-fteb95md4mkj6accprldpfmq3vigr841.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.sambeautyworld",
+            "certificate_hash": "bd0bebe94d38638145a8d4e191395d05d308d438"
+          }
+        },
+        {
+          "client_id": "1057758767897-pvalvp5uqghbt64dkonnbd32ep1ce699.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHnSHQcc08bsTDPctL0fFUNYtcV03l0FY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057758767897-pvalvp5uqghbt64dkonnbd32ep1ce699.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

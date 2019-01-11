@@ -32,6 +32,8 @@ object Constants {
     const val GOT_IT ="got_it"
     const val ID = "user_id"
     const val REGISTER = "register"
+    const val FEATURED_SERVICES = "featuredServices"
+    const val LIST_YOUR_BUSINESS = "listYourBusiness"
 
 
     const val SPLASH_TIME_OUT: Long = 3000

@@ -1,6 +1,8 @@
 package com.app.sambeautyworld.ui.homeFragment
 
 import Preferences
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.GridLayoutManager
@@ -15,7 +17,7 @@ import com.app.sambeautyworld.adapter.SpecialOffersAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.dummyData.DummyBookmarks
-import com.app.sambeautyworld.dummyData.DummyFeaturedServices
+import com.app.sambeautyworld.pojo.listServices.FeaturedServicesList
 import com.app.sambeautyworld.ui.appointments.AppointmentFragment
 import com.app.sambeautyworld.ui.seeOffers.SeeAllOffersFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.HomeSalonSelectorFragment
@@ -33,14 +35,48 @@ import kotlinx.android.synthetic.main.include_showing_locations.*
  */
 class HomeFragment : BaseFragment(), OnItemClicked {
 
+    private var mViewModel: HomeFragmentModel? = null
+
     override fun onItemClick(position: Int) {
         activity?.toolbar?.visibility = View.GONE
         addFragment(HomeSalonSelectorFragment(), true, R.id.container_home)
     }
 
-    private val dummyList: ArrayList<DummyFeaturedServices>? = ArrayList()
+    private var dummyList: ArrayList<FeaturedServicesList>? = ArrayList()
     private val dumyBookmark: ArrayList<DummyBookmarks>? = ArrayList()
     private val dummySpecialOffers: ArrayList<String>? = ArrayList()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mViewModel = ViewModelProviders.of(this)[HomeFragmentModel::class.java]
+        attachObservers()
+    }
+
+    private fun attachObservers() {
+
+        mViewModel?.response?.observe(this, Observer { it ->
+            it?.let {
+                if (it.status == 1) {
+                    dummyList = it.featuredServicesList as ArrayList<FeaturedServicesList>
+                    setUpData()
+                } else {
+
+                }
+            }
+        })
+
+        mViewModel?.apiError?.observe(this, Observer { it ->
+            it?.let {
+                showSnackBar(it)
+            }
+        })
+
+        mViewModel?.isLoading?.observe(this, Observer { it ->
+            it?.let { showLoading(it) }
+        })
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.home_coordinator_test, container, false)
@@ -49,9 +85,14 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpData()
+
+        hitApi()
         addSpecialOffers()
         clickListeners()
+    }
+
+    private fun hitApi() {
+        mViewModel?.getServices()
     }
 
     private fun addSpecialOffers() {
@@ -65,7 +106,6 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         vpSpecialOffers.setPadding(60, 0, 60, 0)
         // sets a margin b/w individual pages to ensure that there is a gap b/w them
         vpSpecialOffers.pageMargin = 20
-
 
         vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
     }
@@ -88,10 +128,8 @@ class HomeFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData() {
-
         val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
         bottomSheetBehavior.isHideable = false
-
 
         if (!Preferences.prefs?.getBoolean(Constants.GOT_IT, false)!!) {
             include2.visibility = View.INVISIBLE
@@ -101,14 +139,14 @@ class HomeFragment : BaseFragment(), OnItemClicked {
             include_bookmarks.visibility = View.INVISIBLE
         }
 
-        dummyList?.add(DummyFeaturedServices("Nails", R.mipmap.nails))
-        dummyList?.add(DummyFeaturedServices("Massage", R.mipmap.massage))
-        dummyList?.add(DummyFeaturedServices("Hairdo", R.mipmap.hairdo))
-        dummyList?.add(DummyFeaturedServices("Blowout", R.mipmap.blowout))
-        dummyList?.add(DummyFeaturedServices("Make up", R.mipmap.women_makeup))
-        dummyList?.add(DummyFeaturedServices("Dermatology", R.mipmap.dermatol))
-        dummyList?.add(DummyFeaturedServices("Hair cut", R.mipmap.hair_cut))
-        dummyList?.add(DummyFeaturedServices("Tattoo", R.mipmap.tattoo_service))
+//        dummyList?.add(DummyFeaturedServices("Nails", R.mipmap.nails))
+//        dummyList?.add(DummyFeaturedServices("Massage", R.mipmap.massage))
+//        dummyList?.add(DummyFeaturedServices("Hairdo", R.mipmap.hairdo))
+//        dummyList?.add(DummyFeaturedServices("Blowout", R.mipmap.blowout))
+//        dummyList?.add(DummyFeaturedServices("Make up", R.mipmap.women_makeup))
+//        dummyList?.add(DummyFeaturedServices("Dermatology", R.mipmap.dermatol))
+//        dummyList?.add(DummyFeaturedServices("Hair cut", R.mipmap.hair_cut))
+//        dummyList?.add(DummyFeaturedServices("Tattoo", R.mipmap.tattoo_service))
 
         rvFeaturedServices.layoutManager = GridLayoutManager(activity, 4)
         rvFeaturedServices.adapter = FeaturedServicesAdapter(dummyList, this)
