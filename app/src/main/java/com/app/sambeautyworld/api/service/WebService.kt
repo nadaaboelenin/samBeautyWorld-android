@@ -1,19 +1,39 @@
 package com.app.sambeautyworld.api.service
 
-
-
+import com.app.sambeautyworld.pojo.existence.CheckUserExistence
+import com.app.sambeautyworld.pojo.register.RegisterUserPojo
+import com.app.sambeautyworld.utils.Constants
+import retrofit2.Call
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 
 
 /**
- *  Created by shivam on 3/11/17.
+ *  Created by shubham on 3/11/17.
  *  All web services are declared here
  */
 interface WebService {
 
-//    //    @Headers("Accept: " + "application/json")
-//    @POST("login")
-//    @FormUrlEncoded
-//    fun loginUser(@Field("code") code: String): Call<com.hmu.kotlin.data.pinLogin.LoginResponse>
+    @POST(Constants.LOGIN)
+    @FormUrlEncoded
+    fun loginUser(@Field("phone") phone: String): Call<CheckUserExistence>
+
+
+    @POST(Constants.REGISTER)
+    @FormUrlEncoded
+    fun registerUser(@Field("phone") phone: String,
+                     @Field("name") name: String,
+                     @Field("address") address: String,
+                     @Field("email") email: String,
+                     @Field("dob") dob: String,
+                     @Field("app_type") app_type: String,
+                     @Field("login_type") login_type: String,
+                     @Field("social_id") social_id: String,
+                     @Field("device_token") device_token: String
+
+    ): Call<RegisterUserPojo>
+
 //
 //
 //    @POST(Constants.UPDATE_INFO)

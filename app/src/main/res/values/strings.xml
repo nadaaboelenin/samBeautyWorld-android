@@ -48,9 +48,7 @@
     <string name="female">FEMALE</string>
     <string name="dont_specify">DONT SPECIFY</string>
 
-    <string name="facebook_app_id">278005342649977</string>
     <string name="no_internet_message">Internet connection appears to be offline. Please check your network settings.</string>
-
 
     <!--PROFILE UPDATE-->
     <string name="update">UPDATE</string>
@@ -445,7 +443,7 @@
     <string name="sam_will_send_one">Sam will send one time SMS message to verify your phone number</string>
     <string name="enter_phone_number">enter your phone number</string>
     <string name="verify">VERIFY</string>
-    <string name="enter_four_digit">Enter a 4 digit code from SMS</string>
+    <string name="enter_four_digit">Enter a 6 digit code from SMS</string>
     <string name="if_didnt_receive">If you don\'t receive SMS inside next 3 min, please try again.</string>
     <string name="resend_in_minutes">Resend in 2:45 min</string>
     <string name="call_me_instead">Call me instead</string>
@@ -521,6 +519,11 @@
     <string name="dialog_text">Opening Hours</string>
     <string name="top_up_using">Top up using</string>
     <string name="transaction_history">Transaction history</string>
+    <string name="please_enter_a_valid_number">Please enter a valid phone number.</string>
+
+    //facebook
+    <string name="facebook_app_id">2009425712480487</string>
+    <string name="fb_login_protocol_scheme">fb2009425712480487</string>
 
 
 </resources>

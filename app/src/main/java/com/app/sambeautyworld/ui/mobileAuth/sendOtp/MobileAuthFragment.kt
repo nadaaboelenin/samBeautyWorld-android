@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.ui.mobileAuth.enterOtp.OtpVerificationFragment
+import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.fragment_mobile_number_auth.*
 
 /**
@@ -25,7 +26,16 @@ class MobileAuthFragment : BaseFragment()  {
 
     private fun clickListeners() {
         btVerify.setOnClickListener {
-            addFragment(OtpVerificationFragment(),true,R.id.container_main)
+            var args: Bundle? = Bundle()
+            if (!etPhoneNumber.text.toString().isEmpty()) {
+                val otpVerificationFragment = OtpVerificationFragment()
+                args?.putString(Constants.PHONE_NUMBER, "+" + tvCountryCode.selectedCountryCode.toString() + etPhoneNumber.text.toString())
+                otpVerificationFragment.arguments = args
+                addFragment(otpVerificationFragment, true, R.id.container_main)
+            } else {
+                etPhoneNumber.error = resources.getString(R.string.please_enter_a_valid_number)
+            }
         }
     }
+
 }

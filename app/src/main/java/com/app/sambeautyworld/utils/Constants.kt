@@ -7,7 +7,7 @@ object Constants {
 
 
     const val IS_LOGGED_IN = "is_logged_in"
-    const val BASE_URL = "http://ec2-18-225-33-244.us-east-2.compute.amazonaws.com/hitmelocal/public/api/"
+    const val BASE_URL = "http://webappsitesdemo.com/salon-app/api/"
     const val LOGIN = "login"
     const val TOKEN = "token"
     const val LOGIN_RESPONSE = "login_response"
@@ -17,6 +17,7 @@ object Constants {
 
     const val IS_REGISTERED = "registered"
 
+    const val PHONE_NUMBER = "phone_number"
 
     const val REQUEST_CAMERA = 1
     const val REQUEST_GALLERY = 2
@@ -26,112 +27,17 @@ object Constants {
     const val ISEDIT = "IsEditProfile"
     const val DIALOG_SHOWN = "dialog_shown"
     const val PERMISSION_READ_EXTERNAL_STORAGE = 123
-    const val REQUEST_SELECT_PLACE = 500
-    const val REQUEST_CODE_ASK_PERMISSIONS = 100
     const val PERMISSION_REQUEST_CODE = 98
     const val LOCATION_PERMISSION_REQUEST_CODE = 101
-    const val TYPE_SIMPLE = 0
-    const val TYPE_BREAKFAST = 1
-    const val TYPE_LUNCH = 2
-    const val TYPE_TASK = 3
-    const val TYPE_UNVERIFIED_DOC = 4
     const val GOT_IT ="got_it"
+    const val ID = "user_id"
+    const val REGISTER = "register"
 
-
-    const val MODEL = "model"
-    const val USER_MODEL = "user_model"
-
-
-    const val FAQURL = "http://54.213.174.41/mr/faq"
-    const val TERMCONDITION_URL = "http://54.213.174.41/mr/terms-conditions"
-
-
-    const val NOTIFICATION = "notification"
 
     const val SPLASH_TIME_OUT: Long = 3000
     const val HANDLER_DELAY_TIME:Long=2000
-
-    const val SIGN_UP = "2"
-
-    const val APPOINTMENT = "appointment"
-    const val APPOINTMENT_ID = "appointment_id"
-    const val PRIORITY = "priority"
-    const val ADDRESS_ID = "address_id"
     const val NOTI_COUNT = "noti_count"
-
-    const val IS_LOCKED = "is_locked"
-    const val TODO = "todo"
-
-    const val FROM_TODO = 91
-    const val FROM_APPOINTMENT = 92
-
-
-    var DATA_LIMIT = 100
-    var DATA_DOCTOR_LIMIT = 20
-
-    var LOAD_MORE_LIMIT = 20
-
-
-    const val STATIC_TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjE0MSwiaXNzIjoiaHR0cDovLzU0LjIxMy4xNzQuNDEvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNTIzMjUxNTQ1LCJleHAiOjE1NTQ3ODc1NDUsIm5iZiI6MTUyMzI1MTU0NSwianRpIjoianVRbU5yS01MU0JiNjVoVCJ9.LuUTJNIULvbTrqr_z2HKq75ZUxj3Bjp5v-yqpvvgDKg"
-
-    const val BREAK_FAST = 1
-    const val LUNCH = 2
-
-    const val DOCTOR_PRIORITY_LOW = 1
-    const val DOCTOR_PRIORITY_MEDIUM = 2
-    const val DOCTOR_PRIORITY_HIGH = 3
-
-    const val REQUST_FROM_SCREEN = "request_from_screen"
-    const val ADD_UPDATE_DOCTOR_SCREEN = 1
-    const val SUGGESTION_SCREEN = 2
-    const val FROM_UNVERIFIED_DOCTOR_SCREEN = 3
-    const val SUGGESTION_TYPE = "suggestion_type"
-
-    const val PROFILE_MODE = "profile_mode"
-    const val DOCTOR_PRIORITY = "doctor_priority"
-    const val PROFILE_MODE_CREATE = 1
-    const val PROFILE_MODE_UPDATE = 2
-    const val SUGGESTION_DATA = "suggestion_data"
-
-
-    const val TIME_FORMAT = "h:mm a"
-
     const val APP_HIDDEN_FOLDER="/.besttyme"
-
-
-    //booking schedule with doctor
-    const val BOOKING_TIME = "booking_time"
-    const val DOCTOR_ID = "booking_time"
-    const val START_TIME = "start_time"
-    const val BOOKING_ITEM = "booking_item"
-    const val FRAGMENT_TYPE = "fragment_type"
-    const val BUNDLE_DATA = "bundle_data"
-    const val DOCTOR_INFO = "doctor_info"
-    const val CONTACT_ID = "contact_id"
-    const val DATA_ITEM = "data_item"
-
-
-    //navigate to fragment
-    const val VERIFIED_DOCTOR_FRAGMENT = 1
-    const val UNVERIFIED_DOCTOR_FRAGMENT = 2
-    const val ADD_DOCTOR_FRAGMENT = 3
-    const val CREATE_NEW_APPOINTMENT = 4
-    const val VERIFIED_DOCTOR_FRAGMENT_EDIT_APPOINTMENT = 5
-    const val UNVERIFIED_DOCTOR_FRAGMENT_EDIT_APPOINTMENT = 6
-    const val CHANGE_PASSWORD = 7
-    const val TERMS_POLICY = 8
-    const val FAQ = 9
-    const val CONTACT_US = 10
-    const val EDIT_PROFILE = 11
-    const val DOCTOR_FROM_PUSH_WITH_ADDTO_CONTACT = 12
-    const val DOCTOR_FROM_PUSH = 13
-
-    const val FOR_NOTIFICATION = 1000
-
-
-    const val SELECTED_ARRAY_ID = "array"
-
-
     internal interface httpcodes {
         companion object {
             val STATUS_OK = 200
@@ -161,25 +67,8 @@ object Constants {
     const val FAILURE_INTERNET_CONNECTION = "Internet connection appears to be offline. Please check your network settings."
     const val SESSION_EXPIRED = "Sorry, looks like you are logged in another device with the same user."
 
-
-    var DEVICE_TOKEN_UPDATED = "device_token_updated"
-
-    //menu constants
-    const val MENU_VIEW_SCHEDULE = 0
-    const val MENU_VIEW_TARGETS = 1
-    const val MENU_ADD_TASK = 4
-    const val MENU_SAMPLE_REQUEST = 7
-    const val MENU_VIEW_ANALYTICS = 9
-    const val MENU_SETTINGS = 10
-    const val MENU_LOGOUT = 11
-    const val MENU_EDIT_PROFILE=12
-
-
-
-
-
     const val NOTI_TYPE = "noti_type"
-
+    const val IS_NUMBER_VERIFIED: String = "number_verified"
     //doctor appointment type enum
     enum class TYPE(val type: Int) {
         SIMPLE(0), BREAKFAST(1), LUNCH(2), TASK(3), UNVERIFIEDOCTOR(4)

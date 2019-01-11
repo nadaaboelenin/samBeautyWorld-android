@@ -44,6 +44,7 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.home_coordinator_test, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,8 +85,6 @@ class HomeFragment : BaseFragment(), OnItemClicked {
             activity?.toolbar?.visibility = View.GONE
             addFragment(SeeAllOffersFragment(), true, R.id.container_home)
         }
-
-
     }
 
     private fun setUpData() {
@@ -122,4 +121,5 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         rvRecyclerAppointments.adapter = BookmarksAdapter(dumyBookmark, context)
 
     }
+
 }

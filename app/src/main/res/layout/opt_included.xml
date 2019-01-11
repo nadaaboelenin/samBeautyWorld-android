@@ -103,6 +103,51 @@
             android:paddingStart="13dp"
             android:paddingTop="10dp"
             tools:ignore="RtlHardcoded" />
+
+
+        <EditText
+            android:id="@+id/code_five_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:backgroundTint="@color/backgroundColor"
+            android:hint="."
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusDown="@+id/code_fourth_et"
+            android:nextFocusForward="@+id/code_fourth_et"
+            android:paddingBottom="10dp"
+            android:paddingEnd="13dp"
+            android:paddingStart="13dp"
+            android:paddingTop="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            tools:ignore="RtlHardcoded" />
+
+        <EditText
+            android:id="@+id/code_six_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:backgroundTint="@color/backgroundColor"
+            android:hint="."
+            android:inputType="number"
+            android:maxLength="1"
+            android:nextFocusDown="@+id/code_fifth_et"
+            android:nextFocusForward="@+id/code_fifth_et"
+            android:paddingBottom="10dp"
+            android:paddingEnd="13dp"
+            android:paddingStart="13dp"
+            android:paddingTop="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            tools:ignore="RtlHardcoded" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

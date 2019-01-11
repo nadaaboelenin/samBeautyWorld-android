@@ -9,17 +9,18 @@
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/AVLoadingIndicatorView"
         style="@style/AVLoadingIndicatorView.Large"
-        android:layout_width="@dimen/_48sdp"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_width="@dimen/_68sdp"
+        android:layout_height="@dimen/_68sdp"
         android:padding="0dp"
         app:indicatorColor="@android:color/white"
-        app:indicatorName="BallSpinFadeLoaderIndicator"
+        app:indicatorName="BallScaleMultipleIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.hmu.kotlin.utils.views.SfuiBoldTextView
+    <TextView
+        android:textStyle="bold"
         android:id="@+id/text_please_wait"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

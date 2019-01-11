@@ -29,6 +29,7 @@ class Application : Application() {
         super.onCreate()
         Preferences.initPreferences(this)
         mContext = applicationContext
+        //  FacebookSdk.sdkInitialize(this)
         TypefaceUtil.overrideFont(applicationContext, "SERIF",
                 "font/lato_medium.ttf")
     }

@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.drawer_items.*
 
 class HomeActivity : BaseActivity(){
+
     override fun getID(): Int {
         return R.layout.activity_home
     }
