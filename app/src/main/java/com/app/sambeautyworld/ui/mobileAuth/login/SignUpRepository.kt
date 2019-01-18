@@ -16,7 +16,8 @@ object SignUpRepository {
     private val webService = ApiHelper.createService()
 
     fun registerUser(successHandler: (RegisterUserPojo)
-    -> Unit, failureHandler: (String) -> Unit,
+    -> Unit, failureHandler:
+                     (String) -> Unit,
                      phone: String,
                      name: String,
                      address: String,
@@ -38,7 +39,6 @@ object SignUpRepository {
                                 val error = ApiHelper.handleAuthenticationError(response.errorBody()!!)
                                 failureHandler(error)
                             }
-
                         } else {
                             response?.errorBody()?.let {
                                 val error = ApiHelper.handleApiError(response.errorBody()!!)

@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_salon_screen.*
  */
 class SalonScreenFragment : BaseFragment(), OnItemClicked {
 
+
     private val dummySpecialOffers: ArrayList<String>? = ArrayList()
 
     override fun onItemClick(position: Int) {

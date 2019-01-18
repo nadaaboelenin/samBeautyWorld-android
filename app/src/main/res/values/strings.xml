@@ -364,8 +364,8 @@
 
     <string name="terms_amp_privacy_policy"><![CDATA[Terms & Privacy Policy]]></string>
     <string name="fill_contact_us_description">Please enter description</string>
-    <string name="descriptions_length">Please enter description between 50-500 characters</string>
-    <string name="subject_length">Please enter subject between 3-50 characters</string>
+    <string name="descriptions_length">Please enter description between 50–500 characters</string>
+    <string name="subject_length">Please enter subject between 3–50 characters</string>
     <string name="enter_subject">Please enter subject</string>
     <string name="enter_confirm_password">Please enter confirm password</string>
     <string name="enter_new_password">Please enter new password</string>

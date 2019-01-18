@@ -16,8 +16,9 @@ import com.app.sambeautyworld.adapter.FeaturedServicesAdapter
 import com.app.sambeautyworld.adapter.SpecialOffersAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
-import com.app.sambeautyworld.dummyData.DummyBookmarks
 import com.app.sambeautyworld.pojo.listServices.FeaturedServicesList
+import com.app.sambeautyworld.pojo.mainHome.BookMark
+import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
 import com.app.sambeautyworld.ui.appointments.AppointmentFragment
 import com.app.sambeautyworld.ui.seeOffers.SeeAllOffersFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.HomeSalonSelectorFragment
@@ -43,8 +44,8 @@ class HomeFragment : BaseFragment(), OnItemClicked {
     }
 
     private var dummyList: ArrayList<FeaturedServicesList>? = ArrayList()
-    private val dumyBookmark: ArrayList<DummyBookmarks>? = ArrayList()
-    private val dummySpecialOffers: ArrayList<String>? = ArrayList()
+    private var dumyBookmark: ArrayList<BookMark>? = ArrayList()
+    private var dummySpecialOffers: ArrayList<SpecialOffer>? = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +59,14 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         mViewModel?.response?.observe(this, Observer { it ->
             it?.let {
                 if (it.status == 1) {
-                    dummyList = it.featuredServicesList as ArrayList<FeaturedServicesList>
+                    dummyList = it?.featuredServicesList as ArrayList<FeaturedServicesList>
+                    if (it.bookMarks?.size != null) {
+                        dumyBookmark = it?.bookMarks as ArrayList<BookMark>
+                    }
+
+                    if (it.specialOffers?.size != null) {
+                        dummySpecialOffers = it?.specialOffers as ArrayList<SpecialOffer>
+                    }
                     setUpData()
                 } else {
 
@@ -87,28 +95,13 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         super.onViewCreated(view, savedInstanceState)
 
         hitApi()
-        addSpecialOffers()
         clickListeners()
     }
 
     private fun hitApi() {
-        mViewModel?.getServices()
+        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!)
     }
 
-    private fun addSpecialOffers() {
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-
-        vpSpecialOffers.clipToPadding = false
-        // set padding manually, the more you set the padding the more you see of prev & next page
-        vpSpecialOffers.setPadding(60, 0, 60, 0)
-        // sets a margin b/w individual pages to ensure that there is a gap b/w them
-        vpSpecialOffers.pageMargin = 20
-
-        vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
-    }
 
     private fun clickListeners() {
         btGotIt.setOnClickListener {
@@ -139,24 +132,21 @@ class HomeFragment : BaseFragment(), OnItemClicked {
             include_bookmarks.visibility = View.INVISIBLE
         }
 
-//        dummyList?.add(DummyFeaturedServices("Nails", R.mipmap.nails))
-//        dummyList?.add(DummyFeaturedServices("Massage", R.mipmap.massage))
-//        dummyList?.add(DummyFeaturedServices("Hairdo", R.mipmap.hairdo))
-//        dummyList?.add(DummyFeaturedServices("Blowout", R.mipmap.blowout))
-//        dummyList?.add(DummyFeaturedServices("Make up", R.mipmap.women_makeup))
-//        dummyList?.add(DummyFeaturedServices("Dermatology", R.mipmap.dermatol))
-//        dummyList?.add(DummyFeaturedServices("Hair cut", R.mipmap.hair_cut))
-//        dummyList?.add(DummyFeaturedServices("Tattoo", R.mipmap.tattoo_service))
-
+        //featured services
         rvFeaturedServices.layoutManager = GridLayoutManager(activity, 4)
         rvFeaturedServices.adapter = FeaturedServicesAdapter(dummyList, this)
 
-        dumyBookmark?.add(DummyBookmarks(R.mipmap.salon, "The Salon"))
-        dumyBookmark?.add(DummyBookmarks(R.mipmap.eclipse_bookmarks, " "))
-        dumyBookmark?.add(DummyBookmarks(R.mipmap.eclipse_bookmarks, " "))
 
+        //bookmarks
         rvRecyclerAppointments.layoutManager = LinearLayoutManager(activity, 0, false)
         rvRecyclerAppointments.adapter = BookmarksAdapter(dumyBookmark, context)
+
+
+        //special offers
+        vpSpecialOffers.clipToPadding = false
+        vpSpecialOffers.setPadding(60, 0, 60, 0)
+        vpSpecialOffers.pageMargin = 20
+        vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
 
     }
 

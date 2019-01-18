@@ -131,7 +131,7 @@ class LoginFragment : BaseFragment() {
         if (Validations.isEmpty(etFullName) && Validations.isEmpty(etAddresses)
                 && Validations.isEmpty(etEmails) && Validations.isEmpty(etBirthDay)) {
             if (Validations.isValidEmail(etEmails)) {
-                mViewModel?.registerUser(Preferences?.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
+                mViewModel?.registerUser(Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
                         etFullName.text.toString(), etAddresses.text.toString(), etEmails.text.toString(), etBirthDay.text.toString(),
                         "1", "0", "", newToken
                 )
@@ -146,8 +146,11 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun hitRegisterApi(model: FacebookModel) {
-        mViewModel?.registerUser(Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
-                model.firstName, "", model.email, "", "1", model.type, model.accessToken.toString(), newToken
+        mViewModel?.registerUser(
+                Preferences.prefs?.getString(
+                        Constants.PHONE_NUMBER, "0")!!,
+                model.firstName, "", model.email, "", "1", model.type, model.accessToken.toString(),
+                newToken
         )
     }
 

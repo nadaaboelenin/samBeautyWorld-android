@@ -34,6 +34,8 @@ object Constants {
     const val REGISTER = "register"
     const val FEATURED_SERVICES = "featuredServices"
     const val LIST_YOUR_BUSINESS = "listYourBusiness"
+    const val SEND_FEEDBACK = "sendFeedBack"
+    const val ADD_BOOKMARK = "addBookMarks"
 
 
     const val SPLASH_TIME_OUT: Long = 3000

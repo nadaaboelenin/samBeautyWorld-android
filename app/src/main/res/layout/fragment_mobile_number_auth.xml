@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout android:orientation="vertical"
-    android:gravity="center"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/ivLogoMobileAuth"
@@ -14,10 +13,10 @@
         android:layout_height="@dimen/_100sdp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:srcCompat="@drawable/chuck_ic_delete_white_24dp" />
+        android:tint="@android:color/white"
+        app:srcCompat="@mipmap/launchers_icon" />
 
     <TextView
-        android:textSize="@dimen/_28ssp"
         android:id="@+id/tvWelcomeToSam"
         style="@style/TextAppearance.AppCompat.Large"
         android:layout_width="wrap_content"
@@ -26,10 +25,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="18dp"
         android:text="@string/mobile_welcome"
-        />
+        android:textSize="@dimen/_28ssp" />
 
     <TextView
-        android:textSize="@dimen/_18ssp"
         android:id="@+id/tvWelcomeMessage"
         style="@style/Base.TextAppearance.AppCompat.Medium"
         android:layout_width="@dimen/_200sdp"
@@ -39,7 +37,7 @@
         android:gravity="center"
         android:maxLines="3"
         android:text="@string/welcome_message"
-        />
+        android:textSize="@dimen/_18ssp" />
 
     <ImageView
         android:id="@+id/ivSmartPhoneMobileAuth"
@@ -47,11 +45,9 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:srcCompat="@mipmap/smartphone_mobile_auth"
-       />
+        app:srcCompat="@mipmap/smartphone_mobile_auth" />
 
     <TextView
-        android:textSize="@dimen/_14ssp"
         android:id="@+id/textView"
         style="@style/Base.TextAppearance.AppCompat.Small"
         android:layout_width="@dimen/_200sdp"
@@ -61,7 +57,7 @@
         android:layout_marginTop="18dp"
         android:gravity="center"
         android:text="@string/sam_will_send_one"
-        />
+        android:textSize="@dimen/_14ssp" />
 
     <LinearLayout
         android:id="@+id/llPhoneLayout"
@@ -70,53 +66,51 @@
         android:layout_margin="28dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edit_text"
-        android:orientation="horizontal"
-      >
+        android:orientation="horizontal">
 
         <com.rilixtech.CountryCodePicker
+            android:id="@+id/tvCountryCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray"
             app:ccp_backgroundColor="@android:color/white"
             app:ccp_hideNameCode="true"
-            android:id="@+id/tvCountryCode"
             app:ccp_setCountryByTimeZone="true"
-            app:ccp_showFlag="false"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:textColor="@android:color/darker_gray" />
+            app:ccp_showFlag="false" />
 
         <View
             android:layout_width="@dimen/_1sdp"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
             android:background="@android:color/darker_gray" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:background="@android:color/white"
-            android:textSize="@dimen/_14ssp"
-            android:textColor="@android:color/black"
-            android:inputType="phone"
             android:id="@+id/etPhoneNumber"
             style="@style/TextAppearance.AppCompat.Small"
-            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:paddingStart="16dp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@android:color/white"
             android:hint="@string/enter_phone_number"
-            android:textColorHint="@android:color/darker_gray" />
+            android:inputType="phone"
+            android:paddingStart="16dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
     <Button
-        android:textSize="@dimen/_16ssp"
-        style="@style/Base.TextAppearance.AppCompat.Medium"
         android:id="@+id/btVerify"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="@dimen/_30sdp"
         android:background="@drawable/drawable_button_background"
         android:text="@string/verify"
-        android:layout_width="@dimen/_230sdp"
-        android:layout_height="@dimen/_30sdp" />
+        android:textSize="@dimen/_16ssp" />
 
 
 </LinearLayout>

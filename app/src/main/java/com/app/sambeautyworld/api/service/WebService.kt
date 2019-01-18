@@ -1,8 +1,8 @@
 package com.app.sambeautyworld.api.service
 
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
-import com.app.sambeautyworld.pojo.listServices.ListAllServicesPojo
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
+import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
 import com.app.sambeautyworld.utils.Constants
 import retrofit2.Call
@@ -37,7 +37,8 @@ interface WebService {
     ): Call<RegisterUserPojo>
 
     @POST(Constants.FEATURED_SERVICES)
-    fun featuredServices(): Call<ListAllServicesPojo>
+    @FormUrlEncoded
+    fun featuredServices(@Field("user_id") user_id: String): Call<MainHomePojo>
 
 
     @POST(Constants.LIST_YOUR_BUSINESS)
@@ -47,6 +48,20 @@ interface WebService {
             @Field("business_name") business_name: String,
             @Field("phone") phone: String,
             @Field("email") email: String
+    ): Call<ListYourBusinessPojo>
+
+    @POST(Constants.SEND_FEEDBACK)
+    @FormUrlEncoded
+    fun submitFeedback(
+            @Field("user_id") user_id: String,
+            @Field("message") message: String
+    ): Call<ListYourBusinessPojo>
+
+    @POST(Constants.ADD_BOOKMARK)
+    @FormUrlEncoded
+    fun addBookmark(
+            @Field("user_id") user_id: String,
+            @Field("salon_id") salon_id: String
     ): Call<ListYourBusinessPojo>
 
 

@@ -28,8 +28,6 @@ class AtTheSalonAdapter(private var myDataset: ArrayList<String>?, private var a
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        holder.layout.tvBookmarksName.text = myDataset!![position].names
-//        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)
 
         holder.layout.setOnClickListener {
             onItemClicked?.onItemClick(position)

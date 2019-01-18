@@ -26,8 +26,6 @@ import com.google.firebase.iid.FirebaseInstanceId
 import org.greenrobot.eventbus.EventBus
 
 class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, GoogleApiClient.OnConnectionFailedListener {
-
-
     private val RC_SIGN_IN = 7
     private var mViewModel: SignUpModel? = null
     private var mGoogleApiClient: GoogleApiClient? = null
@@ -112,7 +110,7 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
     private fun hitSocialApi(model: FacebookModel) {
 //        EventBus.getDefault().post(model)
 
-        mViewModel?.registerUser(Preferences?.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
+        mViewModel?.registerUser(Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
                 model.firstName, "", model.email, "", "1", model.type, "", newToken
         )
     }
@@ -153,8 +151,8 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
         mViewModel?.response?.observe(this, Observer { it ->
             it?.let {
                 if (it.status == 1) {
-                    Preferences.prefs!!.saveValue(Constants.IS_LOGGED_IN, true)
-                    Preferences.prefs!!.saveValue(Constants.ID, it.user_info!!.user_id)
+                    Preferences.prefs?.saveValue(Constants.IS_LOGGED_IN, true)
+                    Preferences.prefs?.saveValue(Constants.ID, it.user_info!!.user_id)
                     replaceFragment(EnableLocationServices(), R.id.container_main)
 
                 } else {
@@ -177,7 +175,6 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
 
     override fun onDestroy() {
         super.onDestroy()
-
     }
 
 }

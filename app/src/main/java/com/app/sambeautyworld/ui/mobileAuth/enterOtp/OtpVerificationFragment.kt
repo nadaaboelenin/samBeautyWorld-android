@@ -104,7 +104,6 @@ class OtpVerificationFragment : BaseFragment() {
                             code_fourth_et.setText(code[3].toString())
                             code_five_et.setText(code[4].toString())
                             code_six_et.setText(code[5].toString())
-
                             verifyVerificationCode(code)
                         }
                     }
@@ -235,16 +234,19 @@ class OtpVerificationFragment : BaseFragment() {
 
     private fun verifyVerificationCode(code: String) {
         showLoading(true)
-        val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
-
+        if (!mVerificationId.isNullOrEmpty()) {
+            val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
+            signInWithPhoneAuthCredential(credential)
+        } else {
+            showLoading(false)
+        }
         //signing the user
-        signInWithPhoneAuthCredential(credential)
+
     }
 
     private fun verifyOtp() {
-        var code = code_one_et.text.toString() + code_two_et.text.toString() + code_three_et.text.toString() + code_fourth_et.text.toString() + code_five_et.text.toString() + code_six_et.text.toString()
-        verifyVerificationCode(code);
-
+        val code = code_one_et.text.toString() + code_two_et.text.toString() + code_three_et.text.toString() + code_fourth_et.text.toString() + code_five_et.text.toString() + code_six_et.text.toString()
+        verifyVerificationCode(code)
     }
 
     private fun clickListeners() {

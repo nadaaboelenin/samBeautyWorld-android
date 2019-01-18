@@ -26,7 +26,7 @@ class MobileAuthFragment : BaseFragment()  {
 
     private fun clickListeners() {
         btVerify.setOnClickListener {
-            var args: Bundle? = Bundle()
+            val args: Bundle? = Bundle()
             if (!etPhoneNumber.text.toString().isEmpty()) {
                 val otpVerificationFragment = OtpVerificationFragment()
                 args?.putString(Constants.PHONE_NUMBER, "+" + tvCountryCode.selectedCountryCode.toString() + etPhoneNumber.text.toString())

@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_special_offers.view.*
 import java.util.*
 
-internal class SpecialOffersAdapter(mContext: Context, private val mList: ArrayList<String>) : PagerAdapter() {
+internal class SpecialOffersAdapter(mContext: Context, private val mList: ArrayList<SpecialOffer>) : PagerAdapter() {
     private val mLayoutInflater: LayoutInflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
@@ -24,6 +27,11 @@ internal class SpecialOffersAdapter(mContext: Context, private val mList: ArrayL
         val itemView = mLayoutInflater.inflate(R.layout.item_special_offers, container, false)
         //        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         //        imageView.setImageResource(Integer.parseInt(mList.get(position)));
+
+        Picasso.get().load(mList[position].salon_logo).into(itemView.ivBigImage)
+        itemView.tvDiscountPrice.text = "All for " + mList[position].discount_price
+        itemView.tvTypeOfServiceOffers.text = mList[position].salon_for
+        itemView.tvSalonNameOffers.text = mList[position].salon_name
         container.addView(itemView)
         return itemView
     }

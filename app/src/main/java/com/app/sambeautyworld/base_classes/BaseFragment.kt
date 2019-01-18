@@ -5,7 +5,6 @@ import Preferences
 import android.Manifest
 import android.app.Dialog
 import android.content.ActivityNotFoundException
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -21,16 +20,15 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.view.Window
-import android.view.WindowId
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.utils.security.ApiFailureTypes
-import com.hmu.kotlin.callBack.AlertDialogListener
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.Utils
 import com.app.sambeautyworld.utils.getValue
+import com.app.sambeautyworld.utils.security.ApiFailureTypes
+import com.hmu.kotlin.callBack.AlertDialogListener
 import java.util.*
 
 /**
@@ -59,7 +57,6 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         super.onViewCreated(view, savedInstanceState)
         mContent = view
         mStartTime = Calendar.getInstance()
@@ -115,7 +112,7 @@ open class BaseFragment : Fragment() {
     }
 
     //for future use
-    fun addFragmentForFlipTransition(fragment: Fragment, addToBackStack: Boolean,id: Int) {
+    fun addFragmentForFlipTransition(fragment: Fragment, addToBackStack: Boolean, id: Int) {
         val tag = fragment.javaClass.simpleName
         val fragmentManager = mActivity?.supportFragmentManager
         val fragmentOldObject = fragmentManager?.findFragmentByTag(tag)
@@ -266,7 +263,6 @@ open class BaseFragment : Fragment() {
         }
         return true
     }
-
 
 
     fun handleFailure(error: Throwable) {

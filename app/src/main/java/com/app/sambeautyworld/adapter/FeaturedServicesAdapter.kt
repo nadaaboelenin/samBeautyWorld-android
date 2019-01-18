@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_featured_services.view.*
 /**
  * Created by ${Shubham} on 12/28/2018.
  */
-class FeaturedServicesAdapter(private val myDataset: ArrayList<FeaturedServicesList>?, private var onItemClicked: OnItemClicked?) :
+class FeaturedServicesAdapter(private val myDataset: ArrayList<FeaturedServicesList>?,
+                              private var onItemClicked: OnItemClicked?) :
         RecyclerView.Adapter<FeaturedServicesAdapter.MyViewHolder>()
 {
 

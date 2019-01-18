@@ -22,8 +22,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
-import com.app.sambeautyworld.activity.MainActivity
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.activity.MainActivity
 import com.app.sambeautyworld.cryptography.SharedPreferencesEncryption
 import com.app.sambeautyworld.utils.Constants.PERMISSION_READ_EXTERNAL_STORAGE
 import java.text.ParseException
@@ -92,7 +92,6 @@ object Utils {
 
     /**
      * Is email valid.
-     *
      * @param email Pass a email in string format and this method check if it is
      * a valid address or not.
      * @return True if email is valid otherwise false.
