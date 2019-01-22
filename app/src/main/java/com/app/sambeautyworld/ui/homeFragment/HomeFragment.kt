@@ -40,7 +40,13 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
     override fun onItemClick(position: Int) {
         activity?.toolbar?.visibility = View.GONE
-        addFragment(HomeSalonSelectorFragment(), true, R.id.container_home)
+
+        val homeSalonSelectorFragment = HomeSalonSelectorFragment()
+        val args = Bundle()
+        args.putString(Constants.SERVICE_ID, dummyList!![position].id)
+        homeSalonSelectorFragment.arguments = args
+
+        addFragment(homeSalonSelectorFragment, true, R.id.container_home)
     }
 
     private var dummyList: ArrayList<FeaturedServicesList>? = ArrayList()

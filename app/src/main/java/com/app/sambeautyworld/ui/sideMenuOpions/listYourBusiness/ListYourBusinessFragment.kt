@@ -66,7 +66,7 @@ class ListYourBusinessFragment : BaseFragment() {
         if (Validations.isEmpty(etYourName) && Validations.isEmpty(etYourEmailAddress)
                 && Validations.isEmpty(etPhoneNumber) && Validations.isEmpty(etServiceProviderName)) {
             mViewModel?.listBusiness(etYourName.text.toString(), etServiceProviderName.text.toString()
-                    , tvCountryCode.selectedCountryCode.toString(), etYourEmailAddress.text.toString())
+                    , tvCountryCode.selectedCountryCode.toString() + etPhoneNumber.text.toString(), etYourEmailAddress.text.toString())
         }
     }
 

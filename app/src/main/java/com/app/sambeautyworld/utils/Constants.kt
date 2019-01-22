@@ -36,6 +36,8 @@ object Constants {
     const val LIST_YOUR_BUSINESS = "listYourBusiness"
     const val SEND_FEEDBACK = "sendFeedBack"
     const val ADD_BOOKMARK = "addBookMarks"
+    const val SALON_LIST_BASED_ON_SERVICE = "getSalonsBasedOnService"
+    const val ALL_SALON_SERVICES = "getSalonAllServices"
 
 
     const val SPLASH_TIME_OUT: Long = 3000
@@ -73,6 +75,9 @@ object Constants {
 
     const val NOTI_TYPE = "noti_type"
     const val IS_NUMBER_VERIFIED: String = "number_verified"
+    const val SERVICE_ID: String = "service_id"
+    const val BUSINES_OWNER: String = "business_owner_id"
+
     //doctor appointment type enum
     enum class TYPE(val type: Int) {
         SIMPLE(0), BREAKFAST(1), LUNCH(2), TASK(3), UNVERIFIEDOCTOR(4)

@@ -35,6 +35,7 @@
             android:layout_marginStart="@dimen/_100sdp"
             android:src="@drawable/ic_autorenew_black_24dp"
             android:tint="@color/backgroundColor" />
+
     </LinearLayout>
 
 

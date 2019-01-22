@@ -524,6 +524,8 @@
     //facebook
     <string name="facebook_app_id">2009425712480487</string>
     <string name="fb_login_protocol_scheme">fb2009425712480487</string>
+    <string name="services">Services</string>
+    <string name="products">Products</string>
 
 
 </resources>

@@ -10,6 +10,7 @@ import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
 import com.app.sambeautyworld.ui.homeFragment.HomeFragment
+import com.app.sambeautyworld.ui.mapFragment.MapsTrial
 import com.app.sambeautyworld.ui.sideMenuOpions.favourites.FavouritesFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.listYourBusiness.ListYourBusinessFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.myAccount.MyAccountFragment
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.drawer_items.*
 
-class HomeActivity : BaseActivity(){
+class HomeActivity : BaseActivity() {
 
     override fun getID(): Int {
         return R.layout.activity_home
@@ -32,7 +33,7 @@ class HomeActivity : BaseActivity(){
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        toggle.drawerArrowDrawable.color=ContextCompat.getColor(this,android.R.color.black)
+        toggle.drawerArrowDrawable.color = ContextCompat.getColor(this, android.R.color.black)
         setUpData()
         clickListeners()
     }
@@ -40,38 +41,38 @@ class HomeActivity : BaseActivity(){
     private fun clickListeners() {
         llHome.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.VISIBLE
-            addFragment(HomeFragment(),true,R.id.container_home)
+            toolbar.visibility = View.VISIBLE
+            addFragment(HomeFragment(), true, R.id.container_home)
         }
 
         btListYourBusiness.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.GONE
-            addFragment(ListYourBusinessFragment(),true,R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(ListYourBusinessFragment(), true, R.id.container_home)
         }
 
         llSendFeedback.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.GONE
-            addFragment(SendFeedbackFragment(),true,R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(SendFeedbackFragment(), true, R.id.container_home)
         }
 
         llMyAccount.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.GONE
-            addFragment(MyAccountFragment(),true,R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(MyAccountFragment(), true, R.id.container_home)
         }
 
         llFavourite.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.GONE
-            addFragment(FavouritesFragment(),true,R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(FavouritesFragment(), true, R.id.container_home)
         }
 
         llSearch.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility= View.GONE
-            addFragment(SearchSalonFragment(),true,R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(SearchSalonFragment(), true, R.id.container_home)
         }
 
         llWallet.setOnClickListener {
@@ -80,11 +81,16 @@ class HomeActivity : BaseActivity(){
             addFragment(WalletFragment(), true, R.id.container_home)
         }
 
+        llGender.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility = View.GONE
+            addFragment(MapsTrial(), true, R.id.container_home)
+        }
     }
 
 
     private fun setUpData() {
-        addFragment(HomeFragment(),true,R.id.container_home)
+        addFragment(HomeFragment(), true, R.id.container_home)
     }
 
     override fun onBackPressed() {
@@ -92,7 +98,7 @@ class HomeActivity : BaseActivity(){
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
-            toolbar.visibility= View.VISIBLE
+            toolbar.visibility = View.VISIBLE
         }
     }
 
@@ -105,8 +111,8 @@ class HomeActivity : BaseActivity(){
         return when (item.itemId) {
             R.id.action_settings -> {
                 drawer_layout.closeDrawer(GravityCompat.START)
-                toolbar.visibility= View.GONE
-                addFragment(SearchSalonFragment(),true,R.id.container_home)
+                toolbar.visibility = View.GONE
+                addFragment(SearchSalonFragment(), true, R.id.container_home)
                 true
             }
             else -> super.onOptionsItemSelected(item)

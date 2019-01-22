@@ -15,12 +15,10 @@
 
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/ivBigImageSalonAvailable"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +43,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/ivBigImageSalonAvailable"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toStartOf="@+id/ivBigImageSalonAvailable"
             app:layout_constraintTop_toTopOf="@+id/ivBigImageSalonAvailable"
             app:layout_constraintVertical_bias="1.0"
@@ -55,10 +53,9 @@
             android:id="@+id/tvDiscountPriceAtTheSalon"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_26sdp"
-            android:layout_marginEnd="8dp"
             android:alpha=".7"
             android:background="@android:color/black"
-            android:gravity="center"
+            android:gravity="end|center_vertical"
             android:paddingEnd="@dimen/_20sdp"
             android:paddingStart="@dimen/_20sdp"
             android:text="All For 150.0 AED 120.0 AED"
@@ -73,11 +70,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="Dermatol-ogy"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivBigImageSalonAvailable" />
 
@@ -85,15 +82,15 @@
             android:id="@+id/tvSalonNameOffers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:text="The Salon"
             android:textColor="@android:color/darker_gray"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfServiceOffers" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfServiceOffers"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/ivHomeAvailable"

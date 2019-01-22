@@ -4,11 +4,15 @@ import android.content.Context
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.pojo.salonListBasedOnService.AtTheSalonService
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_at_the_salon.view.*
 
-class AtTheSalonAdapter(private var myDataset: ArrayList<String>?, private var activity: Context?,
+class AtTheSalonAdapter(private var myDataset: ArrayList<AtTheSalonService>?, private var activity: Context?,
                         private var onItemClicked: OnItemClicked?
 ) :
         RecyclerView.Adapter<AtTheSalonAdapter.MyViewHolder>() {
@@ -32,6 +36,26 @@ class AtTheSalonAdapter(private var myDataset: ArrayList<String>?, private var a
         holder.layout.setOnClickListener {
             onItemClicked?.onItemClick(position)
         }
+
+        Picasso.get().load(myDataset!![position].media).into(holder.layout.ivBigImageSalonAvailable)
+        Picasso.get().load(myDataset!![position].business_logo).into(holder.layout.ivSalonLogo)
+        holder.layout.tvDiscountPriceAtTheSalon.text = "Price Starting from " + myDataset!![position].price + " AED"
+        holder.layout.tvTypeOfServiceOffers.text = myDataset!![position].business_name
+        holder.layout.tvSalonNameOffers.text = myDataset!![position].city
+
+        if (myDataset!![position].service_at == "1") {
+            holder.layout.ivSalonAvailable.visibility = View.VISIBLE
+            holder.layout.ivHomeAvailable.visibility = View.INVISIBLE
+        }
+        if (myDataset!![position].service_at == "2") {
+            holder.layout.ivSalonAvailable.visibility = View.INVISIBLE
+            holder.layout.ivHomeAvailable.visibility = View.VISIBLE
+        }
+        if (myDataset!![position].service_at == "3") {
+            holder.layout.ivSalonAvailable.visibility = View.VISIBLE
+            holder.layout.ivHomeAvailable.visibility = View.VISIBLE
+        }
+
 
     }
 

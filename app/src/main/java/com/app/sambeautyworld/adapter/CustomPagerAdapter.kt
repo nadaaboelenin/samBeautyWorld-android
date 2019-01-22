@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_single_image.view.*
 
 internal class CustomPagerAdapter(mContext: Context, private val mList: ArrayList<String>) : PagerAdapter() {
     private val mLayoutInflater: LayoutInflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -21,8 +23,7 @@ internal class CustomPagerAdapter(mContext: Context, private val mList: ArrayLis
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val itemView = mLayoutInflater.inflate(R.layout.item_single_image, container, false)
-        //        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
-        //        imageView.setImageResource(Integer.parseInt(mList.get(position)));
+        Picasso.get().load(mList[position]).into(itemView.ivImageSalonScroller)
         container.addView(itemView)
         return itemView
     }

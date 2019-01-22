@@ -1,133 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     android:background="@color/grayBackround">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vpSalonScreenImage"
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_120sdp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/salon" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ivGreenBackground"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/vpSalonScreenImage"
-        app:layout_constraintEnd_toEndOf="@+id/vpSalonScreenImage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/vpSalonScreenImage"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@color/backgroundColor" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grayBackround"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/clBottom">
 
-    <RatingBar
-        android:id="@+id/rbSalonRating"
-        style="@style/Base.Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:clickable="false"
-        android:focusable="false"
-        android:isIndicator="true"
-        android:rating="4"
-        app:layout_constraintBottom_toBottomOf="@+id/ivGreenBackground"
-        app:layout_constraintEnd_toEndOf="@+id/ivGreenBackground"
-        app:layout_constraintStart_toStartOf="@+id/ivGreenBackground"
-        app:layout_constraintTop_toTopOf="@+id/ivGreenBackground" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpSalonScreenImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/salon" />
+
+            <ImageView
+                android:id="@+id/ivGreenBackground"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/vpSalonScreenImage"
+                app:layout_constraintEnd_toEndOf="@+id/vpSalonScreenImage"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vpSalonScreenImage"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@color/backgroundColor" />
+
+            <RatingBar
+                android:id="@+id/rbSalonRating"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:isIndicator="true"
+                android:rating="4"
+                app:layout_constraintBottom_toBottomOf="@+id/ivGreenBackground"
+                app:layout_constraintEnd_toEndOf="@+id/ivGreenBackground"
+                app:layout_constraintStart_toStartOf="@+id/ivGreenBackground"
+                app:layout_constraintTop_toTopOf="@+id/ivGreenBackground" />
 
 
-    <com.rd.PageIndicatorView
-        android:id="@+id/pageIndicatorView_salon_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivGreenBackground"
-        app:piv_animationType="scale"
-        app:piv_dynamicCount="true"
-        app:piv_interactiveAnimation="true"
-        app:piv_selectedColor="@color/backgroundColor"
-        app:piv_unselectedColor="@android:color/darker_gray"
-        app:piv_viewPager="@id/vpSalonScreenImage" />
+            <com.rd.PageIndicatorView
+                android:id="@+id/pageIndicatorView_salon_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivGreenBackground"
+                app:piv_animationType="scale"
+                app:piv_dynamicCount="true"
+                app:piv_interactiveAnimation="true"
+                app:piv_selectedColor="@color/backgroundColor"
+                app:piv_unselectedColor="@android:color/darker_gray"
+                app:piv_viewPager="@id/vpSalonScreenImage" />
 
-    <ImageView
-        android:id="@+id/ivHours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivAddToFavourites"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
-        app:srcCompat="@mipmap/hours" />
+            <ImageView
+                android:id="@+id/ivHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent=".55" />
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivAddToFavourites"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
+                app:srcCompat="@mipmap/hours" />
 
-    <ImageView
-        android:id="@+id/ivAddToFavourites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivLocateSalonOnMap"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivHours"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
-        app:srcCompat="@mipmap/favorite" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp"
+                app:layout_constraintGuide_percent=".55" />
 
-    <ImageView
-        android:id="@+id/ivLocateSalonOnMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivAboutSalon"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivAddToFavourites"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
-        app:srcCompat="@mipmap/map" />
+            <ImageView
+                android:id="@+id/ivAddToFavourites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivLocateSalonOnMap"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivHours"
+                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
+                app:srcCompat="@mipmap/favorite" />
 
-    <ImageView
-        android:id="@+id/ivAboutSalon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/ivChatWithSalon"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivLocateSalonOnMap"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
-        app:srcCompat="@mipmap/about" />
+            <ImageView
+                android:id="@+id/ivLocateSalonOnMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivAboutSalon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivAddToFavourites"
+                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
+                app:srcCompat="@mipmap/map" />
 
-    <ImageView
-        android:id="@+id/ivChatWithSalon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivAboutSalon"
-        app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
-        app:srcCompat="@mipmap/chat" />
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/ivAboutSalon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ivChatWithSalon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivLocateSalonOnMap"
+                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
+                app:srcCompat="@mipmap/about" />
+
+            <ImageView
+                android:id="@+id/ivChatWithSalon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ivAboutSalon"
+                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView_salon_screen"
+                app:srcCompat="@mipmap/chat" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp"
+                app:layout_constraintGuide_percent=".5" />
+
+            <TextView
+                android:id="@+id/tvServicesOfSalon"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="8dp"
+                android:background="@color/backgroundColor"
+                android:gravity="center"
+                android:text="@string/services"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLocateSalonOnMap" />
+
+            <TextView
+                android:id="@+id/tvProductsOfSalons"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="8dp"
+                android:background="@color/grayBackround"
+                android:gravity="center"
+                android:text="@string/products"
+                android:textColor="@color/backgroundColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/ivAboutSalon" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="415dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <ExpandableListView
+                android:id="@+id/rv_availableplaces"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

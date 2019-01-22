@@ -11,6 +11,7 @@ import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.atHome.SelectAreaFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.atTheSalon.AtTheSalonFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.information_dialog.InformationDialogFragment
+import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_tab_salon_home_selector.*
 
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_tab_salon_home_selector.*
  * Created by ${Shubham} on 1/4/2019.
  */
 class HomeSalonSelectorFragment : BaseFragment() {
+    private var id: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tab_salon_home_selector, container, false)
@@ -25,8 +27,15 @@ class HomeSalonSelectorFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getBundle()
         clickListeners()
         setUpData()
+    }
+
+    private fun getBundle() {
+        if (arguments != null) {
+            id = arguments?.getString(Constants.SERVICE_ID)
+        }
     }
 
     private fun setUpData() {
@@ -36,7 +45,7 @@ class HomeSalonSelectorFragment : BaseFragment() {
     private fun clickListeners() {
 
         llAtTheSalon.setOnClickListener {
-            activity!!.toolbar.visibility=View.VISIBLE
+            activity!!.toolbar.visibility = View.VISIBLE
             linearLayout_tab.background = ResourcesCompat.getDrawable(resources, R.drawable.background_gray_tab, null)
             llAtTheSalon.background = ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
             llAtTheHome.setBackgroundResource(0)
@@ -45,11 +54,17 @@ class HomeSalonSelectorFragment : BaseFragment() {
             tvSelectSalon.setTextColor(ContextCompat.getColor(context!!, R.color.white))
             tvSelectHome.setTextColor(ContextCompat.getColor(context!!, R.color.greyBackround))
 
-            replaceFragment(AtTheSalonFragment(), false, R.id.container_home_salon)
+            val atTheSalonFragment = AtTheSalonFragment()
+            val args = Bundle()
+            args.putString(Constants.SERVICE_ID, id)
+            atTheSalonFragment.arguments = args
+
+            replaceFragment(atTheSalonFragment, false, R.id.container_home_salon)
+
         }
 
         llAtTheHome.setOnClickListener {
-            activity!!.toolbar.visibility=View.VISIBLE
+            activity!!.toolbar.visibility = View.VISIBLE
             linearLayout_tab.background = ResourcesCompat.getDrawable(resources, R.drawable.background_gray_tab, null)
             llAtTheHome.background = ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
             llAtTheSalon.setBackgroundResource(0)

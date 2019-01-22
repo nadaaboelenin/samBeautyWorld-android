@@ -1,12 +1,10 @@
 package com.app.sambeautyworld.ui.sideMenuOpions.favourites
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.AtTheSalonAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.ui.filters.FilterContentFragment
@@ -41,8 +39,8 @@ class FavouritesFragment : BaseFragment(), OnItemClicked {
         dummySpecialOffers?.add("1")
         dummySpecialOffers?.add("1")
 
-        rvFavoriteSalons.adapter = AtTheSalonAdapter(dummySpecialOffers, context!!, this)
-        rvFavoriteSalons.layoutManager = LinearLayoutManager(context!!, 1, false)
+//        rvFavoriteSalons.adapter = AtTheSalonAdapter(dummySpecialOffers, context!!, this)
+//        rvFavoriteSalons.layoutManager = LinearLayoutManager(context!!, 1, false)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -1,5 +1,7 @@
 package com.app.sambeautyworld.ui.serviceSelectorTab.atTheSalon
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -9,24 +11,77 @@ import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.AtTheSalonAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.pojo.salonListBasedOnService.AtTheSalonService
 import com.app.sambeautyworld.ui.serviceSelectorTab.salonScreen.SalonScreenFragment
+import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.fragment_at_the_salon.*
 
 /**
  * Created by ${Shubham} on 1/4/2019.
  */
 class AtTheSalonFragment : BaseFragment(), OnItemClicked {
+    private var mViewModel: SalonServicesModel? = null
+    private var id: String? = null
+    private var dummySpecialOffers: ArrayList<AtTheSalonService>? = ArrayList()
 
-    private val dummySpecialOffers: ArrayList<String>? = ArrayList()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mViewModel = ViewModelProviders.of(this)[SalonServicesModel::class.java]
+        attachObservers()
+    }
+
+    private fun attachObservers() {
+        mViewModel?.response?.observe(this, Observer { it ->
+            it?.let {
+                if (it.status == 1) {
+                    dummySpecialOffers = it.atTheSalonServices as ArrayList<AtTheSalonService>
+                    setUpData()
+                } else {
+
+                }
+            }
+        })
+
+        mViewModel?.apiError?.observe(this, Observer { it ->
+            it?.let {
+                showSnackBar(it)
+            }
+        })
+
+        mViewModel?.isLoading?.observe(this, Observer { it ->
+            it?.let { showLoading(it) }
+        })
+    }
 
     override fun onItemClick(position: Int) {
-        addFragment(SalonScreenFragment(), true, R.id.container_home_salon)
+        val salonScreenFragment = SalonScreenFragment()
+        val args = Bundle()
+//        args.putString()
+
+        args.apply {
+            putString(Constants.BUSINES_OWNER, dummySpecialOffers!![position].owner_id)
+        }
+        salonScreenFragment.arguments = args
+        addFragment(salonScreenFragment, true, R.id.container_home_salon)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpData()
+        getBundle()
+        // setUpData()
         clickListeners()
+    }
+
+    private fun getBundle() {
+        if (arguments != null) {
+            id = arguments?.getString(Constants.SERVICE_ID)
+            fetchDataFromApi()
+        }
+    }
+
+    private fun fetchDataFromApi() {
+        mViewModel?.authenticate(id!!)
     }
 
     private fun clickListeners() {
@@ -34,11 +89,6 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData() {
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-
         rvAtTheSalon.adapter = AtTheSalonAdapter(dummySpecialOffers, context!!, this)
         rvAtTheSalon.layoutManager = LinearLayoutManager(context!!, 1, false)
     }
