@@ -38,6 +38,7 @@ object Constants {
     const val ADD_BOOKMARK = "addBookMarks"
     const val SALON_LIST_BASED_ON_SERVICE = "getSalonsBasedOnService"
     const val ALL_SALON_SERVICES = "getSalonAllServices"
+    const val ALL_SALON_LIST = "getAllSalons"
 
 
     const val SPLASH_TIME_OUT: Long = 3000

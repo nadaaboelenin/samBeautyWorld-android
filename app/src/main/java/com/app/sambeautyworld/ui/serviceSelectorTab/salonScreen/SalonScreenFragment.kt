@@ -16,6 +16,7 @@ import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.salonScreen.Hours
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
+import com.app.sambeautyworld.ui.chatview.ChatSupportFragment
 import com.app.sambeautyworld.ui.mapFragment.MapsTrial
 import com.app.sambeautyworld.ui.serviceSelectorTab.salonInformation.SalonInformationFragment
 import com.app.sambeautyworld.utils.Constants
@@ -77,6 +78,10 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
             openHoursDialog()
         }
 
+        ivChatWithSalon.setOnClickListener{
+            addFragment(ChatSupportFragment(), true, R.id.container_home)
+        }
+
         ivLocateSalonOnMap.setOnClickListener {
             val mapsTrial = MapsTrial()
             val args = Bundle()
@@ -101,7 +106,6 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
 
             tvServicesOfSalon.setBackgroundColor(ContextCompat.getColor(context!!, R.color.grayBackround))
             tvServicesOfSalon.setTextColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
-
         }
     }
 
@@ -180,25 +184,4 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
         })
     }
 
-
-    private fun setupdata() {
-
-//        rv_availableplaces!!.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-//            val fragment = PlacesDetailsFragment()
-//            val args = Bundle()
-//            args.putString("package_id", placesList[groupPosition].tourPackage!![childPosition].id)
-//            fragment.setArguments(args)
-//            addFragment(fragment, true, R.id.container_main)
-//            false
-//        }
-//
-//// ExpandableListView Group expanded listener
-//        rv_availableplaces.setOnGroupExpandListener { groupPosition -> }
-//
-//// ExpandableListView Group collapsed listener
-//        rv_availableplaces.setOnGroupCollapseListener { groupPosition ->
-//
-//        }
-
-    }
 }

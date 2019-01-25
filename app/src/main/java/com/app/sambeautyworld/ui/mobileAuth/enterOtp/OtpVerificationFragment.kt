@@ -1,6 +1,7 @@
 package com.app.sambeautyworld.ui.mobileAuth.enterOtp
 
 import Preferences
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -21,6 +22,10 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.opt_included.*
 import java.util.concurrent.TimeUnit
+import android.os.CountDownTimer
+import android.view.Gravity
+import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_otp_verification.*
 
 
 /**
@@ -29,8 +34,10 @@ import java.util.concurrent.TimeUnit
 class OtpVerificationFragment : BaseFragment() {
     private var mVerificationId: String? = null
     private var mAuth: FirebaseAuth? = null
+    private lateinit var aCounter: CountDownTimer
     private var phone_number: String? = null
     private var mViewModel: LoginModel? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +56,6 @@ class OtpVerificationFragment : BaseFragment() {
                     Preferences.prefs!!.saveValue(Constants.ID, it.info!!.userId)
                     Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
                     replaceFragment(OtpVerifiedFragment(), true, R.id.container_main)
-
                 } else {
                     replaceFragment(OtpVerifiedFragment(), true, R.id.container_main)
                 }
@@ -122,6 +128,24 @@ class OtpVerificationFragment : BaseFragment() {
     }
 
     private fun initViews() {
+        aCounter = object : CountDownTimer(150000, 1000) {
+            @SuppressLint("SetTextI18n")
+            override fun onTick(millisUntilFinished: Long) {
+                tvResend.text = "Resend in " + String.format("%02d:%02d min ", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onFinish() {
+                tvResend.isClickable = true
+                tvResend.text = "Resend OTP"
+                tvResend.gravity == Gravity.CENTER
+                tvResend.setTextColor(resources.getColor(com.app.sambeautyworld.R.color.white))
+            }
+        }.start()
+
+
+
         mAuth = FirebaseAuth.getInstance();
         code_one_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -250,8 +274,11 @@ class OtpVerificationFragment : BaseFragment() {
     }
 
     private fun clickListeners() {
-
+        tvResend.setOnClickListener {
+            startVerification()
+        }
     }
+
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         mAuth?.signInWithCredential(credential)
@@ -260,6 +287,9 @@ class OtpVerificationFragment : BaseFragment() {
                         showLoading(false)
                         checkExistence()
                         Preferences?.prefs?.saveValue(Constants.IS_NUMBER_VERIFIED, true)
+                        Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
+                        aCounter.onFinish()
+                        aCounter.cancel()
                         // replaceFragment(OtpVerifiedFragment(), true, R.id.container_main)
                     } else {
                         showLoading(false)

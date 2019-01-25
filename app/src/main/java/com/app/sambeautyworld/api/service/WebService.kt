@@ -6,6 +6,7 @@ import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
 import com.app.sambeautyworld.pojo.salonListBasedOnService.SalonListBasedOnServicePojo
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
+import com.app.sambeautyworld.pojo.searchsallonpojo.SearchSaloonListPojo
 import com.app.sambeautyworld.utils.Constants
 import retrofit2.Call
 import retrofit2.http.Field
@@ -79,6 +80,11 @@ interface WebService {
     fun getAllServices(
             @Field("owner_id") owner_id: String
     ): Call<SalonScreenPojo>
+
+    
+    @POST(Constants.ALL_SALON_LIST)
+    fun getAllSalons(): Call<SearchSaloonListPojo>
+
 
 
 

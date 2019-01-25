@@ -36,6 +36,10 @@ class ExpandableListViewAdapter(private val context: Context, private val listDa
         val textViewChild = convertView!!
                 .findViewById<TextView>(R.id.tvSubServiceTitle)
         textViewChild.text = childText
+
+        convertView.findViewById<TextView>(R.id.tvSubServiceTime).text =listDataGroup[groupPosition].subServices!![childPosition].service_time.toString()+ " min"
+        convertView.findViewById<TextView>(R.id.tvSubServicePrice).text =listDataGroup[groupPosition].subServices!![childPosition].service_price.toString() + " AED"
+
         return convertView
     }
 

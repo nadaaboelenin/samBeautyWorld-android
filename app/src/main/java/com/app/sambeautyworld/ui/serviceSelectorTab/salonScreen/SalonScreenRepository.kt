@@ -49,8 +49,7 @@ object SalonScreenRepository {
 
 
     fun getAllServices(successHandler: (SalonScreenPojo) -> Unit, failureHandler: (String) -> Unit,
-                       owner_id: String
-    ) {
+                       owner_id: String) {
         webService.getAllServices(owner_id).enqueue(object : Callback<SalonScreenPojo> {
             override fun onResponse(call: Call<SalonScreenPojo>?, response: Response<SalonScreenPojo>?) {
                 response?.body()?.let {

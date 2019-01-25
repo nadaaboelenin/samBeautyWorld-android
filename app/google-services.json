@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1057758767897-fteb95md4mkj6accprldpfmq3vigr841.apps.googleusercontent.com",
+          "client_id": "1057758767897-fqseuj0s42pmhu66gc188ceule241e1v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.sambeautyworld",
+            "certificate_hash": "3ed537e9f89829ec10197dd28c35c0337bd1b033"
+          }
+        },
+        {
+          "client_id": "1057758767897-gf0r7uisrmo9ml50q1okm0ot7mt92q29.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.app.sambeautyworld",
@@ -29,7 +37,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCHnSHQcc08bsTDPctL0fFUNYtcV03l0FY"
+          "current_key": "AIzaSyAXUTlNBLIujLPNu4MrgO6COKEkGIN71rI"
         }
       ],
       "services": {
@@ -40,8 +48,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1057758767897-pvalvp5uqghbt64dkonnbd32ep1ce699.apps.googleusercontent.com",
+              "client_id": "1057758767897-fusccr0ediru857thrno4iors4ln1npm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1057758767897-77a5beb3vifs8m623577k5su1tanih2l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Developer.Salony"
+              }
             }
           ]
         },

@@ -128,10 +128,15 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateData() {
-        if (Validations.isEmpty(etFullName) && Validations.isEmpty(etAddresses)
-                && Validations.isEmpty(etEmails) && Validations.isEmpty(etBirthDay)) {
+        if (Validations.isEmpty(etFullName)
+                && Validations.isEmpty(etEmails) &&
+
+
+
+                Validations.isEmpty(etBirthDay)) {
             if (Validations.isValidEmail(etEmails)) {
-                mViewModel?.registerUser(Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
+                mViewModel?.registerUser(
+                        Preferences.prefs?.getString(Constants.PHONE_NUMBER, "0")!!,
                         etFullName.text.toString(), etAddresses.text.toString(), etEmails.text.toString(), etBirthDay.text.toString(),
                         "1", "0", "", newToken
                 )

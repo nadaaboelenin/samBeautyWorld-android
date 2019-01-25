@@ -526,6 +526,7 @@
     <string name="fb_login_protocol_scheme">fb2009425712480487</string>
     <string name="services">Services</string>
     <string name="products">Products</string>
+    <string name="set_new_address">Set new address</string>
 
 
 </resources>
