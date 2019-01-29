@@ -86,11 +86,6 @@ interface WebService {
     fun getAllSalons(): Call<SearchSaloonListPojo>
 
 
-
-
-
-
-
 //
 //
 //    @POST(Constants.UPDATE_INFO)
@@ -194,7 +189,7 @@ interface WebService {
 //
 //
 //    @Headers("Accept: " + "application/json")
-//    @POST("send-invitation")
+//    @POST("-invitation")
 //    fun sendInvitation(@Body request: InviteDoctorRequest): Call<InviteDoctorResponse>
 //
 //

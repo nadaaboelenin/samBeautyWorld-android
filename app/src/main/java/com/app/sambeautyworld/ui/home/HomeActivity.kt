@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
+import com.app.sambeautyworld.ui.chooseAgent.ChooseAgentFragment
 import com.app.sambeautyworld.ui.homeFragment.HomeFragment
 import com.app.sambeautyworld.ui.mapFragment.MapsTrial
 import com.app.sambeautyworld.ui.sideMenuOpions.favourites.FavouritesFragment
@@ -85,6 +86,12 @@ class HomeActivity : BaseActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
             toolbar.visibility = View.GONE
             addFragment(MapsTrial(), true, R.id.container_home)
+        }
+
+        llChangeTheLanguage.setOnClickListener {
+            drawer_layout.closeDrawer(GravityCompat.START)
+            toolbar.visibility = View.GONE
+            addFragment(ChooseAgentFragment(), true, R.id.container_home)
         }
     }
 

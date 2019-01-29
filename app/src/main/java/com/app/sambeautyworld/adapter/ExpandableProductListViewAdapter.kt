@@ -11,17 +11,15 @@ import android.widget.TextView
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.AddRemoveListener
 import com.app.sambeautyworld.callBack.OnItemClickListener
-import com.app.sambeautyworld.pojo.salonScreen.ServicesList
-import com.squareup.picasso.Picasso
+import com.app.sambeautyworld.pojo.salonScreen.ProductsList
 
-class ExpandableListViewAdapter(private val context: Context,
-                                private val listDataGroup: List<ServicesList>?
-                                , private var onItemClicked: OnItemClickListener?, private var addRemoveListener: AddRemoveListener?
-) : BaseExpandableListAdapter() {
-
+class ExpandableProductListViewAdapter(private val context: Context, private val listDataGroup: List<ProductsList>?,
+                                       private var onItemClicked: OnItemClickListener?, private var addRemoveListener: AddRemoveListener?)
+    : BaseExpandableListAdapter() {
+    private var i: Int = 0
 
     override fun getChild(groupPosition: Int, childPosititon: Int): Any {
-        return this.listDataGroup!![groupPosition]!!.subServices!![childPosititon]
+        return this.listDataGroup!![groupPosition]!!.products!![childPosititon]
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
@@ -33,45 +31,48 @@ class ExpandableListViewAdapter(private val context: Context,
         var convertView = convertView
 
 
-        val childText = listDataGroup!![groupPosition].subServices!![childPosition].subservice_name.toString()
+        val childText = listDataGroup!![groupPosition].products!![childPosition].product_name.toString()
+
+        i = listDataGroup[groupPosition].products!![childPosition].count
 
         if (convertView == null) {
             val layoutInflater = this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = layoutInflater.inflate(R.layout.item_sub_services, null)
+            convertView = layoutInflater.inflate(R.layout.item_salon_products, null)
         }
 
         val textViewChild = convertView!!
-                .findViewById<TextView>(R.id.tvSubServiceTitle)
+                .findViewById<TextView>(R.id.tvProductTitle)
         textViewChild.text = childText
 
-        val ivAddedToCart = convertView?.findViewById<ImageView>(R.id.ivAddToCart)
+        //    convertView.findViewById<TextView>(R.id.tvSubServiceTime).text =listDataGroup[groupPosition].products!![childPosition].product_name.toString()+ " min"
+        convertView.findViewById<TextView>(R.id.tvProductPrice).text =
+                listDataGroup[groupPosition].products!![childPosition].price.toString() + " AED"
 
-        convertView.findViewById<TextView>(R.id.tvSubServiceTime).text =listDataGroup[groupPosition].subServices!![childPosition].service_time.toString()+ " min"
-        convertView.findViewById<TextView>(R.id.tvSubServicePrice).text =listDataGroup[groupPosition].subServices!![childPosition].service_price.toString() + " AED"
-
-
-        convertView.setOnClickListener {
-            onItemClicked?.onItemClick(groupPosition, childPosition, 1)
+        convertView.findViewById<TextView>(R.id.tvProductMore).setOnClickListener {
+            onItemClicked?.onItemClick(groupPosition, childPosition, 2)
         }
 
-        if (!listDataGroup[groupPosition].subServices!![childPosition].count) {
-            Picasso.get().load(R.mipmap.add_to_cart).into(ivAddedToCart)
-        } else {
-            Picasso.get().load(R.mipmap.added_to_cart).into(ivAddedToCart)
+        convertView.findViewById<TextView>(R.id.tvProductsCount).text = i.toString()
+
+        convertView.findViewById<ImageView>(R.id.ivAddProducts).setOnClickListener {
+            i++
+            addRemoveListener?.addRemove(groupPosition, childPosition, 2, i)
         }
 
-        ivAddedToCart?.setOnClickListener {
-            addRemoveListener?.addRemove(groupPosition, childPosition, 1, 1)
+        convertView.findViewById<ImageView>(R.id.ivRemoveItems).setOnClickListener {
+            if (i > 0) {
+                i--
+                addRemoveListener?.addRemove(groupPosition, childPosition, 2, i)
+            }
         }
-
 
         return convertView
     }
 
     override fun getChildrenCount(groupPosition: Int): Int {
 
-        return this.listDataGroup!![groupPosition].subServices!!.size
+        return this.listDataGroup!![groupPosition].products!!.size
     }
 
     override fun getGroup(groupPosition: Int): Any {

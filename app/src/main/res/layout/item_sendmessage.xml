@@ -2,13 +2,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="horizontal"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_12sdp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,11 +32,6 @@
                 android:text="Lorem Ipsum ng  b standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"
 
                 />
-
-
-
-
-
         </RelativeLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -50,49 +41,5 @@
             android:layout_marginStart="@dimen/_6sdp"
             android:src="@drawable/dummyuser"
             />
-
-
-
-
-    </LinearLayout>
-
-  <!--  <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_12sdp"
-        android:layout_marginRight="@dimen/_12sdp"
-        android:layout_marginTop="8dp"
-
-        >
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dtawable_sender"
-            android:layout_margin="@dimen/_12sdp"
-            android:padding="@dimen/_14sdp"
-            android:textColor="@color/colorAccent"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"
-
-            />
-
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:scaleType="centerCrop"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/com_facebook_button_login_logo"
-            android:layout_alignParentRight="true" />
-
-
-    </RelativeLayout>
--->
-
 
 </LinearLayout>

@@ -78,6 +78,7 @@ object Constants {
     const val IS_NUMBER_VERIFIED: String = "number_verified"
     const val SERVICE_ID: String = "service_id"
     const val BUSINES_OWNER: String = "business_owner_id"
+    const val SERVICE_NAME: String = "service_name"
 
     //doctor appointment type enum
     enum class TYPE(val type: Int) {

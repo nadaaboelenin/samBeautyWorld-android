@@ -3,6 +3,7 @@ package com.app.sambeautyworld.ui.homeFragment
 import Preferences
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.GridLayoutManager
@@ -21,7 +22,7 @@ import com.app.sambeautyworld.pojo.mainHome.BookMark
 import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
 import com.app.sambeautyworld.ui.appointments.AppointmentFragment
 import com.app.sambeautyworld.ui.seeOffers.SeeAllOffersFragment
-import com.app.sambeautyworld.ui.serviceSelectorTab.HomeSalonSelectorFragment
+import com.app.sambeautyworld.ui.serviceSelectorTab.ActivitySalonStartPoint
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.saveValue
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -39,14 +40,12 @@ class HomeFragment : BaseFragment(), OnItemClicked {
     private var mViewModel: HomeFragmentModel? = null
 
     override fun onItemClick(position: Int) {
-        activity?.toolbar?.visibility = View.GONE
-
-        val homeSalonSelectorFragment = HomeSalonSelectorFragment()
         val args = Bundle()
         args.putString(Constants.SERVICE_ID, dummyList!![position].id)
-        homeSalonSelectorFragment.arguments = args
-
-        addFragment(homeSalonSelectorFragment, true, R.id.container_home)
+        args.putString(Constants.SERVICE_NAME, dummyList!![position].service_name)
+        val intent = Intent(activity, ActivitySalonStartPoint::class.java)
+        intent.putExtra(Constants.SERVICE_ID, args)
+        startActivity(intent)
     }
 
     private var dummyList: ArrayList<FeaturedServicesList>? = ArrayList()

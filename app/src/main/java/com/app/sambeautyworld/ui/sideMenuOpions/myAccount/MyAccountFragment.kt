@@ -28,13 +28,10 @@ class MyAccountFragment : BaseFragment() {
     }
 
     private fun setUpData() {
-        noOfSalonsPojo?.add(NoOfSalonsPojo("Dubai","148 salons",false))
-        noOfSalonsPojo?.add(NoOfSalonsPojo("United Arab Emirates","148 salons",true))
-        noOfSalonsPojo?.add(NoOfSalonsPojo("Abu Dhabi","148 salons",false))
-        noOfSalonsPojo?.add(NoOfSalonsPojo("Kuwait","148 salons",false))
 
         rvTotalNoOfSalons.adapter=MyAccountCountries(noOfSalonsPojo,context)
         rvTotalNoOfSalons.layoutManager= LinearLayoutManager(this.activity,1,false)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

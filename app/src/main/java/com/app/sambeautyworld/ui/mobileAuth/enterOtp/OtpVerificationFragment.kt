@@ -5,8 +5,10 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,12 +22,9 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import kotlinx.android.synthetic.main.fragment_otp_verification.*
 import kotlinx.android.synthetic.main.opt_included.*
 import java.util.concurrent.TimeUnit
-import android.os.CountDownTimer
-import android.view.Gravity
-import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_otp_verification.*
 
 
 /**
@@ -82,7 +81,6 @@ class OtpVerificationFragment : BaseFragment() {
         initViews()
         getBundledArguments()
         clickListeners()
-
     }
 
     private fun getBundledArguments() {
@@ -102,16 +100,17 @@ class OtpVerificationFragment : BaseFragment() {
                 object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
                         val code = phoneAuthCredential.smsCode
-                        if (code != null) {
+//                        if (code != null) {
+//
+//                            verifyVerificationCode(code)
+//                        }
 
-                            code_one_et.setText(code[0].toString())
-                            code_two_et.setText(code[1].toString())
-                            code_three_et.setText(code[2].toString())
-                            code_fourth_et.setText(code[3].toString())
-                            code_five_et.setText(code[4].toString())
-                            code_six_et.setText(code[5].toString())
-                            verifyVerificationCode(code)
-                        }
+                        aCounter.onFinish()
+                        aCounter.cancel()
+                        showLoading(false)
+                        checkExistence()
+                        Preferences.prefs?.saveValue(Constants.IS_NUMBER_VERIFIED, true)
+                        Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
                     }
 
                     override fun onVerificationFailed(e: FirebaseException) {
@@ -284,13 +283,12 @@ class OtpVerificationFragment : BaseFragment() {
         mAuth?.signInWithCredential(credential)
                 ?.addOnCompleteListener(activity!!) { task ->
                     if (task.isSuccessful) {
-                        showLoading(false)
-                        checkExistence()
-                        Preferences?.prefs?.saveValue(Constants.IS_NUMBER_VERIFIED, true)
-                        Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
                         aCounter.onFinish()
                         aCounter.cancel()
-                        // replaceFragment(OtpVerifiedFragment(), true, R.id.container_main)
+                        showLoading(false)
+                        checkExistence()
+                        Preferences.prefs?.saveValue(Constants.IS_NUMBER_VERIFIED, true)
+                        Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
                     } else {
                         showLoading(false)
                         showSnackBar("Please Enter a valid OTP")

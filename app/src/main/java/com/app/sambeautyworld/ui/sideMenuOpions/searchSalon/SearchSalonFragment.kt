@@ -12,11 +12,7 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.SearchSalonAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
-import com.app.sambeautyworld.dummyData.DummySalonList
 import com.app.sambeautyworld.pojo.searchsallonpojo.AllSalonList
-import com.app.sambeautyworld.pojo.searchsallonpojo.SearchSaloonListPojo
-import com.app.sambeautyworld.ui.homeFragment.HomeFragmentModel
-import com.app.sambeautyworld.ui.sideMenuOpions.sendFeedback.SendFeedbackModel
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
@@ -34,15 +30,20 @@ class SearchSalonFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         mViewModel = ViewModelProviders.of(this)[SearchSaloonModel::class.java]
         attachObservers()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         hitApiTogetAllSalons()
-        //setUpData()
+        clickListeners()
 
+    }
+
+    private fun clickListeners() {
+        tvGoBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
 
@@ -74,7 +75,6 @@ class SearchSalonFragment : BaseFragment() {
 
     private fun hitApiTogetAllSalons() {
         mViewModel!!.getAllSalons()
-
     }
 
     private fun initViews() {

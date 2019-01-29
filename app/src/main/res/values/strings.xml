@@ -527,6 +527,12 @@
     <string name="services">Services</string>
     <string name="products">Products</string>
     <string name="set_new_address">Set new address</string>
+    <string name="type_your_message">Type your message</string>
+    <string name="date">Date</string>
+    <string name="Date">Date</string>
+    <string name="harido">Hairdo1</string>
+    <string name="continuee">Continue</string>
+    <string name="apply">Apply</string>
 
 
 </resources>

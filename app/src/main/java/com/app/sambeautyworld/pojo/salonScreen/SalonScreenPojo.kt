@@ -17,6 +17,7 @@ class SalonScreenPojo() : Parcelable {
     var min_order_price: String? = null
     var specialOffers: List<SpecialOffer>? = null
     var servicesList: List<ServicesList>? = null
+    var productsList: List<ProductsList>? = null
 
     constructor(parcel: Parcel) : this() {
         status = parcel.readValue(Int::class.java.classLoader) as? Int
@@ -51,5 +52,6 @@ class SalonScreenPojo() : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
 
 }

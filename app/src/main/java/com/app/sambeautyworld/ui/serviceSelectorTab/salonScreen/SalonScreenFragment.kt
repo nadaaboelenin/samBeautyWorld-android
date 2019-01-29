@@ -9,17 +9,22 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.CustomPagerAdapter
 import com.app.sambeautyworld.adapter.ExpandableListViewAdapter
+import com.app.sambeautyworld.adapter.ExpandableProductListViewAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
-import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.callBack.AddRemoveListener
+import com.app.sambeautyworld.callBack.OnItemClickListener
 import com.app.sambeautyworld.pojo.salonScreen.Hours
+import com.app.sambeautyworld.pojo.salonScreen.ProductsList
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
 import com.app.sambeautyworld.ui.chatview.ChatSupportFragment
 import com.app.sambeautyworld.ui.mapFragment.MapsTrial
 import com.app.sambeautyworld.ui.serviceSelectorTab.salonInformation.SalonInformationFragment
 import com.app.sambeautyworld.utils.Constants
+import kotlinx.android.synthetic.main.dialog_more_information_about_product.*
 import kotlinx.android.synthetic.main.dialog_opening_hours.*
 import kotlinx.android.synthetic.main.fragment_salon_screen.*
 
@@ -27,20 +32,36 @@ import kotlinx.android.synthetic.main.fragment_salon_screen.*
 /**
  * Created by ${Shubham} on 1/8/2019.
  */
-class SalonScreenFragment : BaseFragment(), OnItemClicked {
+class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListener {
+    override fun addRemove(item: Int, sub_item: Int, which_screen: Int, i: Int) {
+        if (which_screen == 1) {
+            salonScreenPojo.servicesList!![item].subServices!![sub_item].count = !salonScreenPojo.servicesList!![item].subServices!![sub_item].count
+            expandableListViewAdapter?.notifyDataSetChanged()
+        } else {
+            salonScreenPojo.productsList!![item].products[sub_item].count = i
+            expandableProductListViewAdapter?.notifyDataSetChanged()
+        }
+    }
+
+    override fun onItemClick(item: Int, sub_item: Int, which_screen: Int) {
+        if (which_screen == 1) {
+
+        } else {
+            showInformationdialog(item, sub_item)
+        }
+    }
 
     private var hours = Hours()
     private var expandableListViewAdapter: ExpandableListViewAdapter? = null
+    private var expandableProductListViewAdapter: ExpandableProductListViewAdapter? = null
     private var id: String? = null
     private var lat_long: String? = null
     private var salon_id: String? = null
     private var dummySpecialOffers: ArrayList<String>? = ArrayList()
+
     private var mViewModel: SalonScreenModel? = null
     private var salonScreenPojo = SalonScreenPojo()
-
-    override fun onItemClick(position: Int) {
-        showSnackBar(position.toString())
-    }
+    private var productsList: List<ProductsList>? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,15 +92,15 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
             val args = Bundle()
             args.putParcelable(Constants.DIALOG_SHOWN, salonScreenPojo)
             salonInformationFragment.arguments = args
-            addFragment(salonInformationFragment, true, R.id.container_home)
+            addFragment(salonInformationFragment, true, R.id.container_home_salon)
         }
 
         ivHours.setOnClickListener {
             openHoursDialog()
         }
 
-        ivChatWithSalon.setOnClickListener{
-            addFragment(ChatSupportFragment(), true, R.id.container_home)
+        ivChatWithSalon.setOnClickListener {
+            addFragment(ChatSupportFragment(), true, R.id.container_home_salon)
         }
 
         ivLocateSalonOnMap.setOnClickListener {
@@ -87,7 +108,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
             val args = Bundle()
             args.putString(Constants.LAT, lat_long)
             mapsTrial.arguments = args
-            addFragment(mapsTrial, true, R.id.container_home)
+            addFragment(mapsTrial, true, R.id.container_home_salon)
         }
 
 
@@ -97,7 +118,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
 
             tvProductsOfSalons.setBackgroundColor(ContextCompat.getColor(context!!, R.color.grayBackround))
             tvProductsOfSalons.setTextColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
-
+            rv_availableplaces.setAdapter(expandableListViewAdapter)
         }
 
         tvProductsOfSalons.setOnClickListener {
@@ -106,6 +127,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
 
             tvServicesOfSalon.setBackgroundColor(ContextCompat.getColor(context!!, R.color.grayBackround))
             tvServicesOfSalon.setTextColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
+            rv_availableplaces.setAdapter(expandableProductListViewAdapter)
         }
     }
 
@@ -130,11 +152,13 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData(it: SalonScreenPojo) {
+        productsList = it.productsList as List<ProductsList>
         pageIndicatorView_salon_screen.count = dummySpecialOffers!!.size
         hours = it.hours!!
         vpSalonScreenImage.adapter = CustomPagerAdapter(context!!, dummySpecialOffers!!)
 
-        expandableListViewAdapter = ExpandableListViewAdapter(context!!, salonScreenPojo.servicesList)
+        expandableListViewAdapter = ExpandableListViewAdapter(context!!, salonScreenPojo.servicesList, this, this)
+        expandableProductListViewAdapter = ExpandableProductListViewAdapter(context!!, salonScreenPojo.productsList, this, this)
         rv_availableplaces.setAdapter(expandableListViewAdapter)
     }
 
@@ -182,6 +206,38 @@ class SalonScreenFragment : BaseFragment(), OnItemClicked {
         mViewModel?.isLoading?.observe(this, Observer { it ->
             it?.let { showLoading(it) }
         })
+    }
+
+    private fun showInformationdialog(item: Int, sub_item: Int) {
+
+        var dialog = Dialog(activity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_more_information_about_product)
+
+        dialog.tvProductsCount.text = salonScreenPojo.productsList!![item].products[sub_item].count.toString()
+
+        dialog.btApplyProducts.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.ivCloseMoreInfoDialog.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.ivAddProducts.setOnClickListener {
+            salonScreenPojo.productsList!![item].products[sub_item].count++
+            expandableProductListViewAdapter?.notifyDataSetChanged()
+            dialog.tvProductsCount.text = salonScreenPojo.productsList!![item].products[sub_item].count.toString()
+        }
+
+        dialog.ivRemoveItems.setOnClickListener {
+            salonScreenPojo.productsList!![item].products[sub_item].count--
+            expandableProductListViewAdapter?.notifyDataSetChanged()
+            dialog.tvProductsCount.text = salonScreenPojo.productsList!![item].products[sub_item].count.toString()
+        }
+
+
+        dialog.show()
     }
 
 }

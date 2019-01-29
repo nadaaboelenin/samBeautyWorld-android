@@ -133,7 +133,6 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
     override fun iniView(savedInstanceState: Bundle?) {
         initGooglePlus()
         initViews()
-
     }
 
 
