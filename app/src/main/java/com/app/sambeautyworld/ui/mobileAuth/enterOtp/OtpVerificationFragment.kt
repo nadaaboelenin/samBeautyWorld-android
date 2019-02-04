@@ -52,7 +52,7 @@ class OtpVerificationFragment : BaseFragment() {
 //                showSnackBar(message)
                 if (it.status == 1) {
                     Preferences.prefs!!.saveValue(Constants.IS_LOGGED_IN, true)
-                    Preferences.prefs!!.saveValue(Constants.ID, it.info!!.userId)
+                    Preferences.prefs!!.saveValue(Constants.ID, it.info!!.user_id)
                     Preferences.prefs!!.saveValue(Constants.PHONE_NUMBER, phone_number)
                     replaceFragment(OtpVerifiedFragment(), true, R.id.container_main)
                 } else {

@@ -12,6 +12,7 @@ import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.AddRemoveListener
 import com.app.sambeautyworld.callBack.OnItemClickListener
 import com.app.sambeautyworld.pojo.salonScreen.ProductsList
+import com.squareup.picasso.Picasso
 
 class ExpandableProductListViewAdapter(private val context: Context, private val listDataGroup: List<ProductsList>?,
                                        private var onItemClicked: OnItemClickListener?, private var addRemoveListener: AddRemoveListener?)
@@ -56,16 +57,16 @@ class ExpandableProductListViewAdapter(private val context: Context, private val
         convertView.findViewById<TextView>(R.id.tvProductsCount).text = i.toString()
 
         convertView.findViewById<ImageView>(R.id.ivAddProducts).setOnClickListener {
-            i++
-            addRemoveListener?.addRemove(groupPosition, childPosition, 2, i)
+            addRemoveListener?.addRemove(groupPosition, childPosition, 2, listDataGroup[groupPosition].products!![childPosition].count + 1)
         }
 
         convertView.findViewById<ImageView>(R.id.ivRemoveItems).setOnClickListener {
-            if (i > 0) {
-                i--
-                addRemoveListener?.addRemove(groupPosition, childPosition, 2, i)
+            if (listDataGroup[groupPosition].products!![childPosition].count > 0) {
+                addRemoveListener?.addRemove(groupPosition, childPosition, 2, listDataGroup[groupPosition].products!![childPosition].count - 1)
             }
         }
+
+        Picasso.get().load(listDataGroup[groupPosition].products!![childPosition].product_image).into(convertView.findViewById<ImageView>(R.id.ivProductCircleView))
 
         return convertView
     }

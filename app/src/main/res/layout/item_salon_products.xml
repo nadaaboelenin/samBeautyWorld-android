@@ -12,32 +12,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Hairdo 1"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivProductCircleView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvProductMore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="More"
         android:textColor="@color/backgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductTitle" />
+        app:layout_constraintStart_toEndOf="@+id/ivProductCircleView"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductTitle"
+        app:layout_constraintVertical_bias="0.428" />
 
 
     <TextView
         android:id="@+id/tvProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="35 AED"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvProductMore"
         app:layout_constraintTop_toBottomOf="@+id/tvProductTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <ImageView
         android:id="@+id/ivAddProducts"
@@ -81,5 +81,16 @@
         app:layout_constraintTop_toTopOf="@+id/tvProductsCount"
         app:srcCompat="@mipmap/minus" />
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProductCircleView"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

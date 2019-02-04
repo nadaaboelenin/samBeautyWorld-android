@@ -24,12 +24,15 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.pojo.salonScreen.Product
+import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.Utils
 import com.app.sambeautyworld.utils.getValue
 import com.app.sambeautyworld.utils.security.ApiFailureTypes
 import com.hmu.kotlin.callBack.AlertDialogListener
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by android on 2/11/17.
@@ -48,6 +51,13 @@ open class BaseFragment : Fragment() {
     private lateinit var mCalendar: Calendar
     private var mStartTime: Calendar? = null
     private var mEndTime: Calendar? = null
+
+    companion object {
+        var productList: ArrayList<Product> = ArrayList()
+        var subServices: ArrayList<SubService> = ArrayList()
+    }
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -247,7 +257,6 @@ open class BaseFragment : Fragment() {
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (animate) {
             transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
-
         }
         transaction?.replace(container, fragment, tag)
                 ?.commitAllowingStateLoss()
@@ -262,6 +271,7 @@ open class BaseFragment : Fragment() {
             }
         }
         return true
+
     }
 
 
@@ -322,7 +332,22 @@ open class BaseFragment : Fragment() {
                 textView.text = notiCount.toString()
             }
         }
+    }
 
+    fun setProductList(list: ArrayList<Product>) {
+        productList = list as ArrayList<Product>
+    }
+
+    fun getProductList(): ArrayList<Product> {
+        return productList
+    }
+
+    fun setServiceList(list: ArrayList<SubService>) {
+        subServices = list as ArrayList<SubService>
+    }
+
+    fun getServiceList(): ArrayList<SubService> {
+        return subServices
     }
 
 

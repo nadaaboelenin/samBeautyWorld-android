@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.ui.home.HomeActivity
 import com.app.sambeautyworld.ui.mobileAuth.login.LoginFragment
@@ -26,6 +25,7 @@ import java.security.NoSuchAlgorithmException
  * Created by ${Shubham} on 12/25/2018.
  */
 class SplashFragment : BaseFragment() {
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,7 +49,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun setUpData() {
-        Picasso.get().load(R.mipmap.splash).resize(1080, 1920).into(ivSplash)
+        Picasso.get().load(com.app.sambeautyworld.R.mipmap.splash).resize(1080, 1920).into(ivSplash)
         object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
@@ -60,9 +60,9 @@ class SplashFragment : BaseFragment() {
                     startActivity(Intent(activity, HomeActivity::class.java))
                 } else {
                     if (!Preferences.prefs!!.getBoolean(Constants.IS_NUMBER_VERIFIED, false)) {
-                        addFragment(MobileAuthFragment(), false, R.id.container_main)
+                        addFragment(MobileAuthFragment(), false, com.app.sambeautyworld.R.id.container_main)
                     } else {
-                        addFragment(LoginFragment(), false, R.id.container_main)
+                        addFragment(LoginFragment(), false, com.app.sambeautyworld.R.id.container_main)
                     }
                 }
             }
@@ -71,7 +71,7 @@ class SplashFragment : BaseFragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        return inflater.inflate(com.app.sambeautyworld.R.layout.fragment_splash, container, false)
     }
 
 

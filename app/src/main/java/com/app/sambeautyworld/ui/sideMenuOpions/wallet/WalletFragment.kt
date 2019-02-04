@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.CardsInfoAdapter
-import com.app.sambeautyworld.adapter.MyAdapter
+import com.app.sambeautyworld.adapter.WalletAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import kotlinx.android.synthetic.main.fragment_wallet.*
@@ -41,7 +41,7 @@ class WalletFragment : BaseFragment(), OnItemClicked {
         rvCards.layoutManager = LinearLayoutManager(context!!, 1, false)
 
 
-        rvTransactionHistory.adapter = MyAdapter(dummySpecialOffers, context!!, this)
+        rvTransactionHistory.adapter = WalletAdapter(dummySpecialOffers, context!!, this)
         rvTransactionHistory.layoutManager = LinearLayoutManager(context!!, 1, false)
 
 

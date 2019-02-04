@@ -110,6 +110,9 @@ dependencies {
     //collapsible calendar view
     implementation 'com.github.shrikanth7698:Collapsible-Calendar-View-Android:v1.0.0'
     implementation 'com.android.support:recyclerview-v7:27.1.0'
+
+    //dialog
+    implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
 }
 apply plugin: 'com.google.gms.google-services'
 repositories {

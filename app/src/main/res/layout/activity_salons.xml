@@ -29,7 +29,7 @@
         android:gravity="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/ivGoBackSalon"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/ivGotoCart"
         app:layout_constraintStart_toEndOf="@+id/ivGoBackSalon"
         app:layout_constraintTop_toTopOf="@+id/ivGoBackSalon"
         app:layout_constraintVertical_bias="0.0" />
@@ -43,7 +43,7 @@
         app:layout_constraintGuide_percent=".5" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivGotoCart"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:layout_marginTop="8dp"

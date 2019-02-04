@@ -18,12 +18,15 @@ import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.AddRemoveListener
 import com.app.sambeautyworld.callBack.OnItemClickListener
 import com.app.sambeautyworld.pojo.salonScreen.Hours
-import com.app.sambeautyworld.pojo.salonScreen.ProductsList
+import com.app.sambeautyworld.pojo.salonScreen.Product
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
+import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.ui.chatview.ChatSupportFragment
 import com.app.sambeautyworld.ui.mapFragment.MapsTrial
+import com.app.sambeautyworld.ui.serviceSelectorTab.cart.CartFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.salonInformation.SalonInformationFragment
 import com.app.sambeautyworld.utils.Constants
+import kotlinx.android.synthetic.main.activity_salons.*
 import kotlinx.android.synthetic.main.dialog_more_information_about_product.*
 import kotlinx.android.synthetic.main.dialog_opening_hours.*
 import kotlinx.android.synthetic.main.fragment_salon_screen.*
@@ -37,9 +40,56 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
         if (which_screen == 1) {
             salonScreenPojo.servicesList!![item].subServices!![sub_item].count = !salonScreenPojo.servicesList!![item].subServices!![sub_item].count
             expandableListViewAdapter?.notifyDataSetChanged()
-        } else {
+            if (salonScreenPojo.servicesList!![item].subServices!![sub_item].count) {
+                subServices.add(salonScreenPojo.servicesList!![item].subServices!![sub_item])
+                setServiceList(subServices)
+            } else {
+                for (j in subServices) {
+                    if (j == salonScreenPojo.servicesList!![item].subServices!![sub_item]) {
+                        subServices.remove(j)
+                    }
+                }
+                setServiceList(subServices)
+                getServiceList()
+            }
+            btDoneWithBookings.text = "Book " + subServices.size + " Services"
+        }
+        //for products only
+        else {
             salonScreenPojo.productsList!![item].products[sub_item].count = i
             expandableProductListViewAdapter?.notifyDataSetChanged()
+
+
+
+            if (salonScreenPojo.productsList!![item].products[sub_item].count == 0) {
+                for (j in productLists) {
+                    if (j == salonScreenPojo.productsList!![item].products!![sub_item]) {
+                        productLists.remove(j)
+                    }
+                }
+                setProductList(productLists)
+                getProductList()
+            } else {
+                //        for(j in salonScreenPojo.productsList!![item].products){
+                if (salonScreenPojo.productsList!![item].products!![sub_item].count > 0) {
+                    if (!productLists.contains(salonScreenPojo.productsList!![item].products!![sub_item])) {
+                        productLists.add(salonScreenPojo.productsList!![item].products!![sub_item])
+                    }
+                    //              }
+                }
+                setProductList(productLists)
+
+                //setProductList()
+            }
+            getProductList()
+            btDoneWithBookings.text = "Book " + productLists.size + " Products"
+        }
+
+
+        if (productLists.size > 0 || subServices.size > 0) {
+            btDoneWithBookings.visibility = View.VISIBLE
+        } else {
+            btDoneWithBookings.visibility = View.GONE
         }
     }
 
@@ -61,7 +111,8 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
 
     private var mViewModel: SalonScreenModel? = null
     private var salonScreenPojo = SalonScreenPojo()
-    private var productsList: List<ProductsList>? = null
+    private var productLists: ArrayList<Product> = ArrayList()
+    private var subServices: ArrayList<SubService> = ArrayList()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,7 +133,11 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
     }
 
     private fun clickListeners() {
-
+        btDoneWithBookings.setOnClickListener {
+            activity?.linearLayout_tab?.visibility = View.GONE
+            activity?.tvSalonServiceName?.text = "Cart"
+            addFragment(CartFragment(), true, R.id.container_home_salon)
+        }
         ivAddToFavourites.setOnClickListener {
             mViewModel?.addBookmark(Preferences?.prefs?.getString(Constants.ID, "0")!!, id!!)
         }
@@ -124,11 +179,11 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
         tvProductsOfSalons.setOnClickListener {
             tvProductsOfSalons.setBackgroundColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
             tvProductsOfSalons.setTextColor(ContextCompat.getColor(context!!, R.color.white))
-
             tvServicesOfSalon.setBackgroundColor(ContextCompat.getColor(context!!, R.color.grayBackround))
             tvServicesOfSalon.setTextColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
             rv_availableplaces.setAdapter(expandableProductListViewAdapter)
         }
+
     }
 
     private fun openHoursDialog() {
@@ -152,11 +207,10 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
     }
 
     private fun setUpData(it: SalonScreenPojo) {
-        productsList = it.productsList as List<ProductsList>
+
         pageIndicatorView_salon_screen.count = dummySpecialOffers!!.size
         hours = it.hours!!
         vpSalonScreenImage.adapter = CustomPagerAdapter(context!!, dummySpecialOffers!!)
-
         expandableListViewAdapter = ExpandableListViewAdapter(context!!, salonScreenPojo.servicesList, this, this)
         expandableProductListViewAdapter = ExpandableProductListViewAdapter(context!!, salonScreenPojo.productsList, this, this)
         rv_availableplaces.setAdapter(expandableListViewAdapter)
@@ -210,7 +264,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
 
     private fun showInformationdialog(item: Int, sub_item: Int) {
 
-        var dialog = Dialog(activity)
+        val dialog = Dialog(activity)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_more_information_about_product)
@@ -235,8 +289,6 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
             expandableProductListViewAdapter?.notifyDataSetChanged()
             dialog.tvProductsCount.text = salonScreenPojo.productsList!![item].products[sub_item].count.toString()
         }
-
-
         dialog.show()
     }
 

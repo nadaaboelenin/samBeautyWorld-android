@@ -183,14 +183,32 @@
 
 
             <ExpandableListView
-                android:layout_height="0dp"
                 android:id="@+id/rv_availableplaces"
                 android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btDoneWithBookings"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvServicesOfSalon" />
 
+
+            <Button
+                android:id="@+id/btDoneWithBookings"
+                style="@style/Base.TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/backgroundColor"
+                android:text="Book two services"
+                android:textColor="@android:color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
         </android.support.constraint.ConstraintLayout>
+
+
 </ScrollView>

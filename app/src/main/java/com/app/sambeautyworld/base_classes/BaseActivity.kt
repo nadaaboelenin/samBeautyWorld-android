@@ -23,6 +23,8 @@ import android.view.View
 import android.view.Window
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.data.Status
+import com.app.sambeautyworld.pojo.salonScreen.Product
+import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.Utils
 import java.io.File
@@ -31,7 +33,10 @@ import java.io.File
  * Created by ${Shubham} on 12/25/2018.
  */
 @SuppressLint("Registered")
-open abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
+    private var productList: ArrayList<Product> = ArrayList()
+    private var subServices: ArrayList<SubService> = ArrayList()
+
     protected var mDoubleBackToExitPressedOnce = false
 
     private val PERMISSION_REQUEST = 121
@@ -284,6 +289,23 @@ open abstract class BaseActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION), Constants.LOCATION_PERMISSION_REQUEST_CODE)
 
+    }
+
+
+    fun setProductList(list: ArrayList<Product>) {
+        productList = list as ArrayList<Product>
+    }
+
+    fun getProductList(): ArrayList<Product> {
+        return productList
+    }
+
+    fun setServiceList(list: ArrayList<SubService>) {
+        subServices = list as ArrayList<SubService>
+    }
+
+    fun getServiceList(): ArrayList<SubService> {
+        return subServices
     }
 
 

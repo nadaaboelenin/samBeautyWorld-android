@@ -58,7 +58,6 @@ class SendFeedbackFragment : BaseFragment() {
         btSendFeedback.setOnClickListener {
             mViewModel?.sendFeedback(Preferences.prefs?.getString(Constants.ID, "0")!!, etYourFeedback.text.toString())
         }
-
     }
 
     private fun setUpData() {

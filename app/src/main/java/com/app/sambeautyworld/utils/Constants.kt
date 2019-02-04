@@ -39,6 +39,8 @@ object Constants {
     const val SALON_LIST_BASED_ON_SERVICE = "getSalonsBasedOnService"
     const val ALL_SALON_SERVICES = "getSalonAllServices"
     const val ALL_SALON_LIST = "getAllSalons"
+    const val GET_ALL_ACCOUNT_INFO = "getProfileInfo"
+    const val UPDATE_PROFILE = "updateProfileInfo"
 
 
     const val SPLASH_TIME_OUT: Long = 3000

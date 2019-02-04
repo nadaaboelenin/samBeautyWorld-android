@@ -3,16 +3,19 @@ package com.app.sambeautyworld.ui.serviceSelectorTab
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.content.res.ResourcesCompat
+import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
 import com.app.sambeautyworld.ui.serviceSelectorTab.atHome.SelectAreaFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.atTheSalon.AtTheSalonFragment
+import com.app.sambeautyworld.ui.serviceSelectorTab.cart.CartFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.information_dialog.InformationDialogFragment
 import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.activity_salons.*
 
 class ActivitySalonStartPoint : BaseActivity() {
     private var id: String? = null
+    private var service_name: String? = null
 
     override fun getID(): Int {
         return R.layout.activity_salons
@@ -28,7 +31,8 @@ class ActivitySalonStartPoint : BaseActivity() {
     private fun getBundle() {
         if (intent != null) {
             id = intent.getBundleExtra(Constants.SERVICE_ID)[Constants.SERVICE_ID].toString()
-            tvSalonServiceName.text = intent.getBundleExtra(Constants.SERVICE_ID)[Constants.SERVICE_NAME].toString()
+            service_name = intent.getBundleExtra(Constants.SERVICE_ID)[Constants.SERVICE_NAME].toString()
+            tvSalonServiceName.text = service_name
         }
     }
 
@@ -51,7 +55,6 @@ class ActivitySalonStartPoint : BaseActivity() {
             args.putString(Constants.SERVICE_ID, id)
             atTheSalonFragment.arguments = args
             replaceFragment(atTheSalonFragment, R.id.container_home_salon)
-
         }
 
         llAtTheHome.setOnClickListener {
@@ -67,11 +70,22 @@ class ActivitySalonStartPoint : BaseActivity() {
             args.putString(Constants.SERVICE_ID, id)
             atTheSalonFragment.arguments = args
             replaceFragment(atTheSalonFragment, R.id.container_home_salon)
-
         }
 
         ivGoBackSalon.setOnClickListener {
             onBackPressed()
         }
+
+        ivGotoCart.setOnClickListener {
+            tvSalonServiceName.text = "Cart"
+            linearLayout_tab.visibility = View.GONE
+            addFragment(CartFragment(), true, R.id.container_home_salon)
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        linearLayout_tab.visibility = View.VISIBLE
+        tvSalonServiceName.text = service_name
     }
 }

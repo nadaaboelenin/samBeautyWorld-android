@@ -163,7 +163,7 @@ public class SharedPreferencesEncryption implements SharedPreferences {
         if (encryptedSet == null) {
             return defaultValues;
         }
-        final Set<String> decryptedSet = new HashSet<String>(encryptedSet.size());
+        final Set<String> decryptedSet = new HashSet<>(encryptedSet.size());
         for (String encryptedValue : encryptedSet) {
             decryptedSet.add(SharedPreferencesEncryption.decrypt(encryptedValue));
         }

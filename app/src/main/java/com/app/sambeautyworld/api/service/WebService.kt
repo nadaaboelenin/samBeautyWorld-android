@@ -1,5 +1,6 @@
 package com.app.sambeautyworld.api.service
 
+import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
@@ -53,6 +54,18 @@ interface WebService {
             @Field("email") email: String
     ): Call<ListYourBusinessPojo>
 
+
+    @POST(Constants.UPDATE_PROFILE)
+    @FormUrlEncoded
+    fun updateProfile(
+            @Field("user_id") user_id: String,
+            @Field("full_name") full_name: String,
+            @Field("address") phone: String,
+            @Field("dob") dob: String,
+            @Field("salon_id") salon_id: String
+    ): Call<ListYourBusinessPojo>
+
+
     @POST(Constants.SEND_FEEDBACK)
     @FormUrlEncoded
     fun submitFeedback(
@@ -81,7 +94,14 @@ interface WebService {
             @Field("owner_id") owner_id: String
     ): Call<SalonScreenPojo>
 
-    
+
+    @POST(Constants.GET_ALL_ACCOUNT_INFO)
+    @FormUrlEncoded
+    fun getProfileInfo(
+            @Field("user_id") owner_id: String
+    ): Call<GetAccountPojo>
+
+
     @POST(Constants.ALL_SALON_LIST)
     fun getAllSalons(): Call<SearchSaloonListPojo>
 
