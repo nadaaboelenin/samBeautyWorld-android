@@ -72,7 +72,12 @@ class HomeSalonSelectorFragment : BaseFragment() {
             ivAtTheHome.setColorFilter(ContextCompat.getColor(context!!, R.color.white), android.graphics.PorterDuff.Mode.MULTIPLY);
             tvSelectHome.setTextColor(ContextCompat.getColor(context!!, R.color.white))
             tvSelectSalon.setTextColor(ContextCompat.getColor(context!!, R.color.greyBackround))
-            replaceFragment(SelectAreaFragment(), false, R.id.container_home_salon)
+
+            val atTheSalonFragment = SelectAreaFragment()
+            val args = Bundle()
+            args.putString(Constants.SERVICE_ID, id)
+            atTheSalonFragment.arguments = args
+            replaceFragment(atTheSalonFragment, false, R.id.container_home_salon)
         }
     }
 }

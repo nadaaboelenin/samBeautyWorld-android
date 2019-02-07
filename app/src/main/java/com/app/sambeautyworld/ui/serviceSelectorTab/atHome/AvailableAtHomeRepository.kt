@@ -1,7 +1,7 @@
-package com.app.sambeautyworld.ui.homeFragment
+package com.app.sambeautyworld.ui.serviceSelectorTab.atHome
 
 import com.app.sambeautyworld.api.service.ApiHelper
-import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
+import com.app.sambeautyworld.pojo.salonLocations.SalonLocationsPojo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -9,14 +9,15 @@ import retrofit2.Response
 /**
  * Created by ${Shubham} on 09/15/18.
  */
-object HomeFragmentRepository {
+object AvailableAtHomeRepository {
     private val webService = ApiHelper.createService()
 
-    fun getData(successHandler: (MainHomePojo) -> Unit, failureHandler: (String) -> Unit,
-                user_id: String, id: String
+    fun getSalons(successHandler: (SalonLocationsPojo) -> Unit, failureHandler: (String) -> Unit,
+                  user_id: String,
+                  service_id: String
     ) {
-        webService.featuredServices(user_id, id).enqueue(object : Callback<MainHomePojo> {
-            override fun onResponse(call: Call<MainHomePojo>?, response: Response<MainHomePojo>?) {
+        webService.availableAtTheHome(user_id, service_id).enqueue(object : Callback<SalonLocationsPojo> {
+            override fun onResponse(call: Call<SalonLocationsPojo>?, response: Response<SalonLocationsPojo>?) {
                 response?.body()?.let {
                     successHandler(it)
 
@@ -35,7 +36,7 @@ object HomeFragmentRepository {
                 }
             }
 
-            override fun onFailure(call: Call<MainHomePojo>?, t: Throwable?) {
+            override fun onFailure(call: Call<SalonLocationsPojo>?, t: Throwable?) {
                 t?.let {
 
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))

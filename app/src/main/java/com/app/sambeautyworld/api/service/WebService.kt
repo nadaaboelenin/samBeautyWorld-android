@@ -1,11 +1,13 @@
 package com.app.sambeautyworld.api.service
 
 import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
+import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
 import com.app.sambeautyworld.pojo.salonListBasedOnService.SalonListBasedOnServicePojo
+import com.app.sambeautyworld.pojo.salonLocations.SalonLocationsPojo
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
 import com.app.sambeautyworld.pojo.searchsallonpojo.SearchSaloonListPojo
 import com.app.sambeautyworld.utils.Constants
@@ -42,7 +44,9 @@ interface WebService {
 
     @POST(Constants.FEATURED_SERVICES)
     @FormUrlEncoded
-    fun featuredServices(@Field("user_id") user_id: String): Call<MainHomePojo>
+    fun featuredServices(@Field("user_id") user_id: String,
+                         @Field("business_type") business_type: String
+    ): Call<MainHomePojo>
 
 
     @POST(Constants.LIST_YOUR_BUSINESS)
@@ -104,6 +108,16 @@ interface WebService {
 
     @POST(Constants.ALL_SALON_LIST)
     fun getAllSalons(): Call<SearchSaloonListPojo>
+
+    @POST(Constants.BUSINESS_TYPE)
+    fun getAllBusinessType(): Call<GetBusinessTypePojo>
+
+    @POST(Constants.SALON_HOME_SERVICES)
+    @FormUrlEncoded
+    fun availableAtTheHome(
+            @Field("user_id") user_id: String,
+            @Field("service_id") service_id: String
+    ): Call<SalonLocationsPojo>
 
 
 //

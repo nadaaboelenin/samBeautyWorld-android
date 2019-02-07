@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
+import com.app.sambeautyworld.ui.businessType.BusinessTypeFragment
 import com.app.sambeautyworld.ui.chooseAgent.ChooseAgentFragment
 import com.app.sambeautyworld.ui.homeFragment.HomeFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.favourites.FavouritesFragment
@@ -117,7 +118,7 @@ class HomeActivity : BaseActivity() {
 
     private fun setUpData() {
         tvGender.text = Preferences?.prefs?.getString("Gender", "Man")
-        addFragment(HomeFragment(), true, R.id.container_home)
+        addFragment(BusinessTypeFragment(), true, R.id.container_home)
     }
 
     override fun onBackPressed() {

@@ -1,11 +1,16 @@
 package com.app.sambeautyworld.ui.mobileAuth.sendOtp
 
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v4.widget.NestedScrollView
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
+import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.ui.mobileAuth.enterOtp.OtpVerificationFragment
 import com.app.sambeautyworld.utils.Constants
@@ -24,6 +29,33 @@ class MobileAuthFragment : BaseFragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clickListeners()
+        setUpData()
+    }
+
+    private fun setUpData() {
+        etPhoneNumber.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (etPhoneNumber.text.length >= 6) {
+                    btVerify.background = ContextCompat.getDrawable(activity!!, R.drawable.drawable_button_white)
+                    btVerify.setTextColor(ContextCompat.getColor(activity!!, android.R.color.black))
+
+                    btVerify.isEnabled = true
+                    btVerify.isClickable = true
+                }
+                //drawable_button_background
+                else {
+                    btVerify.background = ContextCompat.getDrawable(activity!!, R.drawable.drawable_button_background)
+                    btVerify.setTextColor(ContextCompat.getColor(activity!!, android.R.color.white))
+                    btVerify.isEnabled = false
+                    btVerify.isClickable = false
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                Log.e("TextWatcherTest", "afterTextChanged:\t$s")
+            }
+        })
     }
 
     private fun clickListeners() {

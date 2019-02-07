@@ -4,11 +4,11 @@ import Preferences
 import com.app.sambeautyworld.application.Application
 import com.app.sambeautyworld.data.Status
 import com.app.sambeautyworld.data.login.ErrorResponse
-import com.google.gson.GsonBuilder
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.getValue
-import com.hmu.kotlin.utils.security.AddHeaderInterceptor
 import com.app.sambeautyworld.utils.security.ResponseInterceptorterceptor
+import com.google.gson.GsonBuilder
+import com.hmu.kotlin.utils.security.AddHeaderInterceptor
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -60,6 +60,7 @@ object ApiHelper {
 
     // Creating OkHttpclient Object
     private fun getClient(): OkHttpClient {
+
         val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient().newBuilder().connectTimeout(2, TimeUnit.MINUTES)
                 .readTimeout(2, TimeUnit.MINUTES)
@@ -109,7 +110,6 @@ object ApiHelper {
             errorMsg = password[0].toString()
         } else if (role != null && role.isNotEmpty()) {
             errorMsg = role[0].toString()
-
         } else if (deviceToken != null&&deviceToken.isNotEmpty()) {
             errorMsg = (deviceToken[0].toString())
         }

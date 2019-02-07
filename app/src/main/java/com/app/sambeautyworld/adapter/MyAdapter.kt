@@ -1,49 +1,55 @@
 package com.app.sambeautyworld.adapter
 
 import android.content.Context
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.callBack.AddRemoveListener
 import com.app.sambeautyworld.callBack.OnItemClicked
-import com.app.sambeautyworld.pojo.salonScreen.Product
+import com.app.sambeautyworld.pojo.businessType.AllBusinessList
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_salon_products.view.*
+import kotlinx.android.synthetic.main.item_right.view.*
 
-class MyAdapter(private var myDataset: ArrayList<Product>?, private var activity: Context?,
-                private var onItemClicked: OnItemClicked?,
-                private var addRemoveListener: AddRemoveListener?
+class MyAdapter(private var myDataset: ArrayList<AllBusinessList>?, private var activity: Context?,
+                private var onItemClicked: OnItemClicked?
 ) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val layout: CardView) : RecyclerView.ViewHolder(layout)
+
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): MyAdapter.MyViewHolder {
-        // create a new view
-        val textView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_products_cart, parent, false) as CardView
-        // set the view's size, margins, paddings and layout parameters
 
-        return MyViewHolder(textView)
+
+        val v: View
+        if (viewType == 0) {
+            v = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_right, parent, false)
+        } else {
+            v = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_left, parent, false)
+        }
+        return MyViewHolder(v)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.layout.tvProductTitle.text = myDataset!![position].product_name
-        holder.layout.tvProductPrice.text = myDataset!![position].price + " AED"
-        Picasso.get().load(myDataset!![position].product_image).into(holder.layout.ivProductCircleView)
-        holder.layout.tvProductsCount.text = myDataset!![position].count.toString()
+        holder.itemView.tvSalonNameBusiness.text = myDataset!![position].business_type
+        Picasso.get().load(myDataset!![position].business_image).into(holder.itemView.ivBusinessImage)
 
 
-        holder.layout.ivRemoveItems.setOnClickListener {
-            addRemoveListener?.addRemove(position, position, 2, myDataset!![position].count - 1)
+        holder.itemView.setOnClickListener {
+            onItemClicked?.onItemClick(position)
         }
+    }
 
-        holder.layout.ivAddProducts.setOnClickListener {
-            addRemoveListener?.addRemove(position, position, 2, myDataset!![position].count + 1)
+    override fun getItemViewType(position: Int): Int {
+        if (position % 2 == 0) {
+            return 0
+        } else {
+            return 1
         }
 
     }

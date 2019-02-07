@@ -1,7 +1,7 @@
-package com.app.sambeautyworld.ui.homeFragment
+package com.app.sambeautyworld.ui.businessType
 
 import com.app.sambeautyworld.api.service.ApiHelper
-import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
+import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -9,14 +9,13 @@ import retrofit2.Response
 /**
  * Created by ${Shubham} on 09/15/18.
  */
-object HomeFragmentRepository {
+object GetBusinessRepository {
     private val webService = ApiHelper.createService()
 
-    fun getData(successHandler: (MainHomePojo) -> Unit, failureHandler: (String) -> Unit,
-                user_id: String, id: String
+    fun getData(successHandler: (GetBusinessTypePojo) -> Unit, failureHandler: (String) -> Unit
     ) {
-        webService.featuredServices(user_id, id).enqueue(object : Callback<MainHomePojo> {
-            override fun onResponse(call: Call<MainHomePojo>?, response: Response<MainHomePojo>?) {
+        webService.getAllBusinessType().enqueue(object : Callback<GetBusinessTypePojo> {
+            override fun onResponse(call: Call<GetBusinessTypePojo>?, response: Response<GetBusinessTypePojo>?) {
                 response?.body()?.let {
                     successHandler(it)
 
@@ -35,7 +34,7 @@ object HomeFragmentRepository {
                 }
             }
 
-            override fun onFailure(call: Call<MainHomePojo>?, t: Throwable?) {
+            override fun onFailure(call: Call<GetBusinessTypePojo>?, t: Throwable?) {
                 t?.let {
 
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))

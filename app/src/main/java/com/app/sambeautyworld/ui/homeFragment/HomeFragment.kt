@@ -38,6 +38,7 @@ import kotlinx.android.synthetic.main.include_showing_locations.*
 class HomeFragment : BaseFragment(), OnItemClicked {
 
     private var mViewModel: HomeFragmentModel? = null
+    private var id: String? = null
 
     override fun onItemClick(position: Int) {
         val args = Bundle()
@@ -99,12 +100,26 @@ class HomeFragment : BaseFragment(), OnItemClicked {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        hitApi()
+        getBundled()
+
         clickListeners()
     }
 
+    private fun getBundled() {
+        if (arguments != null) {
+            id = arguments!!.getString(Constants.ID)
+            hitApi()
+        }
+    }
+
     private fun hitApi() {
-        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!)
+        /**
+         *
+         *    Preferences.prefs?.saveValue(Constants.ID, "1")
+        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "1")!!, this!!.id!!)
+         */
+        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!, this!!.id!!)
+
     }
 
 

@@ -23,6 +23,8 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
     private var mViewModel: SalonServicesModel? = null
     private var id: String? = null
     private var dummySpecialOffers: ArrayList<AtTheSalonService>? = ArrayList()
+    private var latitude: Double? = null
+    private var longitude: Double? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,8 +78,18 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
     private fun getBundle() {
         if (arguments != null) {
             id = arguments?.getString(Constants.SERVICE_ID)
-            fetchDataFromApi()
+            if (arguments?.containsKey(Constants.LAT)!!) {
+                latitude = arguments!!.getDouble(Constants.LAT)
+                longitude = arguments!!.getDouble(Constants.LNG)
+                fetchDataWithLat()
+            } else {
+                fetchDataFromApi()
+            }
         }
+    }
+
+    private fun fetchDataWithLat() {
+
     }
 
     private fun fetchDataFromApi() {

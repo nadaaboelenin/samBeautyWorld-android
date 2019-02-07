@@ -1,25 +1,25 @@
-package com.app.sambeautyworld.ui.homeFragment
+package com.app.sambeautyworld.ui.businessType
 
 import android.arch.lifecycle.MutableLiveData
 import com.app.sambeautyworld.api.model.MyViewModel
-import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
+import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 
 /**
  * Created by ${Shubham} on 09/15/18.
  */
-class HomeFragmentModel : MyViewModel() {
+class GetBusinessModel : MyViewModel() {
 
-    var response = MutableLiveData<MainHomePojo>()
+    var response = MutableLiveData<GetBusinessTypePojo>()
 
-    fun getServices(user_id: String, id: String) {
+    fun authenticate() {
 
         isLoading.value = true
-        HomeFragmentRepository.getData({
+        GetBusinessRepository.getData({
             response.value = it
             isLoading.value = false
         }, {
             apiError.value = it
             isLoading.value = false
-        }, user_id, id)
+        })
     }
 }

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.MyAdapter
+import com.app.sambeautyworld.adapter.CartAdapter
 import com.app.sambeautyworld.adapter.SubServicesAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.AddRemoveListener
@@ -40,7 +40,7 @@ class CartFragment : BaseFragment(), OnItemClicked, AddRemoveListener {
     }
 
     private var expandableListViewAdapter: SubServicesAdapter? = null
-    private var expandableProductListViewAdapter: MyAdapter? = null
+    private var expandableProductListViewAdapter: CartAdapter? = null
     private var productLists: ArrayList<Product> = ArrayList()
     private var subServices: ArrayList<SubService> = ArrayList()
 
@@ -57,7 +57,7 @@ class CartFragment : BaseFragment(), OnItemClicked, AddRemoveListener {
         productLists = BaseFragment.productList
         subServices = BaseFragment.subServices
         expandableListViewAdapter = SubServicesAdapter(subServices, context!!, this, this)
-        expandableProductListViewAdapter = MyAdapter(productLists, context!!, this, this)
+        expandableProductListViewAdapter = CartAdapter(productLists, context!!, this, this)
         rvCartProducts.adapter = expandableProductListViewAdapter
         rvCartServices.adapter = expandableListViewAdapter
         rvCartProducts.layoutManager = LinearLayoutManager(context!!)

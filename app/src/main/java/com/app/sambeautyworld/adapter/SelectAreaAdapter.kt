@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.pojo.salonLocations.Datum
+import kotlinx.android.synthetic.main.item_locations.view.*
 
-class SelectAreaAdapter(private var myDataset: ArrayList<String>?, private var activity: Context?,
+class SelectAreaAdapter(private var myDataset: ArrayList<Datum>?, private var activity: Context?,
                         private var onItemClicked: OnItemClicked?
 ) :
         RecyclerView.Adapter<SelectAreaAdapter.MyViewHolder>() {
@@ -28,8 +30,7 @@ class SelectAreaAdapter(private var myDataset: ArrayList<String>?, private var a
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        holder.layout.tvBookmarksName.text = myDataset!![position].names
-//        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)
+        holder.layout.tvLocationName.text = myDataset!![position].city
         holder.layout.setOnClickListener {
             onItemClicked?.onItemClick(position)
         }
