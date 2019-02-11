@@ -20,7 +20,6 @@ object AvailableAtHomeRepository {
             override fun onResponse(call: Call<SalonLocationsPojo>?, response: Response<SalonLocationsPojo>?) {
                 response?.body()?.let {
                     successHandler(it)
-
                 }
                 if (response?.code() == 422) {
                     response.errorBody()?.let {

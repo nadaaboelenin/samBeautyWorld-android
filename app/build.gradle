@@ -113,6 +113,15 @@ dependencies {
 
     //dialog
     implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'
+
+
+
+    implementation "org.jetbrains.anko:anko-sdk25:0.10.8" // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation "org.jetbrains.anko:anko-appcompat-v7:0.10.8"
+
+    // Coroutine listeners for Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:0.10.8"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:0.10.8"
 }
 apply plugin: 'com.google.gms.google-services'
 repositories {

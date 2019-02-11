@@ -120,6 +120,16 @@ interface WebService {
     ): Call<SalonLocationsPojo>
 
 
+    @POST(Constants.HOME_SALONS)
+    @FormUrlEncoded
+    fun homeSalons(
+            @Field("user_id") user_id: String,
+            @Field("service_id") service_id: String,
+            @Field("latitude") latitude: String,
+            @Field("longitude") longitude: String
+    ): Call<SalonListBasedOnServicePojo>
+
+
 //
 //
 //    @POST(Constants.UPDATE_INFO)

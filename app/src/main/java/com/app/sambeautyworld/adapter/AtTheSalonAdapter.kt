@@ -55,8 +55,6 @@ class AtTheSalonAdapter(private var myDataset: ArrayList<AtTheSalonService>?, pr
             holder.layout.ivSalonAvailable.visibility = View.VISIBLE
             holder.layout.ivHomeAvailable.visibility = View.VISIBLE
         }
-
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

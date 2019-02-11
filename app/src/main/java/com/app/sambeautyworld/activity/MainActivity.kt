@@ -176,4 +176,5 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
         super.onDestroy()
     }
 
+
 }

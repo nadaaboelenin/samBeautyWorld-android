@@ -1,5 +1,6 @@
 package com.app.sambeautyworld.ui.serviceSelectorTab.atTheSalon
 
+import Preferences
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -40,10 +41,25 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
                     dummySpecialOffers = it.atTheSalonServices as ArrayList<AtTheSalonService>
                     setUpData()
                 } else {
-
+                    showLoading(false)
+                    showSnackBar("No Results found")
                 }
             }
         })
+
+
+        mViewModel?.responseHomeBased?.observe(this, Observer { it ->
+            it?.let {
+                if (it.status == 1) {
+                    dummySpecialOffers = it.atTheSalonServices as ArrayList<AtTheSalonService>
+                    setUpData()
+                } else {
+                    showLoading(false)
+                    showSnackBar("No Results found")
+                }
+            }
+        })
+
 
         mViewModel?.apiError?.observe(this, Observer { it ->
             it?.let {
@@ -89,7 +105,7 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun fetchDataWithLat() {
-
+        mViewModel?.homeBased(Preferences?.prefs?.getString(Constants.ID, "0")!!, id!!, latitude.toString(), longitude.toString())
     }
 
     private fun fetchDataFromApi() {

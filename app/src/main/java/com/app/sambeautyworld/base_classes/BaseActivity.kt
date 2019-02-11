@@ -26,6 +26,7 @@ import com.app.sambeautyworld.data.Status
 import com.app.sambeautyworld.pojo.salonScreen.Product
 import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.utils.Constants
+import com.app.sambeautyworld.utils.LocationService
 import com.app.sambeautyworld.utils.Utils
 import java.io.File
 
@@ -48,8 +49,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(getID())
         iniView(savedInstanceState)
+        LocationService.init(this)
     }
 
 
@@ -68,7 +71,7 @@ abstract class BaseActivity : AppCompatActivity() {
         // pass activity's  result to the fragments
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         fragment?.onActivityResult(requestCode, resultCode, data)
-
+        LocationService.onActivityResult(this, requestCode, resultCode)
     }
 
     override fun onPause() {
@@ -85,6 +88,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val fragment = supportFragmentManager.findFragmentById(R.id.container_main)
         fragment?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        LocationService.onRequestPermissionsResult(this, requestCode, grantResults)
     }
 
     fun replaceFragment(fragment: Fragment, container: Int) {

@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-object SingleTon {
+object dsfdsfsdfSingleTon {
 
     private var mLat: Double = 0.0
     private var mLng: Double = 0.0

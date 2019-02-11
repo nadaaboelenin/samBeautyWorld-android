@@ -1,5 +1,4 @@
 package com.app.sambeautyworld.ui.serviceSelectorTab.atHome
-
 import Preferences
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -15,9 +14,8 @@ import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.salonLocations.Datum
 import com.app.sambeautyworld.ui.serviceSelectorTab.atTheSalon.AtTheSalonFragment
 import com.app.sambeautyworld.utils.Constants
-import com.app.sambeautyworld.utils.GPSTracker
+import com.app.sambeautyworld.utils.LocationService
 import kotlinx.android.synthetic.main.fragment_at_the_home.*
-
 
 /**
  * Created by ${Shubham} on 1/4/2019.
@@ -42,7 +40,7 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
         args.putString(Constants.SERVICE_ID, id)
         args.putDouble(Constants.LAT, latitude!!)
         args.putDouble(Constants.LNG, longitude!!)
-        val atTheSalonFragment: AtTheSalonFragment = AtTheSalonFragment()
+        val atTheSalonFragment = AtTheSalonFragment()
         atTheSalonFragment.arguments = args
         addFragment(atTheSalonFragment, true, R.id.container_home_salon)
     }
@@ -96,11 +94,14 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
 
     private fun clickListeners() {
         tvSelectMyLocation.setOnClickListener {
-            val gps = GPSTracker(activity)
-            latitude = gps.latitude
-            longitude = gps.longitude
 
-
+            LocationService.getLocation(activity!!, { location ->
+                latitude = location.latitude
+                longitude = location.longitude
+                nextScreen()
+            }, {
+                showSnackBar("Cannot fetch the locaton, please select the salons manually")
+            })
         }
     }
 
