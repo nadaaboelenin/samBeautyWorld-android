@@ -122,6 +122,13 @@ dependencies {
     // Coroutine listeners for Anko Layouts
     implementation "org.jetbrains.anko:anko-sdk25-coroutines:0.10.8"
     implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:0.10.8"
+
+
+    implementation "org.jetbrains.anko:anko-appcompat-v7:0.10.8"
+    implementation "org.jetbrains.anko:anko-sdk25:0.10.8"
+
+    implementation "org.jetbrains.anko:anko-design:0.10.8"
+
 }
 apply plugin: 'com.google.gms.google-services'
 repositories {

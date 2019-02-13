@@ -9,6 +9,8 @@ import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.SeeAllOffersAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
+import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.fragment_see_all_offers.*
 
 /**
@@ -20,7 +22,7 @@ class SeeAllOffersFragment : BaseFragment() , OnItemClicked {
         showSnackBar(position.toString())
     }
 
-    private val dummySpecialOffers: ArrayList<String>? = ArrayList()
+    private var dummySpecialOffers: ArrayList<SpecialOffer>? = ArrayList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,10 +37,14 @@ class SeeAllOffersFragment : BaseFragment() , OnItemClicked {
     }
 
     private fun setUpData() {
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
-        dummySpecialOffers?.add("1")
+
+        if (!arguments!!.isEmpty) {
+            dummySpecialOffers = arguments!!.getParcelableArrayList(Constants.SPECIAL_OFFERS)
+        }
+//        dummySpecialOffers?.add("1")
+//        dummySpecialOffers?.add("1")
+//        dummySpecialOffers?.add("1")
+//        dummySpecialOffers?.add("1")
 
         rvSeeAllOffers.layoutManager = LinearLayoutManager(context!!, 1, false)
         rvSeeAllOffers.adapter = SeeAllOffersAdapter(dummySpecialOffers, context!!,this)

@@ -28,7 +28,8 @@ internal class SpecialOffersAdapter(mContext: Context, private val mList: ArrayL
         //        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
         //        imageView.setImageResource(Integer.parseInt(mList.get(position)));
 
-        Picasso.get().load(mList[position].salon_logo).into(itemView.ivBigImage)
+        Picasso.get().load(mList[position].salon_logo)
+                .into(itemView.ivBigImage)
         itemView.tvDiscountPrice.text = "All for " + mList[position].discount_price
         itemView.tvTypeOfServiceOffers.text = mList[position].salon_for
         itemView.tvSalonNameOffers.text = mList[position].salon_name

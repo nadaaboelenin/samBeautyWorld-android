@@ -88,7 +88,7 @@ object LocationService {
                     activity.startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                     onError()
                 }
-                negativeButton("Cancelar", { onError() })
+                negativeButton("Cancelar") { onError() }
                 onCancelled { onError() }
             }.show()
         }

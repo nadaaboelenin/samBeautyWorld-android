@@ -26,7 +26,7 @@ class SendFeedbackFragment : BaseFragment() {
     }
 
     private fun attachObservers() {
-        mViewModel?.response?.observe(this, Observer { it ->
+        mViewModel?.response?.observe(this, Observer {
             it?.let {
                 showMessage(it.message)
                 if (it.status == 1) {
@@ -37,13 +37,13 @@ class SendFeedbackFragment : BaseFragment() {
             }
         })
 
-        mViewModel?.apiError?.observe(this, Observer { it ->
+        mViewModel?.apiError?.observe(this, Observer {
             it?.let {
                 showSnackBar(it)
             }
         })
 
-        mViewModel?.isLoading?.observe(this, Observer { it ->
+        mViewModel?.isLoading?.observe(this, Observer {
             it?.let { showLoading(it) }
         })
     }

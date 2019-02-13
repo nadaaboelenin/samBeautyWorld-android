@@ -4,6 +4,8 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +28,7 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
     private var mViewModel: AvailableAtHomeModel? = null
     private var id: String? = null
     private var latitude: Double? = null
+    lateinit var selectAreaAdapter: SelectAreaAdapter
     private var longitude: Double? = null
 
 
@@ -106,11 +109,40 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData() {
-        rvLocations.adapter = SelectAreaAdapter(dummySpecialOffers, context!!, this)
+
+        etSearchPlaces.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+            }
+
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+                //after the change calling the method and passing the search input
+                filter(editable.toString())
+            }
+        })
+        selectAreaAdapter = SelectAreaAdapter(dummySpecialOffers, context!!, this)
+        rvLocations.adapter = selectAreaAdapter
         rvLocations.layoutManager = LinearLayoutManager(context!!, 1, false)
+        selectAreaAdapter.notifyDataSetChanged()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(com.app.sambeautyworld.R.layout.fragment_at_the_home, container, false)
+    }
+
+    private fun filter(text: String) {
+        val filtered: ArrayList<Datum> = ArrayList()
+        for (s in dummySpecialOffers!!) {
+            //if the existing elements contains the search input
+            if (s.city.toLowerCase().contains(text.toLowerCase())) {
+                filtered.add(s)
+            }
+        }
+        selectAreaAdapter.filterList(filtered)
     }
 }

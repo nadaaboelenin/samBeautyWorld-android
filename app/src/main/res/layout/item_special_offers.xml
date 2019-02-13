@@ -10,7 +10,6 @@
     app:cardElevation="@dimen/_2sdp">
 
     <android.support.constraint.ConstraintLayout
-        android:padding="@dimen/_8sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/grayBackround">
@@ -20,9 +19,7 @@
             android:id="@+id/ivBigImage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -88,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+
             android:layout_marginTop="12dp"
             android:text="Dermatol-ogy"
             android:textColor="@android:color/black"
@@ -101,30 +98,32 @@
             android:id="@+id/tvSalonNameOffers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="The Salon"
             android:textColor="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintHorizontal_bias="0.062"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfServiceOffers" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeOfServiceOffers"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/btBookFromSpecialOffers"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/rounded_button_back"
             android:text="@string/book_now"
             app:layout_constraintBottom_toBottomOf="@+id/tvSalonNameOffers"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.613"
+            app:layout_constraintHorizontal_bias="0.406"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/tvTypeOfServiceOffers"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.333" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

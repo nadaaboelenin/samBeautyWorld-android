@@ -16,4 +16,8 @@ public class AllSalonList {
     @SerializedName("business_logo")
     @Expose
     public String business_logo;
+
+    @SerializedName("owner_id")
+    @Expose
+    public String owner_id;
 }

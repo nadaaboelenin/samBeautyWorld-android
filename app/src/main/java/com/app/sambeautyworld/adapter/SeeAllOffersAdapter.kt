@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_special_offers.view.*
 
-class SeeAllOffersAdapter(private var myDataset: ArrayList<String>?, private var activity: Context?,
+class SeeAllOffersAdapter(private var myDataset: ArrayList<SpecialOffer>?, private var activity: Context?,
                           private var onItemClicked: OnItemClicked?
 ) :
         RecyclerView.Adapter<SeeAllOffersAdapter.MyViewHolder>() {
@@ -29,8 +31,11 @@ class SeeAllOffersAdapter(private var myDataset: ArrayList<String>?, private var
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        holder.layout.tvBookmarksName.text = myDataset!![position].names
-//        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)
+        Picasso.get().load(myDataset!![position].salon_logo)
+                .into(holder.layout.ivBigImage)
+        holder.layout.tvDiscountPrice.text = "All for " + myDataset!![position].discount_price
+        holder.layout.tvTypeOfServiceOffers.text = myDataset!![position].salon_for
+        holder.layout.tvSalonNameOffers.text = myDataset!![position].salon_name
 
         holder.layout.btBookFromSpecialOffers.setOnClickListener {
             onItemClicked?.onItemClick(position)

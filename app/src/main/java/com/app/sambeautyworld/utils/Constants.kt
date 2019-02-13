@@ -84,6 +84,8 @@ object Constants {
     const val SERVICE_ID: String = "service_id"
     const val BUSINES_OWNER: String = "business_owner_id"
     const val SERVICE_NAME: String = "service_name"
+    const val FROM_SEARCH: String = "from_seacrch"
+    const val SPECIAL_OFFERS: String = "special_offers"
 
     //doctor appointment type enum
     enum class TYPE(val type: Int) {

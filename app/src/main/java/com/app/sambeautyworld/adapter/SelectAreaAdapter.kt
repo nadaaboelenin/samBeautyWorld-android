@@ -39,4 +39,10 @@ class SelectAreaAdapter(private var myDataset: ArrayList<Datum>?, private var ac
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = myDataset!!.size
 
+
+    fun filterList(filterdNames: ArrayList<Datum>?) {
+        myDataset = filterdNames
+        notifyDataSetChanged()
+    }
+
 }

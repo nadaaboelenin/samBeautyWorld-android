@@ -136,7 +136,12 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
         btViewAllSpecialOffers.setOnClickListener {
             activity?.toolbar?.visibility = View.GONE
-            addFragment(SeeAllOffersFragment(), true, R.id.container_home)
+            var allSpecialOffers = SeeAllOffersFragment()
+            var args = Bundle()
+            args.putParcelableArrayList(Constants.SPECIAL_OFFERS, dummySpecialOffers)
+            allSpecialOffers.arguments = args
+
+            addFragment(allSpecialOffers, true, R.id.container_home)
         }
     }
 
@@ -167,6 +172,7 @@ class HomeFragment : BaseFragment(), OnItemClicked {
         vpSpecialOffers.setPadding(60, 0, 60, 0)
         vpSpecialOffers.pageMargin = 20
         vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
+        pageIndicatorView.count = dummySpecialOffers!!.size
 
     }
 

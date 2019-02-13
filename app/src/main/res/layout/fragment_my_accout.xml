@@ -83,6 +83,7 @@
 
                     <android.support.design.widget.TextInputEditText
                         android:focusable="false"
+                        android:drawableEnd="@drawable/right_icon"
                         android:id="@+id/etFullNameAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -109,6 +110,7 @@
 
                     <android.support.design.widget.TextInputEditText
                         android:focusable="false"
+                        android:drawableEnd="@drawable/right_icon"
                         android:id="@+id/etAddressesAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,6 +138,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:focusable="false"
                         android:id="@+id/etEmailsAccount"
+                        android:drawableEnd="@drawable/right_icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -163,6 +166,7 @@
                         android:id="@+id/etBirthDayAccount"
                         android:layout_width="match_parent"
                         android:focusable="false"
+                        android:drawableEnd="@drawable/right_icon"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@android:color/transparent"

@@ -1,21 +1,22 @@
 package com.app.sambeautyworld.ui.sideMenuOpions.myAccount
-
 import Preferences
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.MyAccountCountries
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
 import com.app.sambeautyworld.pojo.accountPojo.Salon
 import com.app.sambeautyworld.utils.Constants
+import kotlinx.android.synthetic.main.dialog_xmls.*
 import kotlinx.android.synthetic.main.fragment_my_accout.*
+
 
 /**
  * Created by ${Shubham} on 12/31/2018.
@@ -26,13 +27,16 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
 //
 //
 //        for()
-        etAddressesAccount.setText(noOfSalonsPojo!![position]!!.country_name)
+        etAddressesAccount.setText(noOfSalonsPojo!![position].country_name!!)
         for (i in noOfSalonsPojo!!) {
             i.selected = false
         }
 
         noOfSalonsPojo!![position].selected = true
         myAdapter?.notifyDataSetChanged()
+
+
+        mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, "", noOfSalonsPojo!![position].country_name!!, "", "")
     }
 
     private var myAdapter: MyAccountCountries? = null
@@ -51,6 +55,17 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
                 //showMessage(it.message)
                 if (it.status == 1) {
                     setUpData(it)
+                } else {
+                    showMessage(it.status.toString())
+                }
+            }
+        })
+
+        mViewModel?.response_edit?.observe(this, Observer { it ->
+            it?.let {
+                //showMessage(it.message)
+                if (it.status == 1) {
+                    mViewModel?.authenticate(Preferences.prefs?.getString(Constants.ID, "0")!!)
                 } else {
                     showMessage(it.status.toString())
                 }
@@ -79,16 +94,53 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun clickListeners() {
+        etFullNameAccount.setOnClickListener {
+            openDialog(1, "Full Name", view!!)
+        }
 
+        etEmailsAccount.setOnClickListener {
+            openDialog(3, "Email ID", view!!)
+        }
+    }
+
+    private fun openDialog(i: Int, s: String, view: View) {
+        val layoutInflater = activity!!.layoutInflater
+        val view = layoutInflater.inflate(com.app.sambeautyworld.R.layout.dialog_xmls, null)
+        val alertDialog = AlertDialog.Builder(activity!!).create()
+        alertDialog.setTitle("Edit $s")
+        alertDialog.setCancelable(false)
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, resources.getString(com.app.sambeautyworld.R.string.ok)) { dialog, which ->
+            hitApiAccount(i, s, alertDialog.etComments.text.toString())
+            dialog.dismiss()
+        }
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, resources.getString(com.app.sambeautyworld.R.string.cancel)) { dialog, which -> dialog.dismiss() }
+        alertDialog.setView(view)
+        alertDialog.show()
+    }
+
+
+    private fun hitApiAccount(i: Int, s: String, toString: String) {
+        when (i) {
+            1 -> {
+                mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, toString, "", "", "")
+            }
+            2 -> {
+
+            }
+            3 -> {
+                mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, "", "", toString, "")
+            }
+            4 -> {
+                mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, "", "", "", s)
+            }
+        }
     }
 
     private fun setUpData(pojo: GetAccountPojo) {
-
         noOfSalonsPojo = pojo.salons as ArrayList<Salon>
         myAdapter = MyAccountCountries(noOfSalonsPojo, context, this)
         rvTotalNoOfSalons.adapter = myAdapter
         rvTotalNoOfSalons.layoutManager = LinearLayoutManager(this.activity, 1, false)
-
         etFullNameAccount.setText(pojo.userInformation!!.full_name)
         etAddressesAccount.setText(pojo.userInformation!!.address)
         etEmailsAccount.setText(pojo.userInformation!!.email)
@@ -96,6 +148,6 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_my_accout, container, false)
+        return inflater.inflate(com.app.sambeautyworld.R.layout.fragment_my_accout, container, false)
     }
 }

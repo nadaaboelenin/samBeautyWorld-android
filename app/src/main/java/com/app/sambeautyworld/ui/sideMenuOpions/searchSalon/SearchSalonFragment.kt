@@ -2,6 +2,7 @@ package com.app.sambeautyworld.ui.sideMenuOpions.searchSalon
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
@@ -12,17 +13,27 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.SearchSalonAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
+import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.searchsallonpojo.AllSalonList
+import com.app.sambeautyworld.ui.serviceSelectorTab.ActivitySalonStartPoint
+import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
  * Created by ${Shubham} on 12/28/2018.
  */
 
-class SearchSalonFragment : BaseFragment() {
-    //private val dummySalonList: ArrayList<DummySalonList> = ArrayList()
+class SearchSalonFragment : BaseFragment(), OnItemClicked {
+    override fun onItemClick(position: Int) {
+        /*      var args*/
+        val intent = Intent(activity, ActivitySalonStartPoint::class.java)
+        intent.putExtra(Constants.FROM_SEARCH, "1")
+        intent.putExtra(Constants.BUSINES_OWNER, dummySalonList[position].owner_id)
+        startActivity(intent)
+    }
+
     private val dummySalonList: ArrayList<AllSalonList> = ArrayList()
-    private var searchSalonAdapter: SearchSalonAdapter = SearchSalonAdapter(dummySalonList)
+    private var searchSalonAdapter: SearchSalonAdapter = SearchSalonAdapter(dummySalonList, this)
     private var mViewModel: SearchSaloonModel? = null
 
 
@@ -106,19 +117,6 @@ class SearchSalonFragment : BaseFragment() {
 
     }
 
-    /*private fun setUpData() {
-
-        dummySalonList.add(DummySalonList("As you wish", R.mipmap.first_salon, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("Aluna", R.mipmap.pic, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("The salon", R.mipmap.salon, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("Orlando", R.mipmap.orlando, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("Sola", R.mipmap.sola, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("Aluna", R.mipmap.aluna, "Salon & Spa"))
-        dummySalonList.add(DummySalonList("The salon", R.mipmap.salon, "Salon & Spa"))
-
-
-
-    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search, container, false)

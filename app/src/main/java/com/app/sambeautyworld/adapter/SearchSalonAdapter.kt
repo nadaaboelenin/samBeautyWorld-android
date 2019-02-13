@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.dummyData.DummySalonList
+import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.searchsallonpojo.AllSalonList
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_salon_list.view.*
@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.item_salon_list.view.*
 /**
  * Created by ${Shubham} on 12/28/2018.
  */
-class SearchSalonAdapter(private var myDataset: ArrayList<AllSalonList>?) : RecyclerView.Adapter<SearchSalonAdapter.MyViewHolder>() {
+class SearchSalonAdapter(private var myDataset: ArrayList<AllSalonList>?,
+                         private var onItemClicked: OnItemClicked?) : RecyclerView.Adapter<SearchSalonAdapter.MyViewHolder>() {
 
 
     // Provide a reference to the views for each data item
@@ -36,12 +37,15 @@ class SearchSalonAdapter(private var myDataset: ArrayList<AllSalonList>?) : Recy
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.layout.tvSalonName.text = myDataset!![position].business_name
-       // holder.layout.tvSalonType.text  = myDataset!![position].
         if(!myDataset!![position].business_logo.equals("")){
             Picasso.get().load(myDataset!![position].business_logo!!).placeholder(R.mipmap.logo).into(holder.layout.ivSalonImage)
         }
         else{
             Picasso.get().load(R.mipmap.logo).placeholder(R.mipmap.logo).into(holder.layout.ivSalonImage)
+        }
+
+        holder.layout.setOnClickListener {
+            onItemClicked!!.onItemClick(position)
         }
     }
 

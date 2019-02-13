@@ -230,7 +230,6 @@ object Utils {
     /**
      ************** invalidate device token after logout ****************
      */
-
     /**
      ************ clear tray pending notifictions after logout **************
      */
