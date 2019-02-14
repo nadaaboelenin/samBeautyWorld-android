@@ -127,7 +127,7 @@ class OtpVerificationFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        aCounter = object : CountDownTimer(150000, 1000) {
+        aCounter = object : CountDownTimer(60000, 1000) {
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
                 tvResend.text = "Resend in " + String.format("%02d:%02d min ", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
@@ -264,7 +264,6 @@ class OtpVerificationFragment : BaseFragment() {
             showLoading(false)
         }
         //signing the user
-
     }
 
     private fun verifyOtp() {

@@ -6,9 +6,9 @@ import com.app.sambeautyworld.data.Status
 import com.app.sambeautyworld.data.login.ErrorResponse
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.getValue
+import com.app.sambeautyworld.utils.security.AddHeaderInterceptor
 import com.app.sambeautyworld.utils.security.ResponseInterceptorterceptor
 import com.google.gson.GsonBuilder
-import com.hmu.kotlin.utils.security.AddHeaderInterceptor
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody

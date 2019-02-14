@@ -46,7 +46,7 @@ class ActivitySalonStartPoint : BaseActivity() {
                     putString(Constants.BUSINES_OWNER, intent.getStringExtra(Constants.BUSINES_OWNER))
                 }
                 salonScreenFragment.arguments = args
-                addFragment(salonScreenFragment, true, R.id.container_home_salon)
+                replaceFragment(salonScreenFragment, R.id.container_home_salon)
             } else {
                 id = intent.getBundleExtra(Constants.SERVICE_ID)[Constants.SERVICE_ID].toString()
                 service_name = intent.getBundleExtra(Constants.SERVICE_ID)[Constants.SERVICE_NAME].toString()

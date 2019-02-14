@@ -3,6 +3,7 @@ package com.app.sambeautyworld.api.service
 import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
 import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
+import com.app.sambeautyworld.pojo.filter.GetFilterPojo
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
@@ -64,11 +65,10 @@ interface WebService {
     fun updateProfile(
             @Field("user_id") user_id: String,
             @Field("full_name") full_name: String,
-            @Field("address") phone: String,
-            @Field("dob") dob: String,
-            @Field("salon_id") salon_id: String
+            @Field("address") address: String,
+            @Field("email") email: String,
+            @Field("dob") dob: String
     ): Call<ListYourBusinessPojo>
-
 
     @POST(Constants.SEND_FEEDBACK)
     @FormUrlEncoded
@@ -129,6 +129,11 @@ interface WebService {
             @Field("longitude") longitude: String
     ): Call<SalonListBasedOnServicePojo>
 
+    @POST(Constants.GET_FILTER)
+    @FormUrlEncoded
+    fun getFilters(
+            @Field("user_id") user_id: String
+    ): Call<GetFilterPojo>
 
 //
 //

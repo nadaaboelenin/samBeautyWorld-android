@@ -213,12 +213,12 @@ import javax.crypto.spec.SecretKeySpec
 
     /**
      * Wrapper for Android's [SharedPreferences.Editor].
-     *
-     *
      * Used for modifying values in a [SharedPreferencesEncryption] object. All changes you make in an
      * editor are batched, and not copied back to the original [SharedPreferencesEncryption] until you
      * call [.commit] or [.apply].
      */
+
+
     inner class EncryptedEditor : SharedPreferences.Editor {
         private val mEditor: SharedPreferences.Editor = sFile.edit()
 

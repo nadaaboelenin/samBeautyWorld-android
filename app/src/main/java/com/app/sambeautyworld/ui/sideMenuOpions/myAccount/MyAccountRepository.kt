@@ -48,11 +48,11 @@ object MyAccountRepository {
     fun editProfile(successHandler: (ListYourBusinessPojo) -> Unit, failureHandler: (String) -> Unit,
                     user_id: String,
                     full_name: String,
-                    phone: String,
-                    dob: String,
-                    salon_id: String
+                    address: String,
+                    email: String,
+                    dob: String
     ) {
-        webService.updateProfile(user_id, full_name, phone, dob, salon_id).enqueue(object : Callback<ListYourBusinessPojo> {
+        webService.updateProfile(user_id, full_name, address, email, dob).enqueue(object : Callback<ListYourBusinessPojo> {
             override fun onResponse(call: Call<ListYourBusinessPojo>?, response: Response<ListYourBusinessPojo>?) {
                 response?.body()?.let {
                     successHandler(it)

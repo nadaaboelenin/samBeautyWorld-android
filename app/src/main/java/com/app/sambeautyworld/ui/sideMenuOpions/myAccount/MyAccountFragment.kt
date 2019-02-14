@@ -1,5 +1,6 @@
 package com.app.sambeautyworld.ui.sideMenuOpions.myAccount
 import Preferences
+import android.app.DatePickerDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,6 +17,8 @@ import com.app.sambeautyworld.pojo.accountPojo.Salon
 import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.dialog_xmls.*
 import kotlinx.android.synthetic.main.fragment_my_accout.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -93,6 +96,24 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
         mViewModel?.authenticate(Preferences.prefs?.getString(Constants.ID, "0")!!)
     }
 
+    var dateSelected = Calendar.getInstance()
+    private var datePickerDialog: DatePickerDialog? = null
+    var date: DatePickerDialog.OnDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        // TODO Auto-generated method stub
+        dateSelected.set(Calendar.YEAR, year)
+        dateSelected.set(Calendar.MONTH, monthOfYear)
+        dateSelected.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        updateLabel()
+    }
+
+    private fun updateLabel() {
+        val myFormat = "MM/dd/yy" //In which you need put here
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        etBirthDayAccount.setText(sdf.format(dateSelected.time))
+        mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, "", "", "", etBirthDayAccount.text.toString())
+
+    }
+
     private fun clickListeners() {
         etFullNameAccount.setOnClickListener {
             openDialog(1, "Full Name", view!!)
@@ -100,6 +121,16 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
 
         etEmailsAccount.setOnClickListener {
             openDialog(3, "Email ID", view!!)
+        }
+
+        tvGoBackMyAccount.setOnClickListener {
+            goBack()
+        }
+
+        etBirthDayAccount.setOnClickListener {
+            DatePickerDialog(activity!!, date, dateSelected
+                    .get(Calendar.YEAR), dateSelected.get(Calendar.MONTH),
+                    dateSelected.get(Calendar.DAY_OF_MONTH)).show()
         }
     }
 

@@ -25,6 +25,7 @@ import com.app.sambeautyworld.ui.seeOffers.SeeAllOffersFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.ActivitySalonStartPoint
 import com.app.sambeautyworld.utils.Constants
 import com.app.sambeautyworld.utils.saveValue
+import com.hmu.kotlin.callBack.ItemSelectedListener
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.bottom_sheet_content.*
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -35,8 +36,15 @@ import kotlinx.android.synthetic.main.include_showing_locations.*
 /**
  * Created by ${Shubham} on 12/27/2018.
  */
-class HomeFragment : BaseFragment(), OnItemClicked {
+class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
+    override fun selectedItem(item: Int, pos: Int) {
+        val intent = Intent(activity, ActivitySalonStartPoint::class.java)
+        intent.putExtra(Constants.FROM_SEARCH, "1")
+        intent.putExtra(Constants.BUSINES_OWNER, dumyBookmark!![pos].ownder_id)
+        startActivity(intent)
+    }
 
+    private var flagger: Boolean? = false
     private var mViewModel: HomeFragmentModel? = null
     private var id: String? = null
 
@@ -124,6 +132,22 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
 
     private fun clickListeners() {
+
+        llBottomClicker.setOnClickListener {
+
+            if (flagger!!) {
+                flagger = !flagger!!
+                BottomSheetBehavior.from(bottom_sheet)
+                        .setState(BottomSheetBehavior.STATE_COLLAPSED)
+            } else {
+                flagger = !flagger!!
+                BottomSheetBehavior.from(bottom_sheet)
+                        .setState(BottomSheetBehavior.STATE_EXPANDED)
+            }
+        }
+
+
+
         btGotIt.setOnClickListener {
             Preferences.prefs?.saveValue(Constants.GOT_IT, true)
             include2.visibility = View.INVISIBLE
@@ -136,18 +160,20 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
         btViewAllSpecialOffers.setOnClickListener {
             activity?.toolbar?.visibility = View.GONE
-            var allSpecialOffers = SeeAllOffersFragment()
-            var args = Bundle()
+            val allSpecialOffers = SeeAllOffersFragment()
+            val args = Bundle()
             args.putParcelableArrayList(Constants.SPECIAL_OFFERS, dummySpecialOffers)
             allSpecialOffers.arguments = args
-
             addFragment(allSpecialOffers, true, R.id.container_home)
         }
     }
 
     private fun setUpData() {
+
         val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
         bottomSheetBehavior.isHideable = false
+
+
 
         if (!Preferences.prefs?.getBoolean(Constants.GOT_IT, false)!!) {
             include2.visibility = View.INVISIBLE
@@ -164,7 +190,7 @@ class HomeFragment : BaseFragment(), OnItemClicked {
 
         //bookmarks
         rvRecyclerAppointments.layoutManager = LinearLayoutManager(activity, 0, false)
-        rvRecyclerAppointments.adapter = BookmarksAdapter(dumyBookmark, context)
+        rvRecyclerAppointments.adapter = BookmarksAdapter(dumyBookmark, context, this)
 
 
         //special offers

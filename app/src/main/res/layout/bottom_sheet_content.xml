@@ -12,6 +12,7 @@
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
     <LinearLayout
+        android:id="@+id/llBottomClicker"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:background="@color/backgroundColor"

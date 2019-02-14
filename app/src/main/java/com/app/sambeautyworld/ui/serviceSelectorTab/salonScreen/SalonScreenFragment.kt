@@ -65,6 +65,9 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
                 for (j in productLists) {
                     if (j == salonScreenPojo.productsList!![item].products!![sub_item]) {
                         productLists.remove(j)
+                        if (productLists.size == 0) {
+                            break
+                        }
                     }
                 }
                 setProductList(productLists)
@@ -138,6 +141,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
             activity?.tvSalonServiceName?.text = "Cart"
             addFragment(CartFragment(), true, R.id.container_home_salon)
         }
+
         ivAddToFavourites.setOnClickListener {
             mViewModel?.addBookmark(Preferences?.prefs?.getString(Constants.ID, "0")!!, id!!)
         }

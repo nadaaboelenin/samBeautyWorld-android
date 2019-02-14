@@ -1,4 +1,4 @@
-package com.hmu.kotlin.utils.security
+package com.app.sambeautyworld.utils.security
 
 import Preferences
 import android.util.Log

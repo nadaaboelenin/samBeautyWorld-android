@@ -2,14 +2,12 @@ package com.app.sambeautyworld.ui.mobileAuth.sendOtp
 
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.support.v4.widget.NestedScrollView
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.ui.mobileAuth.enterOtp.OtpVerificationFragment
@@ -56,6 +54,11 @@ class MobileAuthFragment : BaseFragment()  {
                 Log.e("TextWatcherTest", "afterTextChanged:\t$s")
             }
         })
+
+
+        etPhoneNumber.setOnClickListener {
+
+        }
     }
 
     private fun clickListeners() {
@@ -71,11 +74,6 @@ class MobileAuthFragment : BaseFragment()  {
             }
         }
 
-
-        etPhoneNumber.setOnClickListener {
-            val scrollview = view?.findViewById(com.app.sambeautyworld.R.id.nested) as NestedScrollView
-            scrollview.post { scrollview.fullScroll(ScrollView.FOCUS_DOWN) }
-        }
     }
 
 }

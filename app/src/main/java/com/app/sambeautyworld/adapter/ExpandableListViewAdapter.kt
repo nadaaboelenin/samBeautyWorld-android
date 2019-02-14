@@ -1,5 +1,6 @@
 package com.app.sambeautyworld.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
 import android.view.LayoutInflater
@@ -21,13 +22,14 @@ class ExpandableListViewAdapter(private val context: Context,
 
 
     override fun getChild(groupPosition: Int, childPosititon: Int): Any {
-        return this.listDataGroup!![groupPosition]!!.subServices!![childPosititon]
+        return this.listDataGroup!![groupPosition].subServices!![childPosititon]
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
         return childPosition.toLong()
     }
 
+    @SuppressLint("InflateParams")
     override fun getChildView(groupPosition: Int, childPosition: Int,
                               isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView

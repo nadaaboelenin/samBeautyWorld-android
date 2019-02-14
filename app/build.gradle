@@ -86,21 +86,21 @@ dependencies {
     implementation 'com.github.joielechong:countrycodepicker:2.2.0'
 
     //firebase
-    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
 
     //permission
     implementation 'com.karumi:dexter:5.0.0'
 
     //maps
-    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 
     //social login
     //facebook
-    implementation 'com.facebook.android:facebook-core:4.38.1'
-    implementation 'com.facebook.android:facebook-login:4.38.1'
+    implementation 'com.facebook.android:facebook-core:4.40.0'
+    implementation 'com.facebook.android:facebook-login:4.40.0'
 
     //expandable list
     implementation 'com.thoughtbot:expandablerecyclerview:1.3'
@@ -109,7 +109,7 @@ dependencies {
 
     //collapsible calendar view
     implementation 'com.github.shrikanth7698:Collapsible-Calendar-View-Android:v1.0.0'
-    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     //dialog
     implementation 'com.github.javiersantos:MaterialStyledDialogs:2.1'

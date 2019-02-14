@@ -27,9 +27,9 @@ class MyAccountModel : MyViewModel() {
 
     fun update(user_id: String,
                full_name: String,
-               phone: String,
-               dob: String,
-               salon_id: String) {
+               address: String,
+               email: String,
+               dob: String) {
         isLoading.value = true
         MyAccountRepository.editProfile({
             response_edit.value = it
@@ -37,6 +37,6 @@ class MyAccountModel : MyViewModel() {
         }, {
             apiError.value = it
             isLoading.value = false
-        }, user_id, full_name, phone, dob, salon_id)
+        }, user_id, full_name, address, email, dob)
     }
 }

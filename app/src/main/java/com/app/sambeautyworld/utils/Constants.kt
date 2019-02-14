@@ -4,21 +4,15 @@ package com.app.sambeautyworld.utils
  * Created by android on 2/11/17.
  */
 object Constants {
-
-
     const val IS_LOGGED_IN = "is_logged_in"
     const val BASE_URL = "http://webappsitesdemo.com/salon-app/api/"
     const val LOGIN = "login"
     const val TOKEN = "token"
     const val LOGIN_RESPONSE = "login_response"
     const val PAGE_URL = "page_url"
-
     const val UPDATE_INFO = "update-personal-info"
-
     const val IS_REGISTERED = "registered"
-
     const val PHONE_NUMBER = "phone_number"
-
     const val REQUEST_CAMERA = 1
     const val REQUEST_GALLERY = 2
     const val REQUEST_GPS_ENABLE_PERMISSION = 100
@@ -44,8 +38,7 @@ object Constants {
     const val BUSINESS_TYPE = "allBusinessTypes"
     const val SALON_HOME_SERVICES = "salonHomeservices"
     const val HOME_SALONS = "getSalonNearBy"
-
-
+    const val GET_FILTER = "getFilterData"
     const val SPLASH_TIME_OUT: Long = 3000
     const val HANDLER_DELAY_TIME:Long=2000
     const val NOTI_COUNT = "noti_count"
@@ -60,15 +53,10 @@ object Constants {
             val STATUS_SERVER_ERROR = 500
             val STATUS_UNKNOWN_ERROR = 503
             val STATUS_API_VALIDATION_ERROR = 422
-
         }
     }
-
     const val SNACK_BAR_DURATION = 2500
-
-
     const val IS_LOGOUT = "is_logout"
-
     const val IMAGE_UPLOAD_FAILURE_MESSAGE = "Uploaded failure please try again!"
     const val IMAGE_UPLOADED_MESSAGE = "Successfully uploaded"
     //FAILURE MESSAGES
@@ -78,7 +66,6 @@ object Constants {
     const val FAILURE_SERVER_NOT_RESPONDING = "Oops! looks like we are having internal problems. Please try again later."
     const val FAILURE_INTERNET_CONNECTION = "Internet connection appears to be offline. Please check your network settings."
     const val SESSION_EXPIRED = "Sorry, looks like you are logged in another device with the same user."
-
     const val NOTI_TYPE = "noti_type"
     const val IS_NUMBER_VERIFIED: String = "number_verified"
     const val SERVICE_ID: String = "service_id"
@@ -86,12 +73,10 @@ object Constants {
     const val SERVICE_NAME: String = "service_name"
     const val FROM_SEARCH: String = "from_seacrch"
     const val SPECIAL_OFFERS: String = "special_offers"
-
     //doctor appointment type enum
     enum class TYPE(val type: Int) {
         SIMPLE(0), BREAKFAST(1), LUNCH(2), TASK(3), UNVERIFIEDOCTOR(4)
     }
-
     enum class WEEK(val type: Int) {
         MONDAY(0), TUESDAY(1), WEDNESDAY(2), THURSDAY(3), FRIDAY(4), SATURDAY(5), SUNDAY(6)
     }

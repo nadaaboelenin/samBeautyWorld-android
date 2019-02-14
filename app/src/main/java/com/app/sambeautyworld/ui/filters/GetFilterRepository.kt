@@ -1,7 +1,7 @@
-package com.app.sambeautyworld.ui.homeFragment
+package com.app.sambeautyworld.ui.filters
 
 import com.app.sambeautyworld.api.service.ApiHelper
-import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
+import com.app.sambeautyworld.pojo.filter.GetFilterPojo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -9,14 +9,13 @@ import retrofit2.Response
 /**
  * Created by ${Shubham} on 09/15/18.
  */
-object HomeFragmentRepository {
+object GetFilterRepository {
     private val webService = ApiHelper.createService()
-
-    fun getData(successHandler: (MainHomePojo) -> Unit, failureHandler: (String) -> Unit,
-                user_id: String, id: String
+    fun getFilters(successHandler: (GetFilterPojo) -> Unit, failureHandler: (String) -> Unit,
+                   user_id: String
     ) {
-        webService.featuredServices(user_id, id).enqueue(object : Callback<MainHomePojo> {
-            override fun onResponse(call: Call<MainHomePojo>?, response: Response<MainHomePojo>?) {
+        webService.getFilters(user_id).enqueue(object : Callback<GetFilterPojo> {
+            override fun onResponse(call: Call<GetFilterPojo>?, response: Response<GetFilterPojo>?) {
                 response?.body()?.let {
                     successHandler(it)
                 }
@@ -25,6 +24,7 @@ object HomeFragmentRepository {
                         val error = ApiHelper.handleAuthenticationError(response.errorBody()!!)
                         failureHandler(error)
                     }
+
                 } else {
                     response?.errorBody()?.let {
                         val error = ApiHelper.handleApiError(response.errorBody()!!)
@@ -32,8 +32,10 @@ object HomeFragmentRepository {
                     }
                 }
             }
-            override fun onFailure(call: Call<MainHomePojo>?, t: Throwable?) {
+
+            override fun onFailure(call: Call<GetFilterPojo>?, t: Throwable?) {
                 t?.let {
+
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }
