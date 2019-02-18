@@ -90,6 +90,8 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
         super.onViewCreated(view, savedInstanceState)
         hitApi()
         clickListeners()
+
+
     }
 
     private fun hitApi() {
@@ -132,6 +134,8 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
                     .get(Calendar.YEAR), dateSelected.get(Calendar.MONTH),
                     dateSelected.get(Calendar.DAY_OF_MONTH)).show()
         }
+
+
     }
 
     private fun openDialog(i: Int, s: String, view: View) {

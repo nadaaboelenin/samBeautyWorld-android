@@ -43,6 +43,10 @@ object Constants {
     const val HANDLER_DELAY_TIME:Long=2000
     const val NOTI_COUNT = "noti_count"
     const val APP_HIDDEN_FOLDER="/.besttyme"
+    const val GET_BOOKMARK = "getAllBookmnarkData"
+
+
+
     internal interface httpcodes {
         companion object {
             val STATUS_OK = 200

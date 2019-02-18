@@ -72,7 +72,6 @@ class ExpandableProductListViewAdapter(private val context: Context, private val
     }
 
     override fun getChildrenCount(groupPosition: Int): Int {
-
         return this.listDataGroup!![groupPosition].products!!.size
     }
 

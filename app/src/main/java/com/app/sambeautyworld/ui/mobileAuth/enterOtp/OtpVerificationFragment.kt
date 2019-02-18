@@ -298,4 +298,12 @@ class OtpVerificationFragment : BaseFragment() {
     private fun checkExistence() {
         mViewModel?.authenticate(phone_number!!)
     }
+
+    override fun onPause() {
+        super.onPause()
+        aCounter.onFinish()
+        aCounter.cancel()
+    }
+
+
 }

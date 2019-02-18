@@ -76,6 +76,7 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
                     dummyList = it?.featuredServicesList as ArrayList<FeaturedServicesList>
                     if (it.bookMarks?.size != null) {
                         dumyBookmark = it?.bookMarks as ArrayList<BookMark>
+                        setFavourite(it?.bookMarks as ArrayList<BookMark>)
                     }
 
                     if (it.specialOffers?.size != null) {
@@ -126,7 +127,8 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
          *    Preferences.prefs?.saveValue(Constants.ID, "1")
         mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "1")!!, this!!.id!!)
          */
-        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!, this!!.id!!)
+        Preferences.prefs?.saveValue(Constants.ID, "32")
+        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "32")!!, this!!.id!!)
 
     }
 
@@ -172,9 +174,6 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
 
         val bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet)
         bottomSheetBehavior.isHideable = false
-
-
-
         if (!Preferences.prefs?.getBoolean(Constants.GOT_IT, false)!!) {
             include2.visibility = View.INVISIBLE
             include_bookmarks.visibility = View.VISIBLE
@@ -182,16 +181,13 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
             include2.visibility = View.VISIBLE
             include_bookmarks.visibility = View.INVISIBLE
         }
-
         //featured services
         rvFeaturedServices.layoutManager = GridLayoutManager(activity, 4)
         rvFeaturedServices.adapter = FeaturedServicesAdapter(dummyList, this)
 
-
         //bookmarks
         rvRecyclerAppointments.layoutManager = LinearLayoutManager(activity, 0, false)
         rvRecyclerAppointments.adapter = BookmarksAdapter(dumyBookmark, context, this)
-
 
         //special offers
         vpSpecialOffers.clipToPadding = false

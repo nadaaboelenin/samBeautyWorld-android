@@ -24,6 +24,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.pojo.mainHome.BookMark
 import com.app.sambeautyworld.pojo.salonScreen.Product
 import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.utils.Constants
@@ -55,6 +56,7 @@ open class BaseFragment : Fragment() {
     companion object {
         var productList: ArrayList<Product> = ArrayList()
         var subServices: ArrayList<SubService> = ArrayList()
+        var booksmarks: ArrayList<BookMark> = ArrayList()
     }
 
 
@@ -350,5 +352,12 @@ open class BaseFragment : Fragment() {
         return subServices
     }
 
+    fun setFavourite(list: ArrayList<BookMark>) {
+        booksmarks = list as ArrayList<BookMark>
+    }
+
+    fun getFavourite(): ArrayList<BookMark> {
+        return booksmarks
+    }
 
 }

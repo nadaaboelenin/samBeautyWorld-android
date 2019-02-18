@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.MyAdapter
+import com.app.sambeautyworld.adapter.BusinessAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.businessType.AllBusinessList
@@ -68,7 +68,7 @@ class BusinessTypeFragment : BaseFragment(), OnItemClicked {
 
     private fun setUpData() {
         rvRecyclerBusinessType.layoutManager = LinearLayoutManager(activity)
-        rvRecyclerBusinessType.adapter = MyAdapter(list, activity, this)
+        rvRecyclerBusinessType.adapter = BusinessAdapter(list, activity, this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -4,6 +4,7 @@ import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
 import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
 import com.app.sambeautyworld.pojo.filter.GetFilterPojo
+import com.app.sambeautyworld.pojo.getbookmark.GetBookmarksPojo
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
@@ -134,6 +135,12 @@ interface WebService {
     fun getFilters(
             @Field("user_id") user_id: String
     ): Call<GetFilterPojo>
+
+    @POST(Constants.GET_BOOKMARK)
+    @FormUrlEncoded
+    fun getBookmark(
+            @Field("user_id") user_id: String
+    ): Call<GetBookmarksPojo>
 
 //
 //

@@ -105,12 +105,15 @@ class LoginFragment : BaseFragment() {
         btGoogle.setOnClickListener {
             mListeners?.onGoogleLogin()
         }
+
         etBirthDay.isFocusable = false
+
         etBirthDay.setOnClickListener {
             DatePickerDialog(activity!!, date, dateSelected
                     .get(Calendar.YEAR), dateSelected.get(Calendar.MONTH),
                     dateSelected.get(Calendar.DAY_OF_MONTH)).show()
         }
+
     }
 
     var date: DatePickerDialog.OnDateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -130,9 +133,6 @@ class LoginFragment : BaseFragment() {
     private fun validateData() {
         if (Validations.isEmpty(etFullName)
                 && Validations.isEmpty(etEmails) &&
-
-
-
                 Validations.isEmpty(etBirthDay)) {
             if (Validations.isValidEmail(etEmails)) {
                 mViewModel?.registerUser(
