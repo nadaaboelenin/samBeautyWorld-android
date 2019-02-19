@@ -13,6 +13,7 @@ public class SpecialOffer implements Parcelable {
     public String actual_price;
     public String discount_price;
     public String service_at;
+    public String ownder_id;
 
     public static final Creator<SpecialOffer> CREATOR = new Creator<SpecialOffer>() {
         @Override
@@ -35,6 +36,7 @@ public class SpecialOffer implements Parcelable {
         actual_price = in.readString();
         discount_price = in.readString();
         service_at = in.readString();
+        ownder_id = in.readString();
     }
 
     @Override
@@ -52,5 +54,6 @@ public class SpecialOffer implements Parcelable {
         dest.writeString(actual_price);
         dest.writeString(discount_price);
         dest.writeString(service_at);
+        dest.writeString(ownder_id);
     }
 }

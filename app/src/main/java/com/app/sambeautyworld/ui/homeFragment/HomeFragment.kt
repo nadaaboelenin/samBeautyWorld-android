@@ -127,8 +127,8 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
          *    Preferences.prefs?.saveValue(Constants.ID, "1")
         mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "1")!!, this!!.id!!)
          */
-        Preferences.prefs?.saveValue(Constants.ID, "32")
-        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "32")!!, this!!.id!!)
+//        Preferences.prefs?.saveValue(Constants.ID, "32")
+        mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!, this!!.id!!)
 
     }
 

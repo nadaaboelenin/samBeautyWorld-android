@@ -23,7 +23,7 @@
             android:resource="@xml/network_security" />
 
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -50,11 +50,11 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-        <!--android:name=".ui.home.HomeActivity"-->
-        <!--android:label="@string/title_activity_home"-->
-        <!--android:screenOrientation="portrait"-->
-        <!--android:theme="@style/AppTheme" />-->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name=".ui.serviceSelectorTab.ActivitySalonStartPoint"

@@ -24,7 +24,6 @@ class BookmarksAdapter(private var myDataset: ArrayList<BookMark>?, private var 
         val textView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_bookmarks, parent, false) as ConstraintLayout
         // set the view's size, margins, paddings and layout parameters
-
         return MyViewHolder(textView)
     }
 

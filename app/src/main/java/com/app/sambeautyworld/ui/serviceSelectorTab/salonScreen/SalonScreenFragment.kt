@@ -22,8 +22,8 @@ import com.app.sambeautyworld.pojo.salonScreen.Product
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
 import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.app.sambeautyworld.ui.chatview.ChatSupportFragment
+import com.app.sambeautyworld.ui.chooseAgent.ChooseAgentFragment
 import com.app.sambeautyworld.ui.mapFragment.MapsTrial
-import com.app.sambeautyworld.ui.serviceSelectorTab.cart.CartFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.salonInformation.SalonInformationFragment
 import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.activity_salons.*
@@ -139,7 +139,12 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
         btDoneWithBookings.setOnClickListener {
             activity?.linearLayout_tab?.visibility = View.GONE
             activity?.tvSalonServiceName?.text = "Cart"
-            addFragment(CartFragment(), true, R.id.container_home_salon)
+
+            val chooseAgentFragment = ChooseAgentFragment()
+            val args = Bundle()
+            args.putString("id", id)
+            chooseAgentFragment.arguments = args
+            addFragment(chooseAgentFragment, true, R.id.container_home_salon)
         }
 
         ivAddToFavourites.setOnClickListener {
@@ -174,7 +179,6 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
         tvServicesOfSalon.setOnClickListener {
             tvServicesOfSalon.setBackgroundColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
             tvServicesOfSalon.setTextColor(ContextCompat.getColor(context!!, R.color.white))
-
             tvProductsOfSalons.setBackgroundColor(ContextCompat.getColor(context!!, R.color.grayBackround))
             tvProductsOfSalons.setTextColor(ContextCompat.getColor(context!!, R.color.backgroundColor))
             rv_availableplaces.setAdapter(expandableListViewAdapter)

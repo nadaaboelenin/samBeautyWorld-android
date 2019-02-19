@@ -44,6 +44,7 @@ object Constants {
     const val NOTI_COUNT = "noti_count"
     const val APP_HIDDEN_FOLDER="/.besttyme"
     const val GET_BOOKMARK = "getAllBookmnarkData"
+    const val CHOOSE_AGENT = "chooseAgent"
 
 
 

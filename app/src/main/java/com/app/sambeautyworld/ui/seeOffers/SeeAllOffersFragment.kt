@@ -41,10 +41,7 @@ class SeeAllOffersFragment : BaseFragment() , OnItemClicked {
         if (!arguments!!.isEmpty) {
             dummySpecialOffers = arguments!!.getParcelableArrayList(Constants.SPECIAL_OFFERS)
         }
-//        dummySpecialOffers?.add("1")
-//        dummySpecialOffers?.add("1")
-//        dummySpecialOffers?.add("1")
-//        dummySpecialOffers?.add("1")
+
 
         rvSeeAllOffers.layoutManager = LinearLayoutManager(context!!, 1, false)
         rvSeeAllOffers.adapter = SeeAllOffersAdapter(dummySpecialOffers, context!!,this)

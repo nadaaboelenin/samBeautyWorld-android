@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.MyAdapter
+import com.app.sambeautyworld.adapter.FavouritesAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.ui.filters.FilterContentFragment
@@ -86,7 +86,7 @@ class FavouritesFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData() {
-        rvFavoriteSalons.adapter = MyAdapter(dummySpecialOffers, context!!, this)
+        rvFavoriteSalons.adapter = FavouritesAdapter(dummySpecialOffers, context!!, this)
         rvFavoriteSalons.layoutManager = LinearLayoutManager(context!!, 1, false)
     }
 

@@ -10,16 +10,16 @@ import com.app.sambeautyworld.callBack.OnItemClicked
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_at_the_salon.view.*
 
-class MyAdapter(private var myDataset: ArrayList<com.app.sambeautyworld.pojo.getbookmark.BookMark>?, private var activity: Context?,
-                private var onItemClicked: OnItemClicked?
-) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class FavouritesAdapter(private var myDataset: ArrayList<com.app.sambeautyworld.pojo.getbookmark.BookMark>?, private var activity: Context?,
+                        private var onItemClicked: OnItemClicked?
+) : RecyclerView.Adapter<FavouritesAdapter.MyViewHolder>() {
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): MyAdapter.MyViewHolder {
+                                    viewType: Int): FavouritesAdapter.MyViewHolder {
 
 
         val v: View = LayoutInflater.from(parent.context)

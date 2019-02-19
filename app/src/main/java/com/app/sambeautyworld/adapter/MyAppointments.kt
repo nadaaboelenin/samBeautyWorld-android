@@ -29,8 +29,6 @@ class MyAppointments(private var myDataset: ArrayList<DummyAppointmentsPojo>?, p
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 //        holder.layout.tvBookmarksName.text = myDataset!![position].names
 //        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)
-
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

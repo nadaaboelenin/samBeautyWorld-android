@@ -1,6 +1,7 @@
 package com.app.sambeautyworld.api.service
 
 import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
+import com.app.sambeautyworld.pojo.agents.AgentsPojo
 import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
 import com.app.sambeautyworld.pojo.filter.GetFilterPojo
@@ -8,17 +9,17 @@ import com.app.sambeautyworld.pojo.getbookmark.GetBookmarksPojo
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
+import com.app.sambeautyworld.pojo.requestPojo.GetAgentsRequest
 import com.app.sambeautyworld.pojo.salonListBasedOnService.SalonListBasedOnServicePojo
 import com.app.sambeautyworld.pojo.salonLocations.SalonLocationsPojo
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
 import com.app.sambeautyworld.pojo.searchsallonpojo.SearchSaloonListPojo
 import com.app.sambeautyworld.utils.Constants
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
-
-
 /**
  *  Created by shubham on 3/11/17.
  *  All web services are declared here
@@ -141,6 +142,12 @@ interface WebService {
     fun getBookmark(
             @Field("user_id") user_id: String
     ): Call<GetBookmarksPojo>
+
+
+    @POST(Constants.CHOOSE_AGENT)
+    fun getAgents(
+            @Body request: GetAgentsRequest
+    ): Call<AgentsPojo>
 
 //
 //
