@@ -26,7 +26,7 @@ class CardsInfoAdapter(private var myDataset: ArrayList<String>?, private var ac
         return MyViewHolder(textView)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    //        Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 //        holder.layout.tvBookmarksName.text = myDataset!![position].names
 //        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)

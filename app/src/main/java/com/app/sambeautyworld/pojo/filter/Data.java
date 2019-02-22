@@ -1,5 +1,6 @@
 package com.app.sambeautyworld.pojo.filter;
 
+
 import java.util.List;
 
 public class Data {
@@ -8,7 +9,5 @@ public class Data {
     public String at_salon;
     public String at_home;
     public String at_makeup;
-    public String location;
-    public String user_id;
-    public List<String> all_locaiton = null;
+    public List<Location> location = null;
 }

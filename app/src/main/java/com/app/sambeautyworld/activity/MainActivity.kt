@@ -153,7 +153,6 @@ class MainActivity : BaseActivity(), SocialLoginManager.SocialLoginListener, Goo
                     Preferences.prefs?.saveValue(Constants.IS_LOGGED_IN, true)
                     Preferences.prefs?.saveValue(Constants.ID, it.user_info!!.user_id)
                     replaceFragment(EnableLocationServices(), R.id.container_main)
-
                 } else {
 
                 }

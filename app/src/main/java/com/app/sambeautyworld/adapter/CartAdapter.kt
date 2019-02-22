@@ -37,7 +37,6 @@ class CartAdapter(private var myDataset: ArrayList<Product>?, private var activi
         Picasso.get().load(myDataset!![position].product_image).into(holder.layout.ivProductCircleView)
         holder.layout.tvProductsCount.text = myDataset!![position].count.toString()
 
-
         holder.layout.ivRemoveItems.setOnClickListener {
             addRemoveListener?.addRemove(position, position, 2, myDataset!![position].count - 1)
         }
@@ -45,7 +44,6 @@ class CartAdapter(private var myDataset: ArrayList<Product>?, private var activi
         holder.layout.ivAddProducts.setOnClickListener {
             addRemoveListener?.addRemove(position, position, 2, myDataset!![position].count + 1)
         }
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

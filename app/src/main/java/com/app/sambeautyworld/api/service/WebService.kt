@@ -5,6 +5,7 @@ import com.app.sambeautyworld.pojo.agents.AgentsPojo
 import com.app.sambeautyworld.pojo.businessType.GetBusinessTypePojo
 import com.app.sambeautyworld.pojo.existence.CheckUserExistence
 import com.app.sambeautyworld.pojo.filter.GetFilterPojo
+import com.app.sambeautyworld.pojo.filteredsearch.FilteredSearchPojo
 import com.app.sambeautyworld.pojo.getbookmark.GetBookmarksPojo
 import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
@@ -149,6 +150,30 @@ interface WebService {
             @Body request: GetAgentsRequest
     ): Call<AgentsPojo>
 
+
+    @POST(Constants.SEARCH_FILTERED)
+    @FormUrlEncoded
+    fun serachFiltered(@Field("user_id") user_id: String,
+                       @Field("min_price") min_price: String,
+                       @Field("max_price") max_price: String,
+                       @Field("at_salon") at_salon: String,
+                       @Field("at_home") at_home: String,
+                       @Field("at_makeup") at_makeup: String,
+                       @Field("latitude") latitude: String,
+                       @Field("longitude") longitude: String
+    ): Call<FilteredSearchPojo>
+
+    /**
+     *
+     *min_price:126
+    max_price:500
+    at_salon:0
+    at_home:1
+    at_makeup:0
+    latitude:24.4539
+    longitude:54.3773
+    user_id:5
+     */
 //
 //
 //    @POST(Constants.UPDATE_INFO)

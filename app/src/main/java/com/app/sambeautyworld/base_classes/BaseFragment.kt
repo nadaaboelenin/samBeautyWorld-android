@@ -102,7 +102,6 @@ open class BaseFragment : Fragment() {
 
     /**
      * Add fragment with or without addToBackStack
-     *
      * @param fragment       which needs to be attached
      * @param addToBackStack is fragment needed to backstack
      */
@@ -337,7 +336,7 @@ open class BaseFragment : Fragment() {
     }
 
     fun setProductList(list: ArrayList<Product>) {
-        productList = list as ArrayList<Product>
+        productList = list
     }
 
     fun getProductList(): ArrayList<Product> {
@@ -345,7 +344,7 @@ open class BaseFragment : Fragment() {
     }
 
     fun setServiceList(list: ArrayList<SubService>) {
-        subServices = list as ArrayList<SubService>
+        subServices = list
     }
 
     fun getServiceList(): ArrayList<SubService> {
@@ -353,7 +352,7 @@ open class BaseFragment : Fragment() {
     }
 
     fun setFavourite(list: ArrayList<BookMark>) {
-        booksmarks = list as ArrayList<BookMark>
+        booksmarks = list
     }
 
     fun getFavourite(): ArrayList<BookMark> {

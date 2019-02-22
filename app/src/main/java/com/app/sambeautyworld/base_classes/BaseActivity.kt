@@ -251,7 +251,6 @@ abstract class BaseActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
 
 
@@ -297,7 +296,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     fun setProductList(list: ArrayList<Product>) {
-        productList = list as ArrayList<Product>
+        productList = list
     }
 
     fun getProductList(): ArrayList<Product> {
@@ -305,7 +304,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun setServiceList(list: ArrayList<SubService>) {
-        subServices = list as ArrayList<SubService>
+        subServices = list
     }
 
     fun getServiceList(): ArrayList<SubService> {

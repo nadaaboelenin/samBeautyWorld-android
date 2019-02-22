@@ -45,6 +45,7 @@ object Constants {
     const val APP_HIDDEN_FOLDER="/.besttyme"
     const val GET_BOOKMARK = "getAllBookmnarkData"
     const val CHOOSE_AGENT = "chooseAgent"
+    const val SEARCH_FILTERED = "searchSalons"
 
 
 

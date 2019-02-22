@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.adapter.AtTheSalonAdapter
+import com.app.sambeautyworld.adapter.AtTheSalonAdapters
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.salonListBasedOnService.AtTheSalonService
@@ -117,7 +117,7 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData() {
-        rvAtTheSalon.adapter = AtTheSalonAdapter(dummySpecialOffers, context!!, this)
+        rvAtTheSalon.adapter = AtTheSalonAdapters(dummySpecialOffers, context!!, this)
         rvAtTheSalon.layoutManager = LinearLayoutManager(context!!, 1, false)
     }
 

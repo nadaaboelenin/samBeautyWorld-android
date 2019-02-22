@@ -123,8 +123,7 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
 
     private fun hitApi() {
         /**
-         *
-         *    Preferences.prefs?.saveValue(Constants.ID, "1")
+        Preferences.prefs?.saveValue(Constants.ID, "1")
         mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "1")!!, this!!.id!!)
          */
 //        Preferences.prefs?.saveValue(Constants.ID, "32")
