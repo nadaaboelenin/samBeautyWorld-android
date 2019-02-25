@@ -15,12 +15,13 @@ import com.app.sambeautyworld.pojo.salonScreen.ProductsList
 import com.squareup.picasso.Picasso
 
 class ExpandableProductListViewAdapter(private val context: Context, private val listDataGroup: List<ProductsList>?,
-                                       private var onItemClicked: OnItemClickListener?, private var addRemoveListener: AddRemoveListener?)
+                                       private var onItemClicked: OnItemClickListener?,
+                                       private var addRemoveListener: AddRemoveListener?)
     : BaseExpandableListAdapter() {
     private var i: Int = 0
 
     override fun getChild(groupPosition: Int, childPosititon: Int): Any {
-        return this.listDataGroup!![groupPosition]!!.products!![childPosititon]
+        return this.listDataGroup!![groupPosition].products!![childPosititon]
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {

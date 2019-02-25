@@ -12,7 +12,8 @@ import com.app.sambeautyworld.pojo.salonScreen.SubService
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_sub_services.view.*
 
-class SubServicesAdapter(private var myDataset: ArrayList<SubService>?, private var activity: Context?,
+class SubServicesAdapter(private var myDataset: ArrayList<SubService>?,
+                         private var activity: Context?,
                          private var onItemClicked: OnItemClicked?,
                          private var addRemoveListener: AddRemoveListener?
 ) :
@@ -41,8 +42,6 @@ class SubServicesAdapter(private var myDataset: ArrayList<SubService>?, private 
         holder.layout.ivAddToCart.setOnClickListener {
             addRemoveListener?.addRemove(position, position, 1, 1)
         }
-
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

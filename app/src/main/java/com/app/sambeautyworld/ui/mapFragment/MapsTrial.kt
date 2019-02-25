@@ -23,7 +23,6 @@ class MapsTrial : BaseFragment(), OnMapReadyCallback {
 
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if (activity != null) {
             val mapFragment = childFragmentManager
@@ -34,11 +33,9 @@ class MapsTrial : BaseFragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         googleMaps = googleMap
-
         val latlong = lat_long?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
         val latitude = java.lang.Double.parseDouble(latlong!![0])
         val longitude = java.lang.Double.parseDouble(latlong[1])
-
         val sydney = LatLng(latitude, longitude)
         googleMap.addMarker(MarkerOptions().position(sydney)
                 .title("Marker in Sydney"))
@@ -65,8 +62,6 @@ class MapsTrial : BaseFragment(), OnMapReadyCallback {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_maps, container, false)
-
-
     }
 
 

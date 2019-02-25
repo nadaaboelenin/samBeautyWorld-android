@@ -110,7 +110,7 @@ open class BaseFragment : Fragment() {
         val fragmentManager = mActivity?.supportFragmentManager
         val fragmentOldObject = fragmentManager?.findFragmentByTag(tag)
         val transaction = fragmentManager?.beginTransaction()
-        transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
+//        transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
         if (fragmentOldObject != null) {
             fragmentManager.popBackStackImmediate(tag, 0)
         } else {
@@ -256,9 +256,9 @@ open class BaseFragment : Fragment() {
         val tag: String = fragment::class.java.simpleName
 
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        if (animate) {
-            transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
-        }
+//        if (animate) {
+//            transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
+//        }
         transaction?.replace(container, fragment, tag)
                 ?.commitAllowingStateLoss()
     }

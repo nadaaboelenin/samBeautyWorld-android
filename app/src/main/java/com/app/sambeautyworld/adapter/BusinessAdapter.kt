@@ -11,7 +11,8 @@ import com.app.sambeautyworld.pojo.businessType.AllBusinessList
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_right.view.*
 
-class BusinessAdapter(private var myDataset: ArrayList<AllBusinessList>?, private var activity: Context?,
+class BusinessAdapter(private var myDataset: ArrayList<AllBusinessList>?,
+                      private var activity: Context?,
                       private var onItemClicked: OnItemClicked?
 ) : RecyclerView.Adapter<BusinessAdapter.MyViewHolder>() {
 

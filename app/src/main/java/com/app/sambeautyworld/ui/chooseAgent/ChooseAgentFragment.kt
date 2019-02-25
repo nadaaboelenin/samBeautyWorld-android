@@ -72,7 +72,7 @@ class ChooseAgentFragment : BaseFragment(), OnItemClicked {
         }
         val size: Int = subServices.size
 
-        subServices.forEachIndexed { index, element ->
+        subServices.forEachIndexed { index, _ ->
             services.add(GetAgentsRequest.Services(subServices[index].subservice_id))
         }
         getAgentRequest = GetAgentsRequest(id, services)

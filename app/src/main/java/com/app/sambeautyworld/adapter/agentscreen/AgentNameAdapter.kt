@@ -42,7 +42,6 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?, private var act
         holder.itemView.rvAgentTimigngs.adapter = AgentTimingAdapter(timings, activity!!, this)
         holder.itemView.rvAgentTimigngs.layoutManager = GridLayoutManager(activity, 5)
 
-
         holder.itemView.ivShowAgentTiming.setOnClickListener {
             if (!flagger!!) {
                 flagger = !flagger!!
@@ -50,10 +49,7 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?, private var act
             } else {
                 flagger = !flagger!!
                 holder.itemView.rvAgentTimigngs.visibility = View.GONE
-
             }
-
-
         }
     }
 

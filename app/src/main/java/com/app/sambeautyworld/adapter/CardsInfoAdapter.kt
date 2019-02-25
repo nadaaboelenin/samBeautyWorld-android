@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.OnItemClicked
 
-class CardsInfoAdapter(private var myDataset: ArrayList<String>?, private var activity: Context?,
+class CardsInfoAdapter(private var myDataset: ArrayList<String>?,
+                       private var activity: Context?,
                        private var onItemClicked: OnItemClicked?
 ) :
         RecyclerView.Adapter<CardsInfoAdapter.MyViewHolder>() {

@@ -26,7 +26,6 @@ class CartAdapter(private var myDataset: ArrayList<Product>?, private var activi
         val textView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_products_cart, parent, false) as CardView
         // set the view's size, margins, paddings and layout parameters
-
         return MyViewHolder(textView)
     }
 

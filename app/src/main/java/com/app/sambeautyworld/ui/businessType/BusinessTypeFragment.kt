@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_business_type.*
 
 class BusinessTypeFragment : BaseFragment(), OnItemClicked {
     override fun onItemClick(position: Int) {
-        var homeFragment: HomeFragment = HomeFragment()
-        var args = Bundle()
+        val homeFragment = HomeFragment()
+        val args = Bundle()
         args.putString(Constants.ID, list[position].id)
         homeFragment.arguments = args
         addFragment(homeFragment, true, R.id.container_home)

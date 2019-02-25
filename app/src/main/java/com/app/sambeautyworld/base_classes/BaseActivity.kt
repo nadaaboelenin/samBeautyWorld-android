@@ -112,7 +112,9 @@ abstract class BaseActivity : AppCompatActivity() {
         val fragmentManager = this.supportFragmentManager
         val fragmentOldObject = fragmentManager?.findFragmentByTag(tag)
         val transaction = fragmentManager?.beginTransaction()
-        transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
+        //  transaction?.setCustomAnimations(R.anim.anim_in, R.anim.anim_out, R.anim.anim_in_reverse, R.anim.anim_out_reverse)
+        transaction?.setCustomAnimations(R.anim.fade_in,
+                R.anim.fade_out)
         if (fragmentOldObject != null) {
             fragmentManager.popBackStackImmediate(tag, 0)
         } else {

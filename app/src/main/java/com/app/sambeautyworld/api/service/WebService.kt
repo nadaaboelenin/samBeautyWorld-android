@@ -11,6 +11,7 @@ import com.app.sambeautyworld.pojo.listYourBusiness.ListYourBusinessPojo
 import com.app.sambeautyworld.pojo.mainHome.MainHomePojo
 import com.app.sambeautyworld.pojo.register.RegisterUserPojo
 import com.app.sambeautyworld.pojo.requestPojo.GetAgentsRequest
+import com.app.sambeautyworld.pojo.requestbooking.Request
 import com.app.sambeautyworld.pojo.salonListBasedOnService.SalonListBasedOnServicePojo
 import com.app.sambeautyworld.pojo.salonLocations.SalonLocationsPojo
 import com.app.sambeautyworld.pojo.salonScreen.SalonScreenPojo
@@ -163,29 +164,34 @@ interface WebService {
                        @Field("longitude") longitude: String
     ): Call<FilteredSearchPojo>
 
+
+    @POST(Constants.BOOK_A_SERVICE)
+    @FormUrlEncoded
+    fun bookAService(@Body request: Request): Call<ListYourBusinessPojo>
+
     /**
-     *
-     *min_price:126
-    max_price:500
-    at_salon:0
-    at_home:1
-    at_makeup:0
-    latitude:24.4539
-    longitude:54.3773
+    owner_id:12
+    agent_id:5
     user_id:5
+    quantity:2
+    service_request:Hair Blow
+    date:2019-02-04
+    time:1:00 PMe:50
+
+    service_pric
      */
-//
-//
+
+
+
 //    @POST(Constants.UPDATE_INFO)
 //    fun updateInformation(@Body request: ResetPasswordRequest): Call<UpdateInfoPojo>
-
 
 //
 //    @Headers("Accept: " + "application/json")
 //    @POST("forgot_password")
 //    fun resetPassword(@Body request: ResetPasswordRequest): Call<Status>
 //
-//
+
 //    @Headers("Accept: " + "application/json")
 //    @POST("signup")
 //    fun register(@Body request: RegisterationRequest): Call<Status>
@@ -242,7 +248,7 @@ interface WebService {
 //    @POST("appointment")
 //    fun bookSlot(@Body request: BookingRequest): Call<BookingResponse>
 //
-//
+
 //
 //    @Headers("Accept: " + "application/json")
 //    @POST("appointment")

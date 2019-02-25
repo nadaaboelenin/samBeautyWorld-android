@@ -12,9 +12,8 @@ class ChatSupportAdapter(var  mContext : Context) : RecyclerView.Adapter<ChatSup
     var sender: Int = 0
     var recicver: Int = 1
 
-    class Myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class Myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    }
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ChatSupportAdapter.Myviewholder {
         var v: View
         if (p1 == recicver) {

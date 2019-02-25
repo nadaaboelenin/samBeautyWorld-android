@@ -11,7 +11,8 @@ import com.hmu.kotlin.callBack.ItemSelectedListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_bookmarks.view.*
 
-class BookmarksAdapter(private var myDataset: ArrayList<BookMark>?, private var activity: Context?,
+class BookmarksAdapter(private var myDataset: ArrayList<BookMark>?,
+                       private var activity: Context?,
                        private var onItemClicked: ItemSelectedListener?) :
         RecyclerView.Adapter<BookmarksAdapter.MyViewHolder>() {
 

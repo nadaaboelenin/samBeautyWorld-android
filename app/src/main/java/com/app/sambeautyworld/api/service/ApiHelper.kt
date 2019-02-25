@@ -24,10 +24,7 @@ import java.util.concurrent.TimeUnit
  * *
  */
 object ApiHelper {
-
-
     private var mRetrofit: Retrofit
-
     // Creating Retrofit Object
     init {
 

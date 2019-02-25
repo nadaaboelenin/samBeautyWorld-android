@@ -31,7 +31,6 @@ class DisplaySalons : BaseFragment(), OnMapReadyCallback {
 
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if (activity != null) {
             val mapFragment = childFragmentManager
