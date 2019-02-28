@@ -5,7 +5,7 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/ivLocationIcon"
+        android:id="@+id/ivLocationIcons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -14,8 +14,19 @@
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/map"
+        android:id="@+id/map_select_address"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
+    <Button
+        android:id="@+id/btDoneWIthLocationSelection"
+        style="@style/Base.TextAppearance.AppCompat.Large"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/backgroundColor"
+        android:text="@string/select_location"
+        android:textColor="@android:color/white" />
 </RelativeLayout>

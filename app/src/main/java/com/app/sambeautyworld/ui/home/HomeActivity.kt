@@ -12,6 +12,7 @@ import android.view.View
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseActivity
 import com.app.sambeautyworld.ui.businessType.BusinessTypeFragment
+import com.app.sambeautyworld.ui.newaddress.SetNewAddressFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.favourites.FavouritesFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.listYourBusiness.ListYourBusinessFragment
 import com.app.sambeautyworld.ui.sideMenuOpions.myAccount.MyAccountFragment
@@ -108,8 +109,8 @@ class HomeActivity : BaseActivity() {
 
         llChangeTheLanguage.setOnClickListener {
             drawer_layout.closeDrawer(GravityCompat.START)
-//            toolbar.visibility = View.GONE
-//            addFragment(ChooseAgentFragment(), true, R.id.container_home)
+            toolbar.visibility = View.GONE
+            addFragment(SetNewAddressFragment(), true, R.id.container_home)
         }
     }
 

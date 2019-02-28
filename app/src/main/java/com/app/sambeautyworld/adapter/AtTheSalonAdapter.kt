@@ -11,7 +11,8 @@ import com.hmu.kotlin.callBack.OptionSelected
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_at_the_salon.view.*
 
-class AtTheSalonAdapter(private var myDataset: MutableList<Datum>, private var activity: Context?,
+class AtTheSalonAdapter(private var myDataset: MutableList<Datum>,
+                        private var activity: Context?,
                         private var onItemClicked: OptionSelected?
 ) :
         RecyclerView.Adapter<AtTheSalonAdapter.MyViewHolder>() {

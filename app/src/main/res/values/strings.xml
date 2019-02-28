@@ -278,7 +278,6 @@
     <string name="last_names">Last Name</string>
     <string name="first_names">First Name</string>
     <string name="wrong_format">The format of start time and end time are wrong</string>
-    <string name="city">City</string>
     <string name="select_specialization">Select Specialization</string>
     <string name="office_name">Office Name</string>
 
@@ -534,6 +533,16 @@
     <string name="continuee">Continue</string>
     <string name="apply">Apply</string>
     <string name="salons_locater">Salon Locations</string>
+    <string name="search_to_get_started">Search to get started</string>
+    <string name="your_address">Your address</string>
+    <string name="unit_house_number">Unit / House number</string>
+    <string name="building_street_name">Building / Street name</string>
+    <string name="area_line_1">Area Line 1</string>
+    <string name="area_line_2">Area Line 2</string>
+    <string name="city">City</string>
+    <string name="continue_button">Continue</string>
+    <string name="save_this_address_for_future_requests">Save this address for future requests</string>
+    <string name="select_location">Select Location</string>
 
 
 </resources>

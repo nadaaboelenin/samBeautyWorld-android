@@ -72,7 +72,7 @@ object LocationService {
                             activity.startActivity(ite)
                             onError()
                         }
-                        negativeButton("Cancelar", { onError() })
+                        negativeButton("Cancelar") { onError() }
                         onCancelled { onError() }
                     }.show()
                 }

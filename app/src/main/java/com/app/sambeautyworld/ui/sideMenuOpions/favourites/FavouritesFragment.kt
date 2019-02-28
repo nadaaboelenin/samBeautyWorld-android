@@ -134,7 +134,7 @@ class FavouritesFragment : BaseFragment(), OnItemClicked, OptionSelected {
 
     private fun clickListeners() {
         ivFilters.setOnClickListener {
-            addFragment(FilterContentFragment(), true, com.app.sambeautyworld.R.id.container_home)
+            addFragment(FilterContentFragment(), false, com.app.sambeautyworld.R.id.container_home)
         }
 
         tvGoBackFavourites.setOnClickListener {
