@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 
 
-class ChatSupportAdapter(var  mContext : Context) : RecyclerView.Adapter<ChatSupportAdapter.Myviewholder>() {
+class ChatSupportAdapter(var mContext: Context) : RecyclerView.Adapter<ChatSupportAdapter.Myviewholder>() {
     var sender: Int = 0
     var recicver: Int = 1
 
     class Myviewholder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ChatSupportAdapter.Myviewholder {
-        var v: View
+        val v: View
         if (p1 == recicver) {
             v = LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_receivermessage, parent, false)

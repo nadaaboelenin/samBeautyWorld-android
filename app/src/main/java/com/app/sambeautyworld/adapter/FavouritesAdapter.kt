@@ -47,14 +47,6 @@ class FavouritesAdapter(private var myDataset: ArrayList<com.app.sambeautyworld.
         holder.itemView.tvTypeOfServiceOffers.text = myDataset!![position].bookmark_name
         holder.itemView.tvSalonNameOffers.text = myDataset!![position].location
 
-        if (myDataset!![position].atsalon_service == 1) {
-            holder.itemView.ivSalonAvailable.visibility = View.VISIBLE
-            holder.itemView.ivHomeAvailable.visibility = View.INVISIBLE
-        }
-        if (myDataset!![position].home_service == 2) {
-            holder.itemView.ivSalonAvailable.visibility = View.INVISIBLE
-            holder.itemView.ivHomeAvailable.visibility = View.VISIBLE
-        }
     }
 
 

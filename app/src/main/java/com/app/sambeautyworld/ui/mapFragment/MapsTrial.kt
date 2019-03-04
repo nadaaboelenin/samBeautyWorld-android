@@ -32,6 +32,7 @@ class MapsTrial : BaseFragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+
         googleMaps = googleMap
         val latlong = lat_long?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
         val latitude = java.lang.Double.parseDouble(latlong!![0])

@@ -3,17 +3,20 @@ import Preferences
 import android.app.DatePickerDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.location.Address
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.MyAccountCountries
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.accountPojo.GetAccountPojo
 import com.app.sambeautyworld.pojo.accountPojo.Salon
+import com.app.sambeautyworld.ui.newaddress.SetNewAddressFragment
 import com.app.sambeautyworld.utils.Constants
 import kotlinx.android.synthetic.main.dialog_xmls.*
 import kotlinx.android.synthetic.main.fragment_my_accout.*
@@ -25,6 +28,8 @@ import java.util.*
  * Created by ${Shubham} on 12/31/2018.
  */
 class MyAccountFragment : BaseFragment(), OnItemClicked {
+    private var address: ArrayList<Address> = ArrayList()
+
     override fun onItemClick(position: Int) {
 //        noOfSalonsPojo!![position].selected = !noOfSalonsPojo!![position].selected!!
 //
@@ -90,8 +95,19 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
         super.onViewCreated(view, savedInstanceState)
         hitApi()
         clickListeners()
+        getBunlded()
 
 
+    }
+
+    private fun getBunlded() {
+        if (arguments != null && !arguments?.isEmpty!!) {
+            if (arguments?.containsKey("array")!!) {
+                address = arguments!!.getParcelableArrayList("array")
+                etAddressesAccount.setText(address[0].adminArea)
+                mViewModel?.update(Preferences?.prefs?.getString(Constants.ID, "0")!!, "", etAddressesAccount.text.toString(), "", "")
+            }
+        }
     }
 
     private fun hitApi() {
@@ -133,6 +149,11 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
             DatePickerDialog(activity!!, date, dateSelected
                     .get(Calendar.YEAR), dateSelected.get(Calendar.MONTH),
                     dateSelected.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+        etAddressesAccount.setOnClickListener {
+            //            addFragment()
+            addFragment(SetNewAddressFragment(), true, R.id.container_home)
         }
 
 

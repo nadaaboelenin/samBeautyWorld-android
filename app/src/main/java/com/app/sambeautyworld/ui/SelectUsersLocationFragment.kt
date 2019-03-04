@@ -7,7 +7,9 @@ import android.support.annotation.Nullable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.app.sambeautyworld.R
 import com.app.sambeautyworld.base_classes.BaseFragment
+import com.app.sambeautyworld.ui.newaddress.SetNewAddressFragment
 import com.app.sambeautyworld.utils.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -67,7 +69,7 @@ class SelectUsersLocationFragment : BaseFragment(), OnMapReadyCallback {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if (activity != null) {
             val mapFragment = childFragmentManager
-                    .findFragmentById(com.app.sambeautyworld.R.id.map_select_address) as SupportMapFragment
+                    .findFragmentById(R.id.map_select_address) as SupportMapFragment
             mapFragment.getMapAsync(this)
         }
     }
@@ -75,12 +77,18 @@ class SelectUsersLocationFragment : BaseFragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ivLocationIcons.bringToFront()
+        tvConfirmLocationToUpdate.bringToFront()
         clickListeners()
     }
 
     private fun clickListeners() {
-        btDoneWIthLocationSelection.setOnClickListener {
-
+        tvConfirmLocationToUpdate.setOnClickListener {
+            var setNewAddressFragment = SetNewAddressFragment()
+            var args = Bundle()
+            args.putDouble("lat", latitude)
+            args.putDouble("lon", longitude)
+            setNewAddressFragment.arguments = args
+            replaceFragment(setNewAddressFragment, false, R.id.container_home)
         }
     }
 

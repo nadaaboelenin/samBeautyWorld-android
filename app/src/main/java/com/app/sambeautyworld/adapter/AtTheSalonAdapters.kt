@@ -25,7 +25,7 @@ class AtTheSalonAdapters(private var myDataset: ArrayList<AtTheSalonService>?, p
         // create a new view
         val textView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_at_the_salon, parent, false) as CardView
-        // set the view's size, margins, paddings and layout parameters
+        // set the view's size, margins, paddingsa and layout parameters
 
         return MyViewHolder(textView)
     }

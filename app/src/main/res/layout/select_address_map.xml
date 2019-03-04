@@ -4,6 +4,18 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/tvConfirmLocationToUpdate"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/ivLocationIcons"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rounded_button_back"
+        android:gravity="center"
+        android:text="@string/confirm_location"
+        android:textColor="@color/white" />
+
     <ImageView
         android:id="@+id/ivLocationIcons"
         android:layout_width="wrap_content"
@@ -14,6 +26,7 @@
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:visibility="gone"
         android:id="@+id/map_select_address"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -21,6 +34,7 @@
 
 
     <Button
+        android:visibility="gone"
         android:id="@+id/btDoneWIthLocationSelection"
         style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"

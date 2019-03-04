@@ -7,14 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.agents.Agent
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_agent_information.view.*
 
-class AgentNameAdapter(private var myDataset: ArrayList<Agent>?, private var activity: Context?,
-                       private var onItemClicked: ServicesOfAgentAdapter,
-                       private var timings: ArrayList<String>
+class AgentNameAdapter(private var myDataset: ArrayList<Agent>?,
+                       private var activity: Context,
+                       private var onItemClicked: OnItemClicked,
+                       private var timings: ArrayList<String>,
+                       private var listner: OnItemClicked?
 ) : RecyclerView.Adapter<AgentNameAdapter.MyViewHolder>() {
+
+
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private var flagger: Boolean? = false
@@ -39,7 +44,7 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?, private var act
         holder.itemView.tvAgentName.text = myDataset!![position].agent_name
         holder.itemView.tvAgentLocation.text = myDataset!![position].nationality
         Picasso.get().load(myDataset!![position].agent_image).into(holder.itemView.ivAgentImage)
-        holder.itemView.rvAgentTimigngs.adapter = AgentTimingAdapter(timings, activity!!, this)
+        holder.itemView.rvAgentTimigngs.adapter = AgentTimingAdapter(timings, activity!!, activity, listner)
         holder.itemView.rvAgentTimigngs.layoutManager = GridLayoutManager(activity, 5)
 
         holder.itemView.ivShowAgentTiming.setOnClickListener {
@@ -51,6 +56,8 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?, private var act
                 holder.itemView.rvAgentTimigngs.visibility = View.GONE
             }
         }
+
+
     }
 
 

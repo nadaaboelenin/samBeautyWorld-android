@@ -18,8 +18,10 @@ import com.app.sambeautyworld.pojo.salonScreen.SubService
 import kotlinx.android.synthetic.main.fragment_choose_agent.*
 
 class ChooseAgentFragment : BaseFragment(), OnItemClicked {
-    override fun onItemClick(position: Int) {
 
+    private var listener: OnItemClicked? = null
+    override fun onItemClick(position: Int) {
+        showMessage("Choose=$position")
     }
 
     private var subServices: ArrayList<SubService> = ArrayList()
@@ -32,6 +34,7 @@ class ChooseAgentFragment : BaseFragment(), OnItemClicked {
         super.onCreate(savedInstanceState)
         mViewModel = ViewModelProviders.of(this)[GetAgentsModel::class.java]
         attachObservers()
+        listener = this
     }
 
     private fun attachObservers() {
@@ -55,7 +58,7 @@ class ChooseAgentFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun setUpData(agentsPojo: AgentsPojo) {
-        rvAgentsWholeInformation.adapter = ServicesOfAgentAdapter((agentsPojo.serviceData as ArrayList<ServiceDatum>?)!!, activity!!, this, agentsPojo.timings as ArrayList<String>)
+        rvAgentsWholeInformation.adapter = ServicesOfAgentAdapter((agentsPojo.serviceData as ArrayList<ServiceDatum>?)!!, activity!!, listener, agentsPojo.timings as ArrayList<String>)
         rvAgentsWholeInformation.layoutManager = LinearLayoutManager(activity!!)
     }
 
@@ -65,6 +68,7 @@ class ChooseAgentFragment : BaseFragment(), OnItemClicked {
     }
 
     private fun getBundledArguments() {
+
         subServices = BaseFragment.subServices
 
         if (!arguments!!.isEmpty) {

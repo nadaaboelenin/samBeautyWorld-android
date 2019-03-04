@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.callBack.OnItemClicked
 import kotlinx.android.synthetic.main.item_dates.view.*
 
 class AgentTimingAdapter(private var myDataset: ArrayList<String>?,
                          private var activity: Context?,
-                         private var onItemClicked: AgentNameAdapter
+                         private var context: Context?,
+                         private var listner: OnItemClicked?
 ) : RecyclerView.Adapter<AgentTimingAdapter.MyViewHolder>() {
 
 
@@ -34,6 +36,10 @@ class AgentTimingAdapter(private var myDataset: ArrayList<String>?,
 //        }
 
         holder.itemView.tvTimings.text = myDataset!![position]
+        holder.itemView.tvTimings.setOnClickListener {
+            listner?.onItemClick(position)
+
+        }
 
     }
 

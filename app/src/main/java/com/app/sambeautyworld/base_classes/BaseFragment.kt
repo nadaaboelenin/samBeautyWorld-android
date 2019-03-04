@@ -7,6 +7,8 @@ import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -32,6 +34,7 @@ import com.app.sambeautyworld.utils.Utils
 import com.app.sambeautyworld.utils.getValue
 import com.app.sambeautyworld.utils.security.ApiFailureTypes
 import com.hmu.kotlin.callBack.AlertDialogListener
+import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -58,8 +61,6 @@ open class BaseFragment : Fragment() {
         var subServices: ArrayList<SubService> = ArrayList()
         var booksmarks: ArrayList<BookMark> = ArrayList()
     }
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -357,6 +358,25 @@ open class BaseFragment : Fragment() {
 
     fun getFavourite(): ArrayList<BookMark> {
         return booksmarks
+    }
+
+
+    public fun getAddress(latitude: Double, longitude: Double): ArrayList<Address> {
+        val result = StringBuilder();
+        var addresses: ArrayList<Address> = ArrayList()
+        try {
+            val geocoder = Geocoder(activity, Locale.getDefault());
+            addresses = geocoder.getFromLocation(latitude, longitude, 1) as ArrayList<Address>;
+            if (addresses.isNotEmpty()) {
+                val address = addresses[0];
+                result.append(address.locality).append("\n");
+                result.append(address.countryName);
+            }
+        } catch (e: IOException) {
+
+        }
+
+        return addresses;
     }
 
 }

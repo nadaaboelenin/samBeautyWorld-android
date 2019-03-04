@@ -127,13 +127,12 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
-                            android:id="@+id/username"
+                            android:id="@+id/etHouseNumber"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginTop="4dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/unit_house_number"
-                            android:inputType="textEmailAddress"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -142,7 +141,6 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-
                         android:background="@android:color/darker_gray" />
 
                     <android.support.design.widget.TextInputLayout
@@ -153,11 +151,11 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
+                            android:id="@+id/etStreetName"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/building_street_name"
-                            android:inputType="textEmailAddress"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -166,7 +164,6 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-
                         android:background="@android:color/darker_gray" />
 
                     <android.support.design.widget.TextInputLayout
@@ -177,11 +174,11 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
+                            android:id="@+id/etAreaLine1"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/area_line_1"
-                            android:inputType="textEmailAddress"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -190,7 +187,6 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-
                         android:background="@android:color/darker_gray" />
 
                     <android.support.design.widget.TextInputLayout
@@ -201,11 +197,11 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
+                            android:id="@+id/etAreaLine2"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/area_line_2"
-                            android:inputType="textEmailAddress"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -214,7 +210,6 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-
                         android:background="@android:color/darker_gray" />
 
                     <android.support.design.widget.TextInputLayout
@@ -225,11 +220,11 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
+                            android:id="@+id/etCity"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@android:color/transparent"
                             android:hint="@string/city"
-                            android:inputType="textEmailAddress"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -249,11 +244,11 @@
                         android:textColorHint="@android:color/darker_gray">
 
                         <EditText
+                            android:id="@+id/etPostCode"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@android:color/transparent"
-                            android:hint="@string/unit_house_number"
-                            android:inputType="textEmailAddress"
+                            android:hint="@string/post_code"
                             android:textColor="@android:color/black"
                             android:textColorHint="@android:color/darker_gray" />
 
@@ -312,7 +307,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <Button
-        android:id="@+id/btApplyFilters"
+        android:id="@+id/btSaveMyAddress"
         style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_width="match_parent"
         android:layout_height="50dp"
