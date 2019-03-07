@@ -57,7 +57,6 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?,
             }
         }
 
-
     }
 
 

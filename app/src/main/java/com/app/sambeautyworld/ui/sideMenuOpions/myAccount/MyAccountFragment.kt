@@ -153,7 +153,7 @@ class MyAccountFragment : BaseFragment(), OnItemClicked {
 
         etAddressesAccount.setOnClickListener {
             //            addFragment()
-            addFragment(SetNewAddressFragment(), true, R.id.container_home)
+            addFragment(SetNewAddressFragment(), true, R.id.container_fullscreen)
         }
 
 

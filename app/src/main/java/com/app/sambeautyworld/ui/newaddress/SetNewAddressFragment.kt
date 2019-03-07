@@ -49,7 +49,7 @@ class SetNewAddressFragment : BaseFragment() {
 
     private fun clickListeners() {
         cvAddressView.setOnClickListener {
-            addFragment(SelectUsersLocationFragment(), true, R.id.container_home)
+            addFragment(SelectUsersLocationFragment(), true, R.id.container_fullscreen)
         }
 
         btSaveMyAddress.setOnClickListener {
@@ -57,7 +57,7 @@ class SetNewAddressFragment : BaseFragment() {
             var args = Bundle()
             args.putParcelableArrayList("array", address)
             setNewAddressFragment.arguments = args
-            replaceFragment(setNewAddressFragment, false, R.id.container_home)
+            replaceFragment(setNewAddressFragment, false, R.id.container_fullscreen)
         }
     }
 

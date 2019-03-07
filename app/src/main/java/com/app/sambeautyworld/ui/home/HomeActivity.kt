@@ -32,6 +32,7 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun iniView(savedInstanceState: Bundle?) {
+        container_fullscreen.bringToFront()
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -62,9 +63,10 @@ class HomeActivity : BaseActivity() {
         }
 
         llMyAccount.setOnClickListener {
+            container_fullscreen.bringToFront()
             drawer_layout.closeDrawer(GravityCompat.START)
-            toolbar.visibility = View.GONE
-            addFragment(MyAccountFragment(), true, R.id.container_home)
+//            toolbar.visibility = View.GONE
+            addFragment(MyAccountFragment(), true, R.id.container_fullscreen)
         }
 
         llFavourite.setOnClickListener {

@@ -33,14 +33,13 @@
         android:layout_height="match_parent" />
 
 
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btDoneWIthLocationSelection"
-        style="@style/Base.TextAppearance.AppCompat.Large"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+    <ImageView
+        android:id="@+id/ivRecenter"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/backgroundColor"
-        android:text="@string/select_location"
-        android:textColor="@android:color/white" />
+        android:layout_margin="48dp"
+        android:src="@drawable/ic_my_location_black_24dp"
+        android:tint="@color/backgroundColor" />
 </RelativeLayout>
