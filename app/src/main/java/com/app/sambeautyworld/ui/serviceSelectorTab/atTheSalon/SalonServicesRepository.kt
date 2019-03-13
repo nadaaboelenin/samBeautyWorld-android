@@ -37,7 +37,7 @@ object SalonServicesRepository {
 
             override fun onFailure(call: Call<SalonListBasedOnServicePojo>?, t: Throwable?) {
                 t?.let {
-
+                    failureHandler("No Salons Were found in the requested area")
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }
@@ -73,7 +73,7 @@ object SalonServicesRepository {
 
             override fun onFailure(call: Call<SalonListBasedOnServicePojo>?, t: Throwable?) {
                 t?.let {
-
+                    failureHandler(it.localizedMessage)
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }

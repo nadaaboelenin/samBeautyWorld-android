@@ -5,7 +5,6 @@ import java.util.List;
 public class AgentsPojo {
 
     public Integer status;
-    public List<String> timings = null;
     public List<ServiceDatum> serviceData = null;
 
 }

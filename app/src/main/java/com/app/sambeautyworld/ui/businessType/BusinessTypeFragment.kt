@@ -22,7 +22,7 @@ class BusinessTypeFragment : BaseFragment(), OnItemClicked {
         val args = Bundle()
         args.putString(Constants.ID, list[position].id)
         homeFragment.arguments = args
-        addFragment(homeFragment, true, R.id.container_home)
+        addFragment(homeFragment, false, R.id.container_home)
     }
 
     private var list: ArrayList<AllBusinessList> = ArrayList()

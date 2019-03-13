@@ -79,6 +79,7 @@ class AtTheSalonFragment : BaseFragment(), OnItemClicked {
 
         args.apply {
             putString(Constants.BUSINES_OWNER, dummySpecialOffers!![position].owner_id)
+            putString(Constants.SALON_ID, dummySpecialOffers!![position].business_id)
         }
         salonScreenFragment.arguments = args
         addFragment(salonScreenFragment, true, R.id.container_home_salon)

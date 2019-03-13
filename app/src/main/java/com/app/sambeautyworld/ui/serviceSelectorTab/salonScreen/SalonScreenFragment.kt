@@ -127,12 +127,13 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
     private fun getBundle() {
         if (arguments != null) {
             id = arguments?.getString(Constants.BUSINES_OWNER)
+            salon_id = arguments?.getString(Constants.SALON_ID)
             fetchDataFromApi()
         }
     }
 
     private fun fetchDataFromApi() {
-        mViewModel?.getAllServices(id!!)
+        mViewModel?.getAllServices(id!!, Preferences.prefs!!.getString(Constants.ID, "1"), salon_id)
     }
 
     private fun clickListeners() {
@@ -143,6 +144,7 @@ class SalonScreenFragment : BaseFragment(), OnItemClickListener, AddRemoveListen
             val chooseAgentFragment = ChooseAgentFragment()
             val args = Bundle()
             args.putString("id", id)
+            args.putString("salonId", salonScreenPojo.servicesList!![0].salon_id.toString())
             chooseAgentFragment.arguments = args
             addFragment(chooseAgentFragment, true, R.id.container_home_salon)
         }

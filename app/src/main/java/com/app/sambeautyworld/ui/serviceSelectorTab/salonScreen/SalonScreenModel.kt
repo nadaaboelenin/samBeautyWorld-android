@@ -28,7 +28,7 @@ class SalonScreenModel : MyViewModel() {
     }
 
 
-    fun getAllServices(owner_id: String) {
+    fun getAllServices(owner_id: String, string: String, salon_id: String?) {
 
         isLoading.value = true
         SalonScreenRepository.getAllServices({
@@ -37,6 +37,6 @@ class SalonScreenModel : MyViewModel() {
         }, {
             apiError.value = it
             isLoading.value = false
-        }, owner_id)
+        }, owner_id, string, salon_id)
     }
 }

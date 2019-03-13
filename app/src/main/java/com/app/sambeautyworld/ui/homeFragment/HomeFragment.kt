@@ -19,7 +19,9 @@ import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.listServices.FeaturedServicesList
 import com.app.sambeautyworld.pojo.mainHome.BookMark
+import com.app.sambeautyworld.pojo.mainHome.Past
 import com.app.sambeautyworld.pojo.mainHome.SpecialOffer
+import com.app.sambeautyworld.pojo.mainHome.Upcoming
 import com.app.sambeautyworld.ui.appointments.AppointmentFragment
 import com.app.sambeautyworld.ui.seeOffers.SeeAllOffersFragment
 import com.app.sambeautyworld.ui.serviceSelectorTab.ActivitySalonStartPoint
@@ -47,6 +49,8 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
     private var flagger: Boolean? = false
     private var mViewModel: HomeFragmentModel? = null
     private var id: String? = null
+    private var upcoming: ArrayList<Upcoming>? = ArrayList()
+    private var past: ArrayList<Past>? = ArrayList()
 
     override fun onItemClick(position: Int) {
         val args = Bundle()
@@ -79,6 +83,14 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
                         setFavourite(it?.bookMarks as ArrayList<BookMark>)
                     }
 
+                    if (!it.appointments!!.upcoming.isEmpty()) {
+                        upcoming = it.appointments!!.upcoming as ArrayList<Upcoming>
+                    }
+                    if (!it.appointments!!.past.isEmpty()) {
+                        past = it.appointments!!.past as ArrayList<Past>
+                    }
+
+
                     if (it.specialOffers?.size != null) {
                         dummySpecialOffers = it?.specialOffers as ArrayList<SpecialOffer>
                     }
@@ -108,15 +120,15 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         getBundled()
-
         clickListeners()
     }
 
     private fun getBundled() {
         if (arguments != null) {
+
             id = arguments!!.getString(Constants.ID)
+
             hitApi()
         }
     }
@@ -126,7 +138,6 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
         Preferences.prefs?.saveValue(Constants.ID, "1")
         mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "1")!!, this!!.id!!)
          */
-//        Preferences.prefs?.saveValue(Constants.ID, "32")
         mViewModel?.getServices(Preferences.prefs?.getString(Constants.ID, "0")!!, id!!)
 
     }
@@ -156,7 +167,15 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
 
         btAppointments.setOnClickListener {
             activity?.toolbar?.visibility = View.GONE
-            addFragment(AppointmentFragment(), true, R.id.container_home)
+            var appointmentFragment = AppointmentFragment()
+            var args = Bundle()
+            args.putParcelableArrayList("past", past)
+            args.putParcelableArrayList("upcoming", upcoming)
+            appointmentFragment.arguments = args
+
+            addFragment(appointmentFragment, true, R.id.container_home)
+
+
         }
 
         btViewAllSpecialOffers.setOnClickListener {
@@ -194,6 +213,16 @@ class HomeFragment : BaseFragment(), OnItemClicked, ItemSelectedListener {
         vpSpecialOffers.pageMargin = 20
         vpSpecialOffers.adapter = SpecialOffersAdapter(context!!, dummySpecialOffers!!)
         pageIndicatorView.count = dummySpecialOffers!!.size
+
+
+        if (!upcoming!!.isEmpty() || !past!!.isEmpty()) {
+            btAppointments.isEnabled = true
+            btAppointments.text = "My Appointments"
+        } else {
+            btAppointments.isEnabled = false
+            btAppointments.text = "No Appointments"
+        }
+
 
     }
 

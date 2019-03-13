@@ -37,7 +37,7 @@ object AvailableAtHomeRepository {
 
             override fun onFailure(call: Call<SalonLocationsPojo>?, t: Throwable?) {
                 t?.let {
-
+                    failureHandler(it.localizedMessage)
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }

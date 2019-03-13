@@ -8,19 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.callBack.AgentListeners
 import com.app.sambeautyworld.pojo.agents.Agent
 import com.app.sambeautyworld.pojo.agents.ServiceDatum
 import kotlinx.android.synthetic.main.item_services_choose_agents.view.*
 
 class ServicesOfAgentAdapter(private var myDataset: ArrayList<ServiceDatum>?, private var activity: Context?,
-                             private var listner: OnItemClicked?,
-                             private var timings: ArrayList<String>
-) : RecyclerView.Adapter<ServicesOfAgentAdapter.MyViewHolder>(), OnItemClicked {
-    override fun onItemClick(position: Int) {
-//        Toast.makeText(activity,myDataset[].)
-    }
-
+                             private var listner: AgentListeners?
+) : RecyclerView.Adapter<ServicesOfAgentAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -37,9 +32,10 @@ class ServicesOfAgentAdapter(private var myDataset: ArrayList<ServiceDatum>?, pr
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.itemView.tvServiceName.text = myDataset!![position].service_name
-        holder.itemView.rvAgentsInformation.adapter = AgentNameAdapter(myDataset!![position].agents as ArrayList<Agent>?, this.activity!!, this, timings, listner)
+        holder.itemView.tvServiceName.text = myDataset!![position].sub_service_name
+        holder.itemView.rvAgentsInformation.adapter = AgentNameAdapter(myDataset!![position].agents as ArrayList<Agent>?, this.activity!!, listner, position, activity!!)
         holder.itemView.rvAgentsInformation.layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
+
 
     }
 

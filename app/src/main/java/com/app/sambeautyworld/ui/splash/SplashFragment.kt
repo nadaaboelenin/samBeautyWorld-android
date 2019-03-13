@@ -57,12 +57,14 @@ class SplashFragment : BaseFragment() {
 
             override fun onFinish() {
                 if (Preferences.prefs!!.getBoolean(Constants.IS_LOGGED_IN, false)) {
+                    activity!!.finish()
                     startActivity(Intent(activity, HomeActivity::class.java))
+
                 } else {
                     if (!Preferences.prefs!!.getBoolean(Constants.IS_NUMBER_VERIFIED, false)) {
-                        addFragment(MobileAuthFragment(), false, com.app.sambeautyworld.R.id.container_main)
+                        replaceFragment(MobileAuthFragment(), false, com.app.sambeautyworld.R.id.container_main)
                     } else {
-                        addFragment(LoginFragment(), false, com.app.sambeautyworld.R.id.container_main)
+                        replaceFragment(LoginFragment(), false, com.app.sambeautyworld.R.id.container_main)
                     }
                 }
             }

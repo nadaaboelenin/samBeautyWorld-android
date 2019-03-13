@@ -23,7 +23,7 @@
 
 
     <com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar
-        android:id="@+id/calendarView"
+        android:id="@+id/collapsibleCalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -66,7 +66,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btContinue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/collapsibleCalendar" />
 
 
 </android.support.constraint.ConstraintLayout>

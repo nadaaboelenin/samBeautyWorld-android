@@ -49,34 +49,38 @@ object SalonScreenRepository {
 
 
     fun getAllServices(successHandler: (SalonScreenPojo) -> Unit, failureHandler: (String) -> Unit,
-                       owner_id: String) {
-        webService.getAllServices(owner_id).enqueue(object : Callback<SalonScreenPojo> {
-            override fun onResponse(call: Call<SalonScreenPojo>?, response: Response<SalonScreenPojo>?) {
-                response?.body()?.let {
-                    successHandler(it)
+                       owner_id: String,
+                       string: String,
+                       salon_id: String?) {
+        if (salon_id != null) {
+            webService.getAllServices(owner_id, string, salon_id).enqueue(object : Callback<SalonScreenPojo> {
+                override fun onResponse(call: Call<SalonScreenPojo>?, response: Response<SalonScreenPojo>?) {
+                    response?.body()?.let {
+                        successHandler(it)
 
-                }
-                if (response?.code() == 422) {
-                    response.errorBody()?.let {
-                        val error = ApiHelper.handleAuthenticationError(response.errorBody()!!)
-                        failureHandler(error)
                     }
+                    if (response?.code() == 422) {
+                        response.errorBody()?.let {
+                            val error = ApiHelper.handleAuthenticationError(response.errorBody()!!)
+                            failureHandler(error)
+                        }
 
-                } else {
-                    response?.errorBody()?.let {
-                        val error = ApiHelper.handleApiError(response.errorBody()!!)
-                        failureHandler(error)
+                    } else {
+                        response?.errorBody()?.let {
+                            val error = ApiHelper.handleApiError(response.errorBody()!!)
+                            failureHandler(error)
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<SalonScreenPojo>?, t: Throwable?) {
-                t?.let {
+                override fun onFailure(call: Call<SalonScreenPojo>?, t: Throwable?) {
+                    t?.let {
 
-                    //failureHandler(ApiFailureTypes.getFailureMessage(it))
+                        //failureHandler(ApiFailureTypes.getFailureMessage(it))
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
 

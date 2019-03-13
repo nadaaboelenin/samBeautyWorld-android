@@ -69,7 +69,8 @@ class SelectAreaFragment : BaseFragment(), OnItemClicked {
                     dummySpecialOffers = it.data as ArrayList<Datum>
                     setUpData()
                 } else {
-
+                    showLoading(false)
+                    showSnackBar(it.message)
                 }
             }
         })

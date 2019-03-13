@@ -103,8 +103,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     /**
      * Add fragment with or without addToBackStack
-     *
-     * @param fragment       which needs to be attached
+     *bcvcvbcbdsfdsdsfdssdfsdfsdsfdfsdfsdf
+     * @param fragment which needs to be attached
      * @param addToBackStack is fragment needed to backstack
      */
     fun addFragment(fragment: Fragment, addToBackStack: Boolean, container_id: Int) {
@@ -173,7 +173,6 @@ abstract class BaseActivity : AppCompatActivity() {
             mProgressDialog?.window!!.requestFeature(Window.FEATURE_NO_TITLE)
             mProgressDialog?.setContentView(R.layout.loader_half__layout)
             mProgressDialog?.setCancelable(false)
-
         }
         mProgressDialog!!.show()
     }
@@ -313,5 +312,8 @@ abstract class BaseActivity : AppCompatActivity() {
         return subServices
     }
 
+    fun clearBackStack() {
+
+    }
 
 }

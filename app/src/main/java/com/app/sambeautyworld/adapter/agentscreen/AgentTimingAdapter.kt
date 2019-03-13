@@ -1,18 +1,20 @@
 package com.app.sambeautyworld.adapter.agentscreen
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.callBack.OnItemClicked
+import com.app.sambeautyworld.callBack.AgentListeners
 import kotlinx.android.synthetic.main.item_dates.view.*
 
 class AgentTimingAdapter(private var myDataset: ArrayList<String>?,
-                         private var activity: Context?,
-                         private var context: Context?,
-                         private var listner: OnItemClicked?
+                         private var listner: AgentListeners?,
+                         var position_service: Int,
+                         var position_agent: Int,
+                         var activity1: Context
 ) : RecyclerView.Adapter<AgentTimingAdapter.MyViewHolder>() {
 
 
@@ -37,8 +39,9 @@ class AgentTimingAdapter(private var myDataset: ArrayList<String>?,
 
         holder.itemView.tvTimings.text = myDataset!![position]
         holder.itemView.tvTimings.setOnClickListener {
-            listner?.onItemClick(position)
-
+            listner?.onItemClick(position_service, position_agent, position)
+            holder.itemView.tvTimings.setBackgroundColor(ContextCompat.getColor(activity1, R.color.backgroundColor))
+            holder.itemView.tvTimings.setTextColor(ContextCompat.getColor(activity1, R.color.white))
         }
 
     }

@@ -24,6 +24,10 @@ class SelectUsersLocationFragment : BaseFragment(), OnMapReadyCallback {
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
 
+    private var latitude_initial: Double = 0.0
+    private var longitude_initial: Double = 0.0
+
+
     override fun onMapReady(googleMap: GoogleMap) {
         googleMaps = googleMap
 //        val latlong = lat_long?.split(",".toRegex())?.dropLastWhile { it.isEmpty() }?.toTypedArray()
@@ -35,11 +39,11 @@ class SelectUsersLocationFragment : BaseFragment(), OnMapReadyCallback {
 //        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
         LocationService.getLocation(activity!!, { location ->
-            latitude = location.latitude
-            longitude = location.longitude
+            latitude_initial = location.latitude
+            longitude_initial = location.longitude
 
             Handler(Looper.getMainLooper()).post {
-                val sydney = LatLng(latitude, longitude)
+                val sydney = LatLng(latitude_initial, longitude_initial)
                 googleMaps!!.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
 
             }
@@ -88,8 +92,15 @@ class SelectUsersLocationFragment : BaseFragment(), OnMapReadyCallback {
             args.putDouble("lat", latitude)
             args.putDouble("lon", longitude)
             setNewAddressFragment.arguments = args
-            replaceFragment(setNewAddressFragment, false, R.id.container_home)
+            replaceFragment(setNewAddressFragment, false, R.id.container_fullscreen)
         }
+
+        ivRecenter.setOnClickListener {
+            val sydney = LatLng(latitude_initial, longitude_initial)
+            googleMaps!!.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 19.0f))
+
+        }
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

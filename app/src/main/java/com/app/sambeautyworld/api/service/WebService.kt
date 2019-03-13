@@ -99,7 +99,9 @@ interface WebService {
     @POST(Constants.ALL_SALON_SERVICES)
     @FormUrlEncoded
     fun getAllServices(
-            @Field("owner_id") owner_id: String
+            @Field("owner_id") owner_id: String,
+            @Field("user_id") user_id: String,
+            @Field("salon_id") salon_id: String
     ): Call<SalonScreenPojo>
 
 
@@ -166,7 +168,6 @@ interface WebService {
 
 
     @POST(Constants.BOOK_A_SERVICE)
-    @FormUrlEncoded
     fun bookAService(@Body request: Request): Call<ListYourBusinessPojo>
 
     /**

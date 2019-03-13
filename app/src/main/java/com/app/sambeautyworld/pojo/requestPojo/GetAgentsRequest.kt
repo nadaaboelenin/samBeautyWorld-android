@@ -1,7 +1,7 @@
 package com.app.sambeautyworld.pojo.requestPojo
 
 public class GetAgentsRequest(var owner_id: String? = null,
-                              var services: ArrayList<Services> = ArrayList()) {
+                              var sub_services: ArrayList<Sub_services> = ArrayList(), var day: String) {
 
-    public class Services(var id: String?)
+    public class Sub_services(var id: String?)
 }

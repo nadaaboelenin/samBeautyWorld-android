@@ -11,5 +11,4 @@ public class BookMark {
     public String bookmark_logo;
     public String location;
     public String media;
-
 }

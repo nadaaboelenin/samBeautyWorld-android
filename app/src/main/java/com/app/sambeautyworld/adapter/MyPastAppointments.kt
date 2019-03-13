@@ -6,17 +6,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.dummyData.DummyAppointmentsPojo
+import com.app.sambeautyworld.pojo.mainHome.Past
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_appointments.view.*
 
-
-class MyAppointments(private var myDataset: ArrayList<DummyAppointmentsPojo>?, private var activity: Context?) :
-        RecyclerView.Adapter<MyAppointments.MyViewHolder>() {
+class MyPastAppointments(private var myDataset: ArrayList<Past>?, private var activity: Context?) :
+        RecyclerView.Adapter<MyPastAppointments.MyViewHolder>() {
 
     class MyViewHolder(val layout: ConstraintLayout) : RecyclerView.ViewHolder(layout)
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): MyAppointments.MyViewHolder {
+                                    viewType: Int): MyPastAppointments.MyViewHolder {
         // create a new view
         val textView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_appointments, parent, false) as ConstraintLayout
@@ -27,8 +28,14 @@ class MyAppointments(private var myDataset: ArrayList<DummyAppointmentsPojo>?, p
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-//        holder.layout.tvBookmarksName.text = myDataset!![position].names
-//        Picasso.get().load(myDataset!![position].images).into(holder.layout.ivBookmarks)
+        Picasso.get().load(myDataset!![position].icon).into(holder.itemView.ivSalonImage)
+        holder.itemView.tvSalonNameItem.text = myDataset!![position].business_name
+        holder.itemView.tvDateOfAppointment.text = myDataset!![position].date
+        holder.itemView.tvAppointmentTime.text = myDataset!![position].time
+        holder.itemView.tvTypeOfService.text = myDataset!![position].service_request
+        holder.itemView.tvServicesBookedPrice.text = myDataset!![position].service_price + " AED"
+
+        holder.itemView.tvAmountDuePrice.text = myDataset!![position].service_price + " AED"
     }
 
     // Return the size of your dataset (invoked by the layout manager)

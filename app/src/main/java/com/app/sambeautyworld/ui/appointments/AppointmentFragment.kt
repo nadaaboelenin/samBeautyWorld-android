@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.app.sambeautyworld.R
-import com.app.sambeautyworld.R.id.*
-import com.app.sambeautyworld.adapter.MyAppointments
+import com.app.sambeautyworld.adapter.MyPastAppointments
+import com.app.sambeautyworld.adapter.MyUpcomingAppointments
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.dummyData.DummyAppointmentsPojo
+import com.app.sambeautyworld.pojo.mainHome.Past
+import com.app.sambeautyworld.pojo.mainHome.Upcoming
 import kotlinx.android.synthetic.main.fragment_my_appointments.*
 
 /**
@@ -19,11 +21,21 @@ import kotlinx.android.synthetic.main.fragment_my_appointments.*
  */
 class AppointmentFragment : BaseFragment() {
     private var dummyAppointmentList: ArrayList<DummyAppointmentsPojo>? = ArrayList()
-
+    private var upcoming: ArrayList<Upcoming>? = ArrayList()
+    private var past: ArrayList<Past>? = ArrayList()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpData()
+
         clickListeners()
+        getBundledData()
+    }
+
+    private fun getBundledData() {
+        if (!arguments!!.isEmpty) {
+            past = arguments?.getParcelableArrayList("past")
+            upcoming = arguments?.getParcelableArrayList("upcoming")
+            setUpData()
+        }
     }
 
     private fun clickListeners() {
@@ -33,10 +45,16 @@ class AppointmentFragment : BaseFragment() {
 
         tvUpcomingAppointment.setOnClickListener {
             changeColor(tvUpcomingAppointment,view_upcoming)
+
+            rvAppointMentHistory.adapter = MyUpcomingAppointments(upcoming, context)
+            rvAppointMentHistory.layoutManager = LinearLayoutManager(context, 1, false)
         }
 
         tvPastAppointments.setOnClickListener {
             changeColor(tvPastAppointments,view_past)
+
+            rvAppointMentHistory.adapter = MyPastAppointments(past, context)
+            rvAppointMentHistory.layoutManager = LinearLayoutManager(context, 1, false)
         }
 
 
@@ -53,12 +71,8 @@ class AppointmentFragment : BaseFragment() {
     }
 
     private fun setUpData() {
-        dummyAppointmentList?.add(DummyAppointmentsPojo(R.mipmap.salon, "As You Wish",
-                "Sat 10 November 2018", "5:15 PM - 5:45 PM", "Back Massage",
-                "160 AED", "0 AED", "160 AED", "9805191641", "30.7333", "76.7794"
-        ))
 
-        rvAppointMentHistory.adapter=MyAppointments(dummyAppointmentList,context)
+        rvAppointMentHistory.adapter = MyUpcomingAppointments(upcoming, context)
         rvAppointMentHistory.layoutManager = LinearLayoutManager(context,1,false)
     }
 

@@ -37,6 +37,7 @@ object HomeFragmentRepository {
 
             override fun onFailure(call: Call<MainHomePojo>?, t: Throwable?) {
                 t?.let {
+                    failureHandler(it.localizedMessage)
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }
@@ -67,6 +68,7 @@ object HomeFragmentRepository {
 
             override fun onFailure(call: Call<GetBookmarksPojo>?, t: Throwable?) {
                 t?.let {
+                    failureHandler(it.localizedMessage)
                     //failureHandler(ApiFailureTypes.getFailureMessage(it))
                 }
             }
