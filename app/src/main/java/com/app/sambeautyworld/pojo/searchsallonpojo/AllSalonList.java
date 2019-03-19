@@ -20,4 +20,13 @@ public class AllSalonList {
     @SerializedName("owner_id")
     @Expose
     public String owner_id;
+
+    @SerializedName("service_for")
+    @Expose
+    public String service_for;
+
+    @SerializedName("service_type")
+    @Expose
+    public String service_type;
+
 }

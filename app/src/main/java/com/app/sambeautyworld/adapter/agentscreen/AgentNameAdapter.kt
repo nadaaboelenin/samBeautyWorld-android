@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.app.sambeautyworld.R
 import com.app.sambeautyworld.callBack.AgentListeners
 import com.app.sambeautyworld.pojo.agents.Agent
+import com.app.sambeautyworld.pojo.agents.Timingssss
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_agent_information.view.*
 
@@ -38,12 +39,19 @@ class AgentNameAdapter(private var myDataset: ArrayList<Agent>?,
 //        holder.itemView.setOnClickListener {
 //            onItemClicked?.onItemClick(position)
 //        }
+        var timings: ArrayList<Timingssss> = ArrayList()
+
+        for (i in 0 until myDataset!![position].timings.size) {
+            timings.add(Timingssss(myDataset!![position].timings[i], false))
+        }
 
         holder.itemView.tvAgentName.text = myDataset!![position].agent_name
         holder.itemView.tvAgentLocation.text = myDataset!![position].nationality
         Picasso.get().load(myDataset!![position].agent_image).into(holder.itemView.ivAgentImage)
-        holder.itemView.rvAgentTimigngs.adapter = AgentTimingAdapter((myDataset!![position].timings as ArrayList<String>?)!!, listner, position_agent, position, activity1)
+        holder.itemView.rvAgentTimigngs.adapter = AgentTimingAdapter(timings, listner, position_agent, position, activity1)
         holder.itemView.rvAgentTimigngs.layoutManager = GridLayoutManager(activity, 5)
+
+
 
         holder.itemView.ivShowAgentTiming.setOnClickListener {
             if (!flagger!!) {

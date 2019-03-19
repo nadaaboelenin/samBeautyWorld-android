@@ -22,6 +22,7 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+
 /**
  *  Created by shubham on 3/11/17.
  *  All web services are declared here
@@ -170,6 +171,13 @@ interface WebService {
     @POST(Constants.BOOK_A_SERVICE)
     fun bookAService(@Body request: Request): Call<ListYourBusinessPojo>
 
+
+    @POST(Constants.CANCEL_REQUEST)
+    @FormUrlEncoded
+    fun cancelService(@Field("booking_id") booking_id: String,
+                      @Field("user_id") user_id: String
+    ): Call<ListYourBusinessPojo>
+
     /**
     owner_id:12
     agent_id:5
@@ -181,7 +189,6 @@ interface WebService {
 
     service_pric
      */
-
 
 
 //    @POST(Constants.UPDATE_INFO)

@@ -4,7 +4,6 @@ import Preferences
 import android.annotation.TargetApi
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -12,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.app.sambeautyworld.R
 import com.app.sambeautyworld.adapter.agentscreen.ServicesOfAgentAdapter
 import com.app.sambeautyworld.base_classes.BaseFragment
 import com.app.sambeautyworld.callBack.AgentListeners
@@ -21,7 +21,7 @@ import com.app.sambeautyworld.pojo.requestPojo.GetAgentsRequest
 import com.app.sambeautyworld.pojo.requestbooking.Datum
 import com.app.sambeautyworld.pojo.requestbooking.Request
 import com.app.sambeautyworld.pojo.salonScreen.SubService
-import com.app.sambeautyworld.ui.home.HomeActivity
+import com.app.sambeautyworld.ui.serviceSelectorTab.paymentFragment.PaymentFragment
 import com.app.sambeautyworld.utils.Constants
 import com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar
 import kotlinx.android.synthetic.main.fragment_choose_agent.*
@@ -39,6 +39,7 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
 
 
     override fun onItemClick(position_service: Int, position_agent: Int, position_time: Int) {
+        btContinue.isEnabled = true
         data!!.add(Datum(serviceData!![position_service].sub_service_name, serviceData!![position_service].sub_service_price, "1",
                 serviceData!![position_service].agents[position_agent].id, "$years-$months-$days", serviceData!![position_service].agents[position_agent].timings[position_time]
                 , salon_id, "50"))
@@ -75,7 +76,7 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
             it?.let {
                 if (it.status == 1) {
                     showMessage(it.message)
-                    startActivity(Intent(activity!!, HomeActivity::class.java))
+                    replaceFragment(PaymentFragment(), false, R.id.container_home_salon)
                 }
                 showMessage(it.message)
             }
@@ -93,6 +94,7 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
     }
 
     private fun setUpData(agentsPojo: AgentsPojo) {
+        serviceData!!.clear()
         serviceData = agentsPojo.serviceData as ArrayList<ServiceDatum>
         rvAgentsWholeInformation.adapter = ServicesOfAgentAdapter((agentsPojo.serviceData as ArrayList<ServiceDatum>?)!!, activity!!, this)
         rvAgentsWholeInformation.layoutManager = LinearLayoutManager(activity!!)
@@ -131,6 +133,37 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
                     months = "" + (day.month + 1)
                 }
 
+                var dayOfWeek = "Sunday"
+
+                val calendar = GregorianCalendar(day.year, day.month, day.day) // Note that Month value is 0-based. e.g., 0 for January.
+                val reslut = calendar.get(Calendar.DAY_OF_WEEK)
+                when (reslut) {
+                    Calendar.MONDAY -> {
+                        dayOfWeek = "Monday"
+                    }
+                    Calendar.TUESDAY -> {
+                        dayOfWeek = "Tuesday"
+                    }
+                    Calendar.WEDNESDAY -> {
+                        dayOfWeek = "Wednesday"
+                    }
+                    Calendar.THURSDAY -> {
+                        dayOfWeek = "Thursday"
+                    }
+                    Calendar.FRIDAY -> {
+                        dayOfWeek = "Friday"
+                    }
+                    Calendar.SATURDAY -> {
+                        dayOfWeek = "Saturday"
+                    }
+                    Calendar.SUNDAY -> {
+                        dayOfWeek = "Sunday"
+                    }
+                }
+
+                getAgentRequest = GetAgentsRequest(id, services, dayOfWeek)
+                hitApi()
+
             }
 
             override fun onItemClick(view: View) {
@@ -154,11 +187,8 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
     private fun clickListeners() {
 
         btContinue.setOnClickListener {
-            if (!data?.size!!.equals(services.size)) {
-                showMessage("Please select agent timing for every service")
-            } else {
+            if (data?.size != 0)
                 request = Request(id, Preferences.prefs!!.getString(Constants.ID, "0"), data)
-            }
             hitBookingApi()
         }
 
@@ -166,12 +196,14 @@ class ChooseAgentFragment : BaseFragment(), AgentListeners {
     }
 
     private fun hitBookingApi() {
-        mViewModel?.bookService(request)
+        if (request != null) {
+            mViewModel?.bookService(request)
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.N)
     private fun getBundledArguments() {
-
+        btContinue.isEnabled = false
         subServices = BaseFragment.subServices
 
         if (!arguments!!.isEmpty) {

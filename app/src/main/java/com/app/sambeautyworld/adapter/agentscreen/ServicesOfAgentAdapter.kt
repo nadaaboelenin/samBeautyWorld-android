@@ -36,7 +36,6 @@ class ServicesOfAgentAdapter(private var myDataset: ArrayList<ServiceDatum>?, pr
         holder.itemView.rvAgentsInformation.adapter = AgentNameAdapter(myDataset!![position].agents as ArrayList<Agent>?, this.activity!!, listner, position, activity!!)
         holder.itemView.rvAgentsInformation.layoutManager = LinearLayoutManager(activity, LinearLayout.HORIZONTAL, false)
 
-
     }
 
 

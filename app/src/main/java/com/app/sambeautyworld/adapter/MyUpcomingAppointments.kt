@@ -6,12 +6,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.app.sambeautyworld.R
+import com.app.sambeautyworld.callBack.OnItemClicked
 import com.app.sambeautyworld.pojo.mainHome.Upcoming
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_appointments.view.*
 
 
-class MyUpcomingAppointments(private var myDataset: ArrayList<Upcoming>?, private var activity: Context?) :
+class MyUpcomingAppointments(private var myDataset: ArrayList<Upcoming>?,
+                             private var activity: Context?,
+                             private var selected: OnItemClicked) :
         RecyclerView.Adapter<MyUpcomingAppointments.MyViewHolder>() {
 
     class MyViewHolder(val layout: ConstraintLayout) : RecyclerView.ViewHolder(layout)
@@ -35,8 +38,10 @@ class MyUpcomingAppointments(private var myDataset: ArrayList<Upcoming>?, privat
         holder.itemView.tvAppointmentTime.text = myDataset!![position].time
         holder.itemView.tvTypeOfService.text = myDataset!![position].service_request
         holder.itemView.tvServicesBookedPrice.text = myDataset!![position].service_price + " AED"
-
         holder.itemView.tvAmountDuePrice.text = myDataset!![position].service_price + " AED"
+        holder.itemView.tvClose.setOnClickListener {
+            selected.onItemClick(myDataset!![position].booking_id.toInt())
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

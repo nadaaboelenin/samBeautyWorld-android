@@ -1,6 +1,6 @@
 package com.app.sambeautyworld.pojo.agents
 
-public class Timings {
-    var time: String? = null
-    var check: Boolean? = false
-}
+data class Timingssss(
+        var time: String?,
+        var check: Boolean?
+)

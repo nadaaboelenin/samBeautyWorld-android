@@ -47,6 +47,7 @@ object Constants {
     const val CHOOSE_AGENT = "chooseAgent"
     const val SEARCH_FILTERED = "searchSalons"
     const val BOOK_A_SERVICE = "BookRequest"
+    const val CANCEL_REQUEST = "cancelRequest"
 
 
 

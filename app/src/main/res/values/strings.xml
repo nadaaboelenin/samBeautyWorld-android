@@ -545,6 +545,11 @@
     <string name="select_location">Select Location</string>
     <string name="confirm_location">Confirm Location</string>
     <string name="post_code">Post Code</string>
+    <string name="travel_fee">Travel fee</string>
+    <string name="add_a_promo_code_optional">Add a promo code(optional)</string>
+    <string name="total">Total</string>
+    <string name="cash">Cash</string>
+    <string name="creditcard">Credit Card</string>
 
 
 </resources>

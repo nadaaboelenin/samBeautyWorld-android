@@ -65,7 +65,6 @@ class OtpVerificationFragment : BaseFragment() {
                 showSnackBar(it)
             }
         })
-
         mViewModel?.isLoading?.observe(this, Observer {
             it?.let { showLoading(it) }
         })

@@ -44,6 +44,9 @@ class ActivitySalonStartPoint : BaseActivity() {
                 val args = Bundle()
                 args.apply {
                     putString(Constants.BUSINES_OWNER, intent.getStringExtra(Constants.BUSINES_OWNER))
+
+                    putString(Constants.BUSINES_OWNER, intent.getStringExtra(Constants.BUSINES_OWNER))
+                    putString(Constants.SALON_ID, intent.getStringExtra(Constants.SALON_ID))
                 }
                 salonScreenFragment.arguments = args
                 replaceFragment(salonScreenFragment, R.id.container_home_salon)

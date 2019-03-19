@@ -29,6 +29,7 @@ class SearchSalonFragment : BaseFragment(), OnItemClicked {
         val intent = Intent(activity, ActivitySalonStartPoint::class.java)
         intent.putExtra(Constants.FROM_SEARCH, "1")
         intent.putExtra(Constants.BUSINES_OWNER, dummySalonList[position].owner_id)
+        intent.putExtra(Constants.SALON_ID, dummySalonList[position].id)
         startActivity(intent)
     }
 

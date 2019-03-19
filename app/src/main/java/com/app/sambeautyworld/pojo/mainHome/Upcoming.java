@@ -5,6 +5,9 @@ import android.os.Parcelable;
 
 public class Upcoming implements Parcelable {
 
+
+    public String icon;
+    public String business_name;
     public static final Creator<Upcoming> CREATOR = new Creator<Upcoming>() {
         @Override
         public Upcoming createFromParcel(Parcel in) {
@@ -16,22 +19,24 @@ public class Upcoming implements Parcelable {
             return new Upcoming[size];
         }
     };
-    public String icon;
-    public String business_name;
     public String date;
     public String schedule;
+    public String booking_id;
     public String service_request;
     public String service_price;
     public String time;
     public String mobile_number;
     public String latitude;
     public String longitude;
+    public String service_time;
 
     protected Upcoming(Parcel in) {
         icon = in.readString();
         business_name = in.readString();
+        booking_id = in.readString();
         date = in.readString();
         schedule = in.readString();
+        service_time = in.readString();
         service_request = in.readString();
         service_price = in.readString();
         time = in.readString();
@@ -49,8 +54,10 @@ public class Upcoming implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(icon);
         dest.writeString(business_name);
+        dest.writeString(booking_id);
         dest.writeString(date);
         dest.writeString(schedule);
+        dest.writeString(service_time);
         dest.writeString(service_request);
         dest.writeString(service_price);
         dest.writeString(time);

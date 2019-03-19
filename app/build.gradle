@@ -137,6 +137,9 @@ dependencies {
     //cluster
     implementation 'com.google.maps.android:android-maps-utils:0.5'
 
+    //braintree
+    implementation 'com.braintreepayments.api:drop-in:3.7.1'
+
 }
 apply plugin: 'com.google.gms.google-services'
 repositories {
